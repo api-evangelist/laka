@@ -1,0 +1,72 @@
+generated: '2026-07-19'
+method: searched
+source: openapi/laka-platform-openapi.json, openapi/laka-quote-openapi.json
+docs:
+- https://docs.laka.co/docs/regions
+- https://docs.laka.co/docs/request-access
+- https://docs.laka.co/docs/glossary
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  oauth: false
+  openid_connect: false
+  mutual_tls: false
+  scopes: false
+  note: 'Laka is API-key based end to end. There is no authorization server, token endpoint, refresh
+    flow or scope surface — /.well-known/openid-configuration and
+    /.well-known/oauth-authorization-server return 404 on every Laka host. The two APIs use different
+    header names, which is the single most common integration mistake: the Platform API reads
+    x-api-key while the Quote API reads Authorization.'
+schemes:
+- name: x-api-key
+  type: apiKey
+  in: header
+  parameter: x-api-key
+  api: Laka Platform API
+  applied_to: 38 of 39 published Platform operations
+  sources:
+  - openapi/laka-platform-openapi.json
+- name: api_key_header_Authorization
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: Secures endpoint by requiring an API key.
+  api: Laka Quote API
+  applied_to: 18 of 19 published Quote operations
+  note: 'Despite the header name, this is a plain API key rather than an OAuth bearer token — the
+    published securityScheme is type apiKey, not http/bearer. Laka''s own documented header example
+    sends it as `Authorization: YOUR_TOKEN`.'
+  sources:
+  - openapi/laka-quote-openapi.json
+required_companion_headers:
+- name: x-api-region
+  required: true
+  description: 'The API region of the interaction; in most cases it matches the customer region. Laka
+    uses it to attribute the insured party to the correct regulatory region.'
+  documented_values: [gb, nl, be, de, fr, dk, at, ie]
+- name: x-api-language
+  required: true
+  description: Where applicable, the language for any textual content Laka may send to the customer.
+  documented_values: [en, nl, fr, de, dk]
+documented_header_example:
+  Content-Type: application/json
+  x-api-region: be
+  x-api-language: nl
+  x-api-key: YOUR_KEY
+  Authorization: YOUR_TOKEN
+  source: https://docs.laka.co/docs/regions
+credential_issuance:
+  self_service: false
+  model: 'Access is granted per partner. Laka asks prospective partners to request API access by
+    email; there is no developer signup that mints a key.'
+  url: https://docs.laka.co/docs/request-access
+transport:
+  https_required: true
+  hsts: true
+  note: 'Laka states all traffic and requests must be over HTTPS; probed hosts return
+    strict-transport-security max-age=31536000 includeSubDomains.'
+rotation:
+  documented: false
+  note: No key rotation, expiry or revocation procedure is published on the developer surface.
