@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: Laka accounts tasks API
+  description: Laka API (next)
+  version: '2024-09-01'
+  contact: {}
+servers:
+- url: https://api.uat.laka.co
+  description: UAT
+- url: https://api-{region}.app.laka.co
+  description: Production
+  variables:
+    region:
+      enum:
+      - nl
+      - fr
+      - gb
+      default: gb
+tags:
+- name: tasks
+paths:
+  /v3/tasks/{personId}:
+    get:
+      operationId: TasksController_getTasksByPerson
+      summary: Get tasks for a person
+      description: Returns all tasks for the given person ID, ordered by most recent first.
+      parameters:
+      - name: personId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of tasks for the person
+      tags:
+      - tasks
+      security:
+      - bearer: []
+components:
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key

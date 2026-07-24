@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  title: Laka accounts quotes API
+  description: Laka API (next)
+  version: '2024-09-01'
+  contact: {}
+servers:
+- url: https://api.uat.laka.co
+  description: UAT
+- url: https://api-{region}.app.laka.co
+  description: Production
+  variables:
+    region:
+      enum:
+      - nl
+      - fr
+      - gb
+      default: gb
+tags:
+- name: quotes
+paths:
+  /v3/quotes/quick-quote-for-address:
+    get:
+      operationId: QuoteController_getQuickQuoteForAddress
+      summary: Get Quick Quote for Address
+      description: Get a quick quote for a given postal code based on the user's existing property policy.
+      parameters:
+      - name: postalCode
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Quick quote generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuickQuoteForAddressResponse'
+      tags:
+      - quotes
+      security:
+      - x-api-key: []
+components:
+  schemas:
+    PriceDetails:
+      type: object
+      properties:
+        packageId:
+          type: string
+        capPrice:
+          type: number
+        displayPrice:
+          type: number
+        average:
+          type: number
+        additionalCostsTotal:
+          type: number
+        capIncreasePrc:
+          type: string
+        capDecreasePrc:
+          type: string
+      required:
+      - packageId
+      - capPrice
+      - displayPrice
+      - average
+      - additionalCostsTotal
+      - capIncreasePrc
+      - capDecreasePrc
+    QuickQuoteForAddressResponse:
+      type: object
+      properties:
+        priceDetails:
+          $ref: '#/components/schemas/PriceDetails'
+      required:
+      - priceDetails
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key

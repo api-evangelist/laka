@@ -1,0 +1,1557 @@
+openapi: 3.0.0
+info:
+  title: Laka accounts policies API
+  description: Laka API (next)
+  version: '2024-09-01'
+  contact: {}
+servers:
+- url: https://api.uat.laka.co
+  description: UAT
+- url: https://api-{region}.app.laka.co
+  description: Production
+  variables:
+    region:
+      enum:
+      - nl
+      - fr
+      - gb
+      default: gb
+tags:
+- name: policies
+paths:
+  /v3/policies:
+    get:
+      operationId: PolicyController_getPolicies
+      summary: Get Policies
+      description: Get all the policies you are permitted to view.
+      parameters:
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: All permitted policies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PoliciesWithCountResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/packages/{id}:
+    get:
+      operationId: PolicyController_getPackage
+      summary: Get Package Details
+      description: Get the details for a single package by UUID.
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get the details of a Package by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackageResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/perks/global:
+    get:
+      operationId: PolicyController_getGlobalPerks
+      summary: Get All Global Perks
+      description: Get all the global perks.
+      parameters:
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get all Global Perk records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PerkResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/requestCover:
+    post:
+      operationId: PolicyController_requestCover
+      summary: Request Cover
+      description: Create and activate policies based on quote requirements.
+      parameters:
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestCoverRequest'
+      responses:
+        '201':
+          description: Cover successfully requested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RequestCoverResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}:
+    delete:
+      operationId: PolicyController_cancelPolicy
+      summary: Cancel Policy
+      description: Cancel an active policy.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelPolicyBody'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelPolicyResult'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+    get:
+      operationId: PolicyController_getPolicyById
+      summary: Get Policy by ID
+      description: Get a single policy by UUID.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Policy Found
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/combined:
+    post:
+      operationId: PolicyController_createCombinedRelationship
+      summary: Create Combined Relationship
+      description: This endpoint can be used in place of performing the create operations individually. It will create/update a person, relationship, and policy products in one request.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCombinedRelationshipRequest'
+      responses:
+        '201':
+          description: Successfully created the combined relationship
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateCombinedRelationshipResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/ipid:
+    get:
+      operationId: PolicyController_getPolicyIpid
+      summary: Get Policy IPID
+      description: Get the Insurance Product Information Document (IPID) for a policy.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: IPID document returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPolicyIpidResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/people/{personId}/documents:
+    get:
+      operationId: PolicyController_getAllDocuments
+      summary: Get All Policy Documents
+      description: 'Get all documents for a policy: policy document, insurance sticker, wording, and IPID.'
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: personId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: All policy documents returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GetAllDocumentsResponseItem'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/people/{personId}/policy_document:
+    get:
+      operationId: PolicyController_getPolicyDocument
+      summary: Get Policy Document
+      description: Get a pre-signed URL for a policy document for a person.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: personId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PreSigned document URL returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPolicyDocumentResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/products:
+    patch:
+      operationId: PolicyController_patchPolicyProducts
+      summary: Update Products
+      description: Update the products on a policy.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertPolicyProducts'
+      responses:
+        '200':
+          description: PATCH policy products
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertPolicyProductsResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+    post:
+      operationId: PolicyController_postPolicyProducts
+      summary: Add Products
+      description: Create products and associate them with a policy.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertPolicyProducts'
+      responses:
+        '200':
+          description: POST policy products
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertPolicyProductsResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/products/csv:
+    post:
+      operationId: PolicyController_uploadPolicyProductsCsv
+      summary: Bulk Add Products
+      description: Create products in bulk from a CSV input and associate them with a policy.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        description: CSV file payload
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadProductCsvRequest'
+      responses:
+        '200':
+          description: Upload / update / delete products for a policy from a CSV file
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadProductCsvResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/products/{productId}:
+    delete:
+      operationId: PolicyController_deletePolicyProduct
+      summary: Delete Product
+      description: Delete a product by UUID and dis-associate it from a policy.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: productId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Deleted Product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletePolicyProductResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/relationship/{personId}:
+    delete:
+      operationId: PolicyController_endPolicyRelationship
+      summary: End Policy Relationship
+      description: End the relationship between a person (beneficiary) and a policy. The person and their gear will be removed from the policy and their subscription will be ended.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: personId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '204':
+          description: The policy relationship has been successfully ended.
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+  /v3/policies/{policyId}/wording:
+    get:
+      operationId: PolicyController_getPolicyWording
+      summary: Get Policy Wording
+      description: Get the wording for a policy.
+      parameters:
+      - name: policyId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Policy wording returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPolicyWordingResponse'
+      tags:
+      - policies
+      security:
+      - x-api-key: []
+components:
+  schemas:
+    AccessoryType:
+      type: object
+      properties:
+        type:
+          enum:
+          - Gloves
+          - Bike Alarm
+          - Action Camera
+          - Bike Computer
+          - Bike Rack
+          - Fitness Watch
+          - Goggles/Glasses
+          - GPS
+          - Lock
+          - Water Bottle
+          - Bags
+          - Basket
+          - Bell
+          - Bike Box
+          - Bike Covers
+          - Body Armour
+          - Charger
+          - Child Seat
+          - Cycle Mirrors
+          - Drawbar
+          - Facemask
+          - Frame Protectors
+          - Heart Rate Monitor
+          - Helmet
+          - Hydration Pack
+          - Light
+          - Mount
+          - Mudguards
+          - Neck Brace
+          - Pannier
+          - Pannier Rack
+          - Pump
+          - Repair kit
+          - Shoes
+          - Stand
+          - Stickers
+          - Tools
+          - Trailer
+          - Water Bottle Cage
+          - Wetsuit
+          - Workstand
+          - Battery Lock
+          type: string
+          description: Type of accessory
+        brand:
+          type: string
+          description: Brand of the accessory
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+      required:
+      - type
+    CancelPolicyResult:
+      type: object
+      properties:
+        policyId:
+          type: string
+        success:
+          type: boolean
+      required:
+      - policyId
+      - success
+    UploadProductCsvRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+          description: CSV file
+      required:
+      - file
+    CreateCombinedRelationshipRequest:
+      type: object
+      properties:
+        createClaimsDeeplink:
+          type: boolean
+        person:
+          $ref: '#/components/schemas/CombinedPersonRequest'
+        products:
+          $ref: '#/components/schemas/ProductsWithMinimumInitialValue'
+      required:
+      - createClaimsDeeplink
+      - person
+      - products
+    DeletePolicyProductResponse:
+      type: object
+      properties: {}
+    CancelPolicyBody:
+      type: object
+      properties:
+        cancelledReason:
+          type: string
+        cancelledOn:
+          type: string
+    UploadProductCsvResponse:
+      type: object
+      properties:
+        successes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RowSuccess'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RowError'
+        previews:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreviewItem'
+      required:
+      - successes
+      - errors
+      - previews
+    CombinedPersonResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
+          type: string
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
+          type: string
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        startDate:
+          type: string
+          description: The date when the relationship starts in ISO 8601 format.
+          example: '2023-01-01'
+          format: date
+        endDate:
+          type: string
+          description: The date when the relationship should end in ISO 8601 format.
+          example: '2023-02-01'
+          format: date
+        relationshipId:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        address:
+          $ref: '#/components/schemas/Address'
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
+        region:
+          type: string
+        defaultCurrency:
+          type: string
+      required:
+      - id
+      - type
+      - relationshipId
+      - email
+    ProductAddress:
+      type: object
+      properties:
+        streetAddress:
+          type: string
+          description: Street address for the insured product location
+          example: 10 Downing Street
+        postalTown:
+          type: string
+          description: Postal town for the insured product location
+          example: London
+        postalCode:
+          type: string
+          description: Postal code for the insured product location
+          example: SW1A 2AB
+        country:
+          type: string
+          description: ISO country code for the insured product location
+          example: GB
+      required:
+      - streetAddress
+      - postalTown
+      - postalCode
+      - country
+    PolicyForPerson:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        status:
+          enum:
+          - Active
+          - Cancelled
+          - Paused
+          - Pending Reactivation
+          - Pending Activation
+          type: string
+        policyReference:
+          type: string
+        coverInception:
+          type: string
+        coverStart:
+          type: string
+        coverEnd:
+          type: string
+        cancelled:
+          type: boolean
+        paused:
+          type: boolean
+        inALockIn:
+          type: boolean
+        autoRenew:
+          type: boolean
+        insuredValue:
+          type: number
+        capIncTax:
+          type: number
+        packageName:
+          type: string
+        lastPausedOrCancelledAt:
+          type: string
+          nullable: true
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductResponse'
+        productCount:
+          type: number
+        parsedCoverModules:
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - status
+      - policyReference
+      - coverInception
+      - coverStart
+      - coverEnd
+      - cancelled
+      - paused
+      - inALockIn
+      - autoRenew
+      - insuredValue
+      - capIncTax
+      - packageName
+      - lastPausedOrCancelledAt
+      - products
+      - productCount
+      - parsedCoverModules
+    BaseAddressFields:
+      type: object
+      properties:
+        houseNo:
+          type: string
+          description: The house number of the address
+          example: '123'
+        streetAddress:
+          type: string
+          description: The street address - may include the house number in some locales
+          example: 123 Main St
+        postalTown:
+          type: string
+          description: The postal town or city
+          example: London
+        postalCode:
+          type: string
+          description: The postal code
+          example: SW1A 2AB
+        locality:
+          type: string
+          description: The locality or district
+          example: Westminster
+        region:
+          type: string
+          description: The region or state
+          example: Greater London
+        country:
+          type: string
+          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
+          example: United Kingdom
+    PreviewItem:
+      type: object
+      properties:
+        rowNumber:
+          type: number
+        action:
+          type: string
+        frame:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        value:
+          type: string
+        currency:
+          type: string
+      required:
+      - rowNumber
+      - action
+      - frame
+      - make
+      - model
+      - value
+      - currency
+    UpsertPolicyProducts:
+      type: object
+      properties:
+        personId:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        clothing:
+          $ref: '#/components/schemas/Clothing'
+        accessories:
+          $ref: '#/components/schemas/Accessory'
+        startDate:
+          type: string
+        endDate:
+          type: string
+      required:
+      - personId
+      - products
+    UpsertPolicyProductsResponse:
+      type: object
+      properties:
+        products:
+          $ref: '#/components/schemas/UpsertedProductItems'
+        clothing:
+          $ref: '#/components/schemas/UpsertedProductItems'
+        accessories:
+          $ref: '#/components/schemas/UpsertedProductItems'
+        refutationId:
+          type: string
+    Clothing:
+      type: object
+      properties:
+        initialValue:
+          type: number
+          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
+          example: 30000
+          minimum: 0
+          maximum: 1500000
+        currencyCode:
+          type: string
+          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
+          example: GBP
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+      required:
+      - initialValue
+      - currencyCode
+    CreateCombinedRelationshipResponse:
+      type: object
+      properties:
+        person:
+          $ref: '#/components/schemas/CombinedPersonResponse'
+        products:
+          $ref: '#/components/schemas/UpsertPolicyProductsResponse'
+        refutationId:
+          type: string
+        claimsDeeplink:
+          type: string
+        isNewRecord:
+          type: boolean
+      required:
+      - person
+      - products
+      - refutationId
+      - isNewRecord
+    Product:
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        initialValue:
+          type: number
+          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
+          example: 30000
+          minimum: 0
+          maximum: 1500000
+        serialNumber:
+          type: string
+          description: Serial number of the product
+        typeName:
+          enum:
+          - GravelBike
+          - Recumbent
+          - Mountain
+          - Folding
+          - FixedGear
+          - CityBike
+          - Cargo
+          - Cyclocross
+          - Hybrid
+          - TT
+          - Road
+          - Touring
+          - BMXBike
+          - FatBike
+          type: string
+          description: Type of the bike
+          example: GravelBike
+        sku:
+          type: string
+          description: Stock keeping unit identifier
+        modelName:
+          type: string
+          description: Model name of the product
+        brand:
+          type: string
+          description: Brand name of the product
+        currencyCode:
+          type: string
+          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
+          example: GBP
+        eBikeType:
+          type: string
+          description: Specifies the eBike classification. If not provided, the bike is considered non-electric.
+          example: assisted
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+        licencePlateNumber:
+          type: string
+          description: Required for Third Party Liability policies
+        year:
+          type: number
+          description: Purchase year of the product
+      required:
+      - initialValue
+      - serialNumber
+      - typeName
+      - modelName
+      - brand
+      - currencyCode
+    GetPolicyIpidResponse:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    UpsertedProductItems:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpsertedProductRow'
+        count:
+          type: number
+      required:
+      - rows
+      - count
+    PackageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        validFrom:
+          type: string
+        validTo:
+          type: string
+        active:
+          type: boolean
+        durationUnit:
+          type: string
+        durationValue:
+          type: number
+        durationPrice:
+          type: number
+        perks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+        includedPerks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+        excludedPerks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+        optionalPerks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+      required:
+      - id
+      - name
+      - key
+      - description
+      - validFrom
+      - validTo
+      - active
+      - durationUnit
+      - durationValue
+      - durationPrice
+      - perks
+      - includedPerks
+      - excludedPerks
+      - optionalPerks
+    CombinedPersonRequest:
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
+          type: string
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
+          type: string
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        startDate:
+          type: string
+          description: The date when the relationship starts in ISO 8601 format.
+          example: '2023-01-01'
+          format: date
+        endDate:
+          type: string
+          description: The date when the relationship should end in ISO 8601 format.
+          example: '2023-02-01'
+          format: date
+        relationshipId:
+          type: string
+        address:
+          $ref: '#/components/schemas/BaseAddressFields'
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
+        region:
+          type: string
+        defaultCurrency:
+          type: string
+      required:
+      - type
+      - relationshipId
+      - address
+      - email
+    Accessory:
+      type: object
+      properties:
+        initialValue:
+          type: number
+          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
+          example: 30000
+          minimum: 0
+          maximum: 1500000
+        currencyCode:
+          type: string
+          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
+          example: GBP
+        types:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessoryType'
+      required:
+      - initialValue
+      - currencyCode
+      - types
+    ProductsWithMinimumInitialValue:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/CombinedProduct'
+        clothing:
+          $ref: '#/components/schemas/Clothing'
+        accessories:
+          $ref: '#/components/schemas/Accessory'
+      required:
+      - products
+    PoliciesWithCountResponse:
+      type: object
+      properties:
+        rows:
+          description: List of items in the response
+          type: array
+          items:
+            $ref: '#/components/schemas/PolicyForPerson'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
+      required:
+      - rows
+      - count
+    GetPolicyWordingResponse:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    PerkLinkResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        title:
+          type: string
+      required:
+      - id
+      - url
+      - title
+    CombinedProduct:
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        initialValue:
+          type: number
+          minimum: 30000
+          maximum: 1500000
+          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
+          example: 30000
+        serialNumber:
+          type: string
+          description: Serial number of the product
+        typeName:
+          enum:
+          - GravelBike
+          - Recumbent
+          - Mountain
+          - Folding
+          - FixedGear
+          - CityBike
+          - Cargo
+          - Cyclocross
+          - Hybrid
+          - TT
+          - Road
+          - Touring
+          - BMXBike
+          - FatBike
+          type: string
+          description: Type of the bike
+          example: GravelBike
+        sku:
+          type: string
+          description: Stock keeping unit identifier
+        modelName:
+          type: string
+          description: Model name of the product
+        brand:
+          type: string
+          description: Brand name of the product
+        currencyCode:
+          type: string
+          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
+          example: GBP
+        eBikeType:
+          type: string
+          description: Specifies the eBike classification. If not provided, the bike is considered non-electric.
+          example: assisted
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+        licencePlateNumber:
+          type: string
+          description: Required for Third Party Liability policies
+        year:
+          type: number
+          description: Purchase year of the product
+      required:
+      - initialValue
+      - serialNumber
+      - typeName
+      - modelName
+      - brand
+      - currencyCode
+    RequestCoverRequest:
+      type: object
+      properties:
+        quoteId:
+          type: string
+        coverStart:
+          type: string
+        totalPremiumPaid:
+          type: number
+        isManagedPolicy:
+          type: boolean
+      required:
+      - quoteId
+      - coverStart
+    RequestCoverResponse:
+      type: object
+      properties:
+        policies:
+          items:
+            type: array
+          type: array
+        redirectUrl:
+          type: string
+      required:
+      - policies
+      - redirectUrl
+    RowError:
+      type: object
+      properties:
+        rowNumber:
+          type: number
+        action:
+          type: string
+        error:
+          type: string
+      required:
+      - rowNumber
+      - action
+      - error
+    GetAllDocumentsResponseItem:
+      type: object
+      properties:
+        type:
+          type: string
+        url:
+          type: string
+      required:
+      - type
+      - url
+    RowSuccess:
+      type: object
+      properties:
+        rowNumber:
+          type: number
+        action:
+          type: string
+        productId:
+          type: string
+      required:
+      - rowNumber
+      - action
+      - productId
+    GetPolicyDocumentResponse:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    Address:
+      type: object
+      properties:
+        houseNo:
+          type: string
+          description: The house number of the address
+          example: '123'
+        streetAddress:
+          type: string
+          description: The street address - may include the house number in some locales
+          example: 123 Main St
+        postalTown:
+          type: string
+          description: The postal town or city
+          example: London
+        postalCode:
+          type: string
+          description: The postal code
+          example: SW1A 2AB
+        locality:
+          type: string
+          description: The locality or district
+          example: Westminster
+        region:
+          type: string
+          description: The region or state
+          example: Greater London
+        country:
+          type: string
+          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
+          example: United Kingdom
+        id:
+          type: string
+    UpsertedProductRow:
+      type: object
+      properties:
+        productId:
+          type: string
+        typeName:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        serialNumber:
+          type: string
+        currencyCode:
+          type: string
+        initialValue:
+          type: number
+        eBikeType:
+          type: string
+        sku:
+          type: string
+        licencePlateNumber:
+          type: string
+        externalId:
+          type: string
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+      required:
+      - productId
+      - typeName
+    PerkResponse:
+      type: object
+      properties:
+        policyType:
+          type: string
+          enum:
+          - Property
+          - Liability
+          - Health
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        policyDefinition:
+          type: string
+          nullable: true
+        imageUrl:
+          type: string
+        global:
+          type: boolean
+        fulfilmentKey:
+          type: string
+        value:
+          type: number
+        bitmaskValue:
+          type: number
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkLinkResponse'
+      required:
+      - policyType
+      - id
+      - name
+      - description
+      - policyDefinition
+      - imageUrl
+      - global
+      - fulfilmentKey
+      - value
+      - bitmaskValue
+      - links
+    ProductResponse:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+        modelName:
+          type: string
+        brand:
+          type: string
+        initialValue:
+          type: number
+        typeName:
+          type: string
+      required:
+      - serialNumber
+      - modelName
+      - brand
+      - initialValue
+      - typeName
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key

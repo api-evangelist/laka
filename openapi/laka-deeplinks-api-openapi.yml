@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: Laka accounts deeplinks API
+  description: Laka API (next)
+  version: '2024-09-01'
+  contact: {}
+servers:
+- url: https://api.uat.laka.co
+  description: UAT
+- url: https://api-{region}.app.laka.co
+  description: Production
+  variables:
+    region:
+      enum:
+      - nl
+      - fr
+      - gb
+      default: gb
+tags:
+- name: deeplinks
+paths:
+  /v3/deeplinks:
+    post:
+      operationId: DeeplinksController_create
+      summary: Create Deeplink
+      description: Create a new deeplink. Choose a resource to change the purpose of the deeplink.
+      parameters:
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDeeplink'
+      responses:
+        '200':
+          description: The found record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Deeplink'
+      tags:
+      - deeplinks
+      security:
+      - x-api-key: []
+    get:
+      operationId: DeeplinksController_deeplinks
+      summary: Get All Deeplinks
+      description: Get all of the deeplinks.
+      parameters:
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: All deeplinks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeeplinksResponse'
+      tags:
+      - deeplinks
+      security:
+      - x-api-key: []
+components:
+  schemas:
+    DeeplinksResponse:
+      type: object
+      properties:
+        rows:
+          description: List of items in the response
+          type: array
+          items:
+            $ref: '#/components/schemas/Deeplink'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
+      required:
+      - rows
+      - count
+    Deeplink:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        slug:
+          type: string
+        expiresAt:
+          type: string
+        url:
+          type: string
+      required:
+      - id
+      - slug
+      - expiresAt
+      - url
+    CreateDeeplink:
+      type: object
+      properties:
+        personId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        resource:
+          type: string
+        expiresAt:
+          type: string
+        multipleUse:
+          type: boolean
+        nonExpiring:
+          type: boolean
+      required:
+      - resource
+      - multipleUse
+      - nonExpiring
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key

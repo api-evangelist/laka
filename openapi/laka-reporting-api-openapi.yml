@@ -1,0 +1,759 @@
+openapi: 3.0.0
+info:
+  title: Laka accounts reporting API
+  description: Laka API (next)
+  version: '2024-09-01'
+  contact: {}
+servers:
+- url: https://api.uat.laka.co
+  description: UAT
+- url: https://api-{region}.app.laka.co
+  description: Production
+  variables:
+    region:
+      enum:
+      - nl
+      - fr
+      - gb
+      default: gb
+tags:
+- name: reporting
+paths:
+  /v3/reporting/claims:
+    get:
+      operationId: ReportingController_getPermittedClaims
+      summary: Get Claims
+      description: Get all claims.
+      parameters:
+      - name: updatedFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: updatedTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: id
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: page
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: pageSize
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: current
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: policyDetailId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a list of claims
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUnderwriterClaimsResponse'
+      tags:
+      - reporting
+      security:
+      - x-api-key: []
+  /v3/reporting/invoicing:
+    get:
+      operationId: ReportingController_getPermittedPoliciesWithInvoices
+      summary: Get Invoices
+      description: Get all invoices.
+      parameters:
+      - name: updatedFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: updatedTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: id
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: page
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: pageSize
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: current
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: useNewUpdatedPaging
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a list of policies with invoices
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUnderwriterPoliciesResponse'
+      tags:
+      - reporting
+      security:
+      - x-api-key: []
+  /v3/reporting/policies:
+    get:
+      operationId: ReportingController_getPermittedPolicies
+      summary: Get Policies
+      description: Get all policies.
+      parameters:
+      - name: updatedFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: updatedTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: id
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: page
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: pageSize
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: current
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: useNewUpdatedPaging
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Returns a list of policies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUnderwriterPoliciesResponse'
+      tags:
+      - reporting
+      security:
+      - x-api-key: []
+components:
+  schemas:
+    UnderwriterPermittedPolicy:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+          description: ISO currency code for the policy
+          example: GBP
+          enum:
+          - GBP
+          - EUR
+        id:
+          type: string
+        policyReference:
+          type: string
+        personId:
+          type: string
+        policyId:
+          type: string
+        type:
+          type: string
+        cancelled:
+          type: boolean
+        paused:
+          type: boolean
+        coverInception:
+          type: string
+        region:
+          type: string
+          description: The invoice region
+        active:
+          type: boolean
+        coverStart:
+          type: string
+        preTaxCap:
+          type: string
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicyTaxItem'
+        risks:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicyRiskItem'
+        capIncTax:
+          type: string
+        cap:
+          type: string
+        tax:
+          type: string
+        taxPct:
+          type: string
+        lakaServiceFee:
+          type: string
+        daysOnCover:
+          type: number
+        claimsCost:
+          type: string
+        totalShare:
+          type: string
+        totalClaimsCost:
+          type: string
+        claimsLiability:
+          type: number
+        uniqueReference:
+          type: string
+        invoiceTotal:
+          type: string
+        commercial:
+          type: boolean
+          description: Indicates if the policy is commercial
+        commission:
+          type: string
+          description: applied commission value for this policy
+        netPremium:
+          type: string
+      required:
+      - currencyCode
+      - id
+      - policyReference
+      - personId
+      - policyId
+      - type
+      - cancelled
+      - paused
+      - coverInception
+      - region
+      - active
+      - coverStart
+      - preTaxCap
+      - taxes
+      - risks
+      - capIncTax
+      - cap
+      - tax
+      - taxPct
+      - uniqueReference
+      - commercial
+      - commission
+      - netPremium
+    UnderwriterPermittedPolicyRiskItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        value:
+          type: string
+        coverages:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicyCoverageItem'
+      required:
+      - id
+      - type
+      - make
+      - model
+      - value
+      - coverages
+    ReportingClaimExpense:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        currency:
+          type: string
+        currentValueIncTax:
+          type: string
+        currentValueExcTax:
+          type: string
+        createdAt:
+          type: string
+          description: ISO 8601 date string
+        previousValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportingClaimPreviousExpenseValue'
+      required:
+      - id
+      - name
+      - reference
+      - category
+      - type
+      - status
+      - currency
+      - currentValueIncTax
+      - currentValueExcTax
+      - createdAt
+      - previousValues
+    ClaimRiskExpense:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+          enum:
+          - reserve
+          - waitingForCustomer
+          - refundPresumed
+          - readyToPay
+          - paymentFailed
+          - paid
+          - reconciled
+          - recoup
+        type:
+          type: string
+        currency:
+          type: string
+          example: EUR
+        currentValueIncTax:
+          type: string
+          description: The current financial value of the Expense (including tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places
+          example: '12.34'
+        currentValueExcTax:
+          type: string
+          description: The current financial value of the Expense (excluding tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places
+          example: '12.34'
+        createdAt:
+          type: string
+          description: An ISO-formatted date value
+          example: '2024-11-11T12:00:00Z'
+      required:
+      - id
+      - name
+      - reference
+      - category
+      - status
+      - type
+      - currency
+      - currentValueIncTax
+      - currentValueExcTax
+      - createdAt
+    GetUnderwriterClaimsResponse:
+      type: object
+      properties:
+        rows:
+          description: List of items in the response
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterClaim'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
+      required:
+      - rows
+      - count
+    UnderwriterPermittedPolicyTaxItem:
+      type: object
+      properties:
+        type:
+          type: string
+          example: IPT
+          enum:
+          - IPT
+          - VAT
+        amount:
+          type: string
+      required:
+      - type
+      - amount
+    UnderwriterPermittedPolicyCoverageItem:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        premium:
+          type: string
+          description: Premium including tax and service fee
+        netPremium:
+          type: string
+          description: Premium excluding tax but including service fee
+        purePremium:
+          type: string
+          description: Premium excluding tax and service fee
+        taxes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicyTaxItem'
+        lakaServiceFee:
+          type: string
+        serviceFeePct:
+          type: string
+        commission:
+          type: string
+      required:
+      - id
+      - name
+      - premium
+      - netPremium
+      - purePremium
+      - taxes
+      - lakaServiceFee
+      - serviceFeePct
+      - commission
+    ClaimRiskReserve:
+      type: object
+      properties:
+        reserveIdentifier:
+          type: string
+          description: Expense.id
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        currency:
+          type: string
+        currentValueIncTax:
+          type: string
+          description: This is the current value of this reserve, including tax, divided by the total number of Risks on the Claim.
+          example: '1000.00'
+        currentValueExcTax:
+          type: string
+          description: This is the current value of this reserve, excluding tax, divided by the total number of Risks on the Claim.
+          example: '1000.00'
+        createdAt:
+          type: string
+          description: An ISO-formatted date value
+          example: '2024-11-11T12:00:00Z'
+      required:
+      - reserveIdentifier
+      - name
+      - reference
+      - category
+      - currency
+      - currentValueIncTax
+      - currentValueExcTax
+      - createdAt
+    GetUnderwriterPoliciesResponse:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicy'
+        count:
+          type: number
+      required:
+      - rows
+      - count
+    ClaimRisk:
+      type: object
+      properties:
+        riskIdentifier:
+          type: string
+          description: productId of the Claim.product
+        riskProductMake:
+          type: string
+        riskProductModel:
+          type: string
+        riskProductType:
+          type: string
+        coverages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskCoverage'
+      required:
+      - riskIdentifier
+      - coverages
+    ReportingClaimPreviousExpenseValue:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        valueIncTax:
+          type: string
+        valueExcTax:
+          type: string
+        createdAt:
+          type: string
+          description: ISO 8601 date string
+      required:
+      - id
+      - name
+      - reference
+      - category
+      - type
+      - status
+      - valueIncTax
+      - valueExcTax
+      - createdAt
+    UnderwriterClaim:
+      type: object
+      properties:
+        personId:
+          type: string
+          description: Identifier to the Claim's beneficiary
+          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
+          default: null
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        claimIdentifier:
+          type: string
+          description: claimId of the Claim
+        policyIdentifier:
+          type: string
+          description: policyId of the Claim
+        claimStatus:
+          type: string
+          description: claimStatus from the ClaimDetail
+          enum:
+          - Created
+          - Incomplete
+          - Submitted
+          - In Progress
+          - On Hold
+          - Underwriter Review
+          - Settled
+          - Rejected
+          - Closed
+        incidentDate:
+          type: string
+          description: incidentDate on ClaimDetail
+        primaryCoverModule:
+          type: string
+          description: CoverModule representing default cost centre of Expense
+        creationDate:
+          type: string
+          description: createdAt on Claim
+        declarationDate:
+          type: string
+          description: submittedAt on Claim
+        updateDate:
+          type: string
+          description: updatedAt on most recent ClaimDetail
+        mainCircumstances:
+          type: string
+          description: claimType
+        claimCountry:
+          type: string
+          description: country from ClaimDetail
+        consequencesClaimant:
+          type: string
+          enum:
+          - MD
+          - BI
+          description: MD if property, BI if H&R
+        risks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRisk'
+        totalCurrentExpenseValueIncTax:
+          type: string
+          description: Sum of all expenses associated to the claim
+        totalCurrentExpenseValueExcTax:
+          type: string
+          description: Sum of all expenses associated to the claim
+        totalCurrentTravelExpenseValueIncTax:
+          type: string
+          description: Sum of all expenses under travel
+        totalCurrentTravelExpenseValueExcTax:
+          type: string
+          description: Sum of all expenses under travel
+        totalCurrentNonTravelExpenseValueIncTax:
+          type: string
+          description: Sum of all expenses under main cover module
+        totalCurrentNonTravelExpenseValueExcTax:
+          type: string
+          description: Sum of all expenses under main cover module
+        expenses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportingClaimExpense'
+        uniqueReference:
+          type: string
+          description: Unique reference for the person/policyId
+        partnerCountry:
+          type: string
+          description: The country of the policy holder
+        policyVersionIdentifier:
+          type: string
+          description: policyDetailId of the Claim
+        commercialClaim:
+          type: boolean
+          description: Whether the claim is from a commercial policy or not
+        policyCustomerType:
+          type: string
+          description: Type of policy the claim is against.
+        claimReference:
+          type: string
+          description: Unique claim reference
+      required:
+      - personId
+      - claimIdentifier
+      - policyIdentifier
+      - claimStatus
+      - incidentDate
+      - creationDate
+      - declarationDate
+      - updateDate
+      - mainCircumstances
+      - claimCountry
+      - consequencesClaimant
+      - risks
+      - totalCurrentExpenseValueIncTax
+      - totalCurrentExpenseValueExcTax
+      - totalCurrentTravelExpenseValueIncTax
+      - totalCurrentTravelExpenseValueExcTax
+      - totalCurrentNonTravelExpenseValueIncTax
+      - totalCurrentNonTravelExpenseValueExcTax
+      - expenses
+      - uniqueReference
+      - partnerCountry
+      - policyVersionIdentifier
+      - commercialClaim
+      - policyCustomerType
+      - claimReference
+    ClaimRiskCoverage:
+      type: object
+      properties:
+        indemnityCode:
+          type: string
+          enum:
+          - MD
+          - BI
+        reserveType:
+          type: string
+          enum:
+          - MD
+          - BI
+        coverageIdentifier:
+          type: string
+        deductibleAmount:
+          type: string
+          description: The valueAtClaim of the product, divided by the number of coverages
+          example: '0.00'
+        reserves:
+          description: A list of all Reserves on a Claim, with financial values split equally among Risks on the Claim
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskReserve'
+        expenses:
+          description: A list of all non-reserve Expenses on a Claim, with their financial values split equally across Risks on the Claim
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskExpense'
+      required:
+      - indemnityCode
+      - reserveType
+      - coverageIdentifier
+      - deductibleAmount
+      - reserves
+      - expenses
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key

@@ -1,0 +1,471 @@
+openapi: 3.0.0
+info:
+  title: Laka accounts API
+  description: Laka API (next)
+  version: '2024-09-01'
+  contact: {}
+servers:
+- url: https://api.uat.laka.co
+  description: UAT
+- url: https://api-{region}.app.laka.co
+  description: Production
+  variables:
+    region:
+      enum:
+      - nl
+      - fr
+      - gb
+      default: gb
+tags:
+- name: accounts
+paths:
+  /v3/accounts:
+    post:
+      operationId: PersonController_create
+      summary: Create Person
+      description: Create a new person record.
+      parameters:
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePerson'
+      responses:
+        '201':
+          description: The created record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      tags:
+      - accounts
+      security:
+      - x-api-key: []
+  /v3/accounts/email/{email}:
+    get:
+      operationId: PersonController_findByEmail
+      summary: Get Account by Email
+      description: Get a single account by email.
+      parameters:
+      - name: email
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The found record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      tags:
+      - accounts
+      security:
+      - x-api-key: []
+  /v3/accounts/externalId/{externalId}:
+    get:
+      operationId: PersonController_findByExternalId
+      summary: Get Account by External ID
+      description: Get a single account by external ID.
+      parameters:
+      - name: externalId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The found record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      tags:
+      - accounts
+      security:
+      - x-api-key: []
+  /v3/accounts/{accountId}:
+    get:
+      operationId: PersonController_findOne
+      summary: Get Account by ID
+      description: Get a single account by UUID.
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The found record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      tags:
+      - accounts
+      security:
+      - x-api-key: []
+  /v3/accounts/{accountId}/relationship:
+    post:
+      operationId: PersonController_createAccountRelationship
+      summary: Create Relationship
+      description: Create a relationship between an account and a person.
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRelationshipRequest'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Relationship'
+      tags:
+      - accounts
+      security:
+      - x-api-key: []
+  /v3/accounts/{personId}:
+    patch:
+      operationId: PersonController_patchPerson
+      summary: Update Person
+      description: Update an existing person record.
+      parameters:
+      - name: personId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: x-api-region
+        in: header
+        style: simple
+        description: The API region of your interaction. In most cases, this will match the customer region
+        schema:
+          type: string
+      - name: x-api-language
+        in: header
+        description: Where applicable, the language for any textual content we may send to the customer.
+        style: simple
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertPersonDTO'
+      responses:
+        '200':
+          description: The updated record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+      tags:
+      - accounts
+      security:
+      - x-api-key: []
+components:
+  schemas:
+    Relationship:
+      type: object
+      properties:
+        relationshipId:
+          type: string
+      required:
+      - relationshipId
+    Address:
+      type: object
+      properties:
+        houseNo:
+          type: string
+          description: The house number of the address
+          example: '123'
+        streetAddress:
+          type: string
+          description: The street address - may include the house number in some locales
+          example: 123 Main St
+        postalTown:
+          type: string
+          description: The postal town or city
+          example: London
+        postalCode:
+          type: string
+          description: The postal code
+          example: SW1A 2AB
+        locality:
+          type: string
+          description: The locality or district
+          example: Westminster
+        region:
+          type: string
+          description: The region or state
+          example: Greater London
+        country:
+          type: string
+          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
+          example: United Kingdom
+        id:
+          type: string
+    CreateAccountRelationshipRequest:
+      type: object
+      properties:
+        personId:
+          type: string
+        relationshipType:
+          type: string
+      required:
+      - personId
+      - relationshipType
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
+          type: string
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
+          type: string
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        address:
+          $ref: '#/components/schemas/Address'
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
+        region:
+          type: string
+        defaultCurrency:
+          type: string
+      required:
+      - id
+      - type
+      - email
+    CreatePerson:
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
+          type: string
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
+          type: string
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        address:
+          $ref: '#/components/schemas/Address'
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
+        region:
+          type: string
+        defaultCurrency:
+          type: string
+      required:
+      - type
+      - email
+    UpsertPersonDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
+          type: string
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
+          type: string
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        address:
+          type: object
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
+        region:
+          type: string
+        defaultCurrency:
+          type: string
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      in: header
+      name: x-api-key
