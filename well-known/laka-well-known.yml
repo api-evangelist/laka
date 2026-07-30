@@ -1,0 +1,64 @@
+generated: '2026-07-19'
+method: searched
+source: probe of /.well-known/ across every Laka host in apis.yml and openapi servers[]
+result: none-found
+notes: 'Every /.well-known/ discovery path was probed on all four Laka hosts and none returned 200.
+  Laka publishes no security.txt, no OIDC or OAuth authorization-server metadata (consistent with its
+  API-key-only auth model), no API catalog and no ai-plugin manifest. This is recorded as an honest
+  negative — no WellKnown or SecurityTxt pointer is emitted in apis.yml because no document exists.'
+hosts:
+- host: https://laka.co
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://docs.laka.co
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api-gb.app.laka.co
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.uat.laka.co
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+related:
+  llms_txt:
+    path: /llms.txt
+    host: https://docs.laka.co
+    status: 200
+    file: ../llms/laka-llms.txt
+    note: 'Not a /.well-known/ document, but the one agent-discovery surface Laka does publish.'

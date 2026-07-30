@@ -1,0 +1,64 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laka.co/docs/regions
+docs:
+- https://docs.laka.co/docs/regions
+
+model: separate-hosts
+summary: 'Laka separates test from live by host rather than by key prefix or an account-level mode
+  switch. The documentation instructs partners to use the Staging environment for testing purposes.
+  There is no self-service sandbox: staging credentials are issued as part of partner onboarding.'
+
+environments:
+- name: Staging
+  purpose: testing
+  region: UK
+  api_url: https://api-gb.staging.laka.co
+  application_url: https://app.staging.laka.co/gb
+- name: Staging
+  purpose: testing
+  region: EU
+  api_url: https://api-nl.staging.laka.co
+  application_url: https://app.staging.laka.co/nl
+- name: UAT
+  purpose: user acceptance testing
+  api_url: https://api.uat.laka.co
+  note: Declared as a server in the published Platform API OpenAPI; not described in the guides.
+- name: Production
+  purpose: live
+  region: UK
+  api_url: https://api-gb.app.laka.co
+- name: Production
+  purpose: live
+  region: EU
+  api_url: https://api-nl.app.laka.co
+
+quoted_guidance: 'Please use **Staging** for testing purposes.'
+
+key_prefixes:
+  published: false
+  note: 'Laka does not document test-vs-live key prefixes. The same header names (x-api-key for the
+    Platform API, Authorization for the Quote API) are used in every environment; the environment is
+    selected by host.'
+
+test_data:
+  published: false
+  note: 'Laka publishes no test fixtures — no magic identifiers, no seeded policies or persons, and no
+    documented trigger values for forcing claim states. Nothing is asserted here; test data is
+    provisioned per partner during onboarding.'
+
+time_simulation:
+  published: false
+  note: 'No test clock or time-travel tooling is documented for simulating policy renewal, lapse or
+    claim ageing.'
+
+console:
+  published: false
+  note: 'The Laka documentation is hosted on ReadMe, which renders an interactive Try It console on
+    each API reference page, but it requires a partner-issued key and Laka publishes no standalone
+    developer console or playground.'
+
+access:
+  self_service: false
+  url: https://docs.laka.co/docs/request-access
+  note: Access to any environment, staging included, is requested by email from Laka.

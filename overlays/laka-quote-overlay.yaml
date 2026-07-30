@@ -1,0 +1,55 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Laka Quote API
+  version: 1.0.0
+x-generated: '2026-07-19'
+x-method: generated
+x-source: openapi/laka-quote-openapi.json
+x-notes: 'Captures API Evangelist enrichment on top of the Laka Quote API OpenAPI without mutating the
+  original. Grounded in Laka published documentation (https://docs.laka.co/docs/introduction,
+  /docs/regions) and in the spec itself.'
+extends: openapi/laka-quote-openapi.json
+actions:
+- target: $.info
+  update:
+    title: Laka Quote API
+    description: 'The lightweight Laka integration for Introducer partners — retail and e-commerce
+      stores, bike brands and online communities — that want to introduce their customers to insurance
+      while keeping their own regulatory burden manageable. Returns pricing to riders, shares rider
+      information to pre-fill Laka onboarding, hands the customer into onboarding or triggers an invite
+      email, and checks whether a rider has taken out cover.'
+    contact:
+      name: Laka API access
+      url: https://docs.laka.co/docs/request-access
+    x-documentation: https://docs.laka.co/docs/introduction
+    x-audience: Introducer partners
+    x-service: Goa-generated quote service
+- target: $.servers
+  update:
+  - url: https://api-gb.app.laka.co/v2/quotes
+    description: Production (UK)
+  - url: https://api-nl.app.laka.co/v2/quotes
+    description: Production (EU)
+  - url: https://api-gb.staging.laka.co/v2/quotes
+    description: Staging (UK) — Laka directs partners to use Staging for testing
+  - url: https://api-nl.staging.laka.co/v2/quotes
+    description: Staging (EU) — Laka directs partners to use Staging for testing
+- target: $.tags
+  update:
+  - name: quote
+    description: 'Quote lifecycle — create a quote, resolve and validate its data requirements, price
+      it, hydrate it into the steps required to create policies, and hand the rider off into Laka
+      onboarding.'
+- target: $.components.securitySchemes['api_key_header_Authorization']
+  update:
+    description: 'Partner API key sent in the Authorization header. This is a plain API key, not an
+      OAuth bearer token — Laka documented example sends it as `Authorization: YOUR_TOKEN`. The Laka
+      Platform API uses a different header (x-api-key) for its key.'
+    x-issuance: request-based
+    x-self-service: false
+- target: $.components.schemas.Error
+  update:
+    x-envelope: 'Goa error envelope returned under the application/vnd.goa.error media type rather
+      than RFC 9457 application/problem+json.'
+    x-trace-field: 'id — a unique identifier for this particular occurrence of the problem; the only
+      trace handle Laka publishes.'

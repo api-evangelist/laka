@@ -1,0 +1,37 @@
+generated: '2026-07-19'
+method: generated
+source: openapi/laka-platform-openapi.json, openapi/laka-quote-openapi.json,
+  https://docs.laka.co/docs/introduction
+notes: 'Laka publishes no AGENTS.md and no provider-authored agent skills. These are API Evangelist
+  generated operating instructions, one per marquee Laka flow, grounded strictly in operationIds
+  verified against the harvested OpenAPI and in Laka published conventions (regional headers,
+  API-key auth, presigned uploads, absence of idempotency and webhooks).'
+skills:
+- name: laka-quote-a-rider
+  file: laka-quote-a-rider.md
+  api: Laka Quote API
+  audience: Introducer partners
+  description: Price and place cover for a rider — create a quote, resolve and validate its data
+    requirements, price it, hydrate it into policy steps, and hand off into Laka onboarding.
+  operation_count: 14
+- name: laka-onboard-beneficiary
+  file: laka-onboard-beneficiary.md
+  api: Laka Platform API
+  audience: Group partners
+  description: Add a member to a Group policy as a beneficiary, attach their insured products
+    (including bulk CSV), and end the relationship cleanly when they leave.
+  operation_count: 16
+- name: laka-file-a-claim
+  file: laka-file-a-claim.md
+  api: Laka Platform API
+  audience: Group partners
+  description: Create, evidence and submit a claim — including the three-call presigned attachment
+    upload and the full claim status model.
+  operation_count: 10
+- name: laka-reporting-sync
+  file: laka-reporting-sync.md
+  api: Laka Platform API
+  audience: Group partners
+  description: Incrementally sync policies, claims and invoices via the reporting endpoints and their
+    updatedFrom/updatedTo window — the substitute for the webhooks Laka does not publish.
+  operation_count: 10

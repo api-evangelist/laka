@@ -1,0 +1,5311 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Laka API",
+    "description": "Laka API (next)",
+    "version": "2024-09-01",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "https://api.uat.laka.co",
+      "description": "UAT"
+    },
+    {
+      "url": "https://api-{region}.app.laka.co",
+      "description": "Production",
+      "variables": {
+        "region": {
+          "enum": [
+            "nl",
+            "fr",
+            "gb"
+          ],
+          "default": "gb"
+        }
+      }
+    }
+  ],
+  "tags": [
+    {
+      "name": "claims",
+      "description": "Claims API"
+    }
+  ],
+  "paths": {
+    "/v3/accounts": {
+      "post": {
+        "operationId": "PersonController_create",
+        "summary": "Create Person",
+        "description": "Create a new person record.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePerson"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "accounts"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/accounts/email/{email}": {
+      "get": {
+        "operationId": "PersonController_findByEmail",
+        "summary": "Get Account by Email",
+        "description": "Get a single account by email.",
+        "parameters": [
+          {
+            "name": "email",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The found record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "accounts"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/accounts/externalId/{externalId}": {
+      "get": {
+        "operationId": "PersonController_findByExternalId",
+        "summary": "Get Account by External ID",
+        "description": "Get a single account by external ID.",
+        "parameters": [
+          {
+            "name": "externalId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The found record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "accounts"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/accounts/{accountId}": {
+      "get": {
+        "operationId": "PersonController_findOne",
+        "summary": "Get Account by ID",
+        "description": "Get a single account by UUID.",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The found record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "accounts"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/accounts/{accountId}/relationship": {
+      "post": {
+        "operationId": "PersonController_createAccountRelationship",
+        "summary": "Create Relationship",
+        "description": "Create a relationship between an account and a person.",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAccountRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Relationship"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "accounts"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/accounts/{personId}": {
+      "patch": {
+        "operationId": "PersonController_patchPerson",
+        "summary": "Update Person",
+        "description": "Update an existing person record.",
+        "parameters": [
+          {
+            "name": "personId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertPersonDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "accounts"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/claims": {
+      "post": {
+        "operationId": "ClaimsController_create",
+        "summary": "Create Claim",
+        "description": "Create a new claim against a policy.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClaim"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Claim"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "ClaimsController_findAll",
+        "summary": "Get All Claims",
+        "description": "Get all the claims you are permitted to view.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Valid Claims",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimsResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/claims/{claimId}/attachments": {
+      "post": {
+        "operationId": "ClaimsController_createClaimAttachmentUploadLink",
+        "summary": "Create Claim Attachment Upload Link",
+        "description": "Create an upload link for a claim attachment. The response will contain a pre-signed URL where you are able to PUT the binary file data.",
+        "parameters": [
+          {
+            "name": "claimId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateClaimAttachmentUploadLinkResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/claims/{claimId}/attachments/{attachmentId}": {
+      "post": {
+        "operationId": "ClaimsController_createClaimAttachment",
+        "summary": "Confirm Claim Attachment Upload",
+        "description": "Confirm the upload of a claim attachment. It should be called after the file has been uploaded to the URL provided by the `createClaimAttachmentUploadLink` endpoint.",
+        "parameters": [
+          {
+            "name": "claimId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attachmentId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClaimAttachmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmptyMessage"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/claims/{claimId}/attachments/{attachmentId}/status": {
+      "post": {
+        "operationId": "ClaimsController_updateClaimAttachmentStatus",
+        "summary": "Update Claim Attachment Status",
+        "description": "Update the status of a claim attachment.",
+        "parameters": [
+          {
+            "name": "claimId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "attachmentId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated attachment status"
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/claims/{claimId}/notes": {
+      "post": {
+        "operationId": "ClaimsController_addNoteToClaim",
+        "summary": "Add Internal Note to Claim",
+        "description": "Creates an internal note that appears on the claim.",
+        "parameters": [
+          {
+            "name": "claimId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClaimNoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created note",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateClaimNoteResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/claims/{claimId}/submit": {
+      "post": {
+        "operationId": "ClaimsController_submitClaim",
+        "summary": "Submit Claim",
+        "description": "Submit a claim for processing. It should be called after all necessary information has been provided.",
+        "parameters": [
+          {
+            "name": "claimId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The submitted claim",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitClaimResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/claims/{id}": {
+      "get": {
+        "operationId": "ClaimsController_findOne",
+        "summary": "Get Claim by ID",
+        "description": "Get a single claim by UUID.",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The found record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Claim"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "ClaimsController_update",
+        "summary": "Update Claim",
+        "description": "Update the details of an existing claim.",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateClaim"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateClaimResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "claims"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/deeplinks": {
+      "post": {
+        "operationId": "DeeplinksController_create",
+        "summary": "Create Deeplink",
+        "description": "Create a new deeplink. Choose a resource to change the purpose of the deeplink.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDeeplink"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The found record",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Deeplink"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "deeplinks"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "DeeplinksController_deeplinks",
+        "summary": "Get All Deeplinks",
+        "description": "Get all of the deeplinks.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All deeplinks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeeplinksResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "deeplinks"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/fleets/claim": {
+      "post": {
+        "operationId": "FleetController_createFleetClaim",
+        "summary": "Create Fleet Claim",
+        "description": "Create a claim for fleet product.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Creates a fleet claim",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateFleetClaimResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "fleets"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies": {
+      "get": {
+        "operationId": "PolicyController_getPolicies",
+        "summary": "Get Policies",
+        "description": "Get all the policies you are permitted to view.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All permitted policies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoliciesWithCountResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/packages/{id}": {
+      "get": {
+        "operationId": "PolicyController_getPackage",
+        "summary": "Get Package Details",
+        "description": "Get the details for a single package by UUID.",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get the details of a Package by id",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PackageResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/perks/global": {
+      "get": {
+        "operationId": "PolicyController_getGlobalPerks",
+        "summary": "Get All Global Perks",
+        "description": "Get all the global perks.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get all Global Perk records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PerkResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/requestCover": {
+      "post": {
+        "operationId": "PolicyController_requestCover",
+        "summary": "Request Cover",
+        "description": "Create and activate policies based on quote requirements.",
+        "parameters": [
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestCoverRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cover successfully requested",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RequestCoverResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}": {
+      "delete": {
+        "operationId": "PolicyController_cancelPolicy",
+        "summary": "Cancel Policy",
+        "description": "Cancel an active policy.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelPolicyBody"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelPolicyResult"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "PolicyController_getPolicyById",
+        "summary": "Get Policy by ID",
+        "description": "Get a single policy by UUID.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Policy Found"
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/combined": {
+      "post": {
+        "operationId": "PolicyController_createCombinedRelationship",
+        "summary": "Create Combined Relationship",
+        "description": "This endpoint can be used in place of performing the create operations individually. It will create/update a person, relationship, and policy products in one request.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCombinedRelationshipRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created the combined relationship",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateCombinedRelationshipResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/ipid": {
+      "get": {
+        "operationId": "PolicyController_getPolicyIpid",
+        "summary": "Get Policy IPID",
+        "description": "Get the Insurance Product Information Document (IPID) for a policy.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "IPID document returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPolicyIpidResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/people/{personId}/documents": {
+      "get": {
+        "operationId": "PolicyController_getAllDocuments",
+        "summary": "Get All Policy Documents",
+        "description": "Get all documents for a policy: policy document, insurance sticker, wording, and IPID.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "personId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All policy documents returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetAllDocumentsResponseItem"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/people/{personId}/policy_document": {
+      "get": {
+        "operationId": "PolicyController_getPolicyDocument",
+        "summary": "Get Policy Document",
+        "description": "Get a pre-signed URL for a policy document for a person.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "personId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "PreSigned document URL returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPolicyDocumentResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/products": {
+      "patch": {
+        "operationId": "PolicyController_patchPolicyProducts",
+        "summary": "Update Products",
+        "description": "Update the products on a policy.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertPolicyProducts"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "PATCH policy products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpsertPolicyProductsResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      },
+      "post": {
+        "operationId": "PolicyController_postPolicyProducts",
+        "summary": "Add Products",
+        "description": "Create products and associate them with a policy.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertPolicyProducts"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "POST policy products",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpsertPolicyProductsResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/products/csv": {
+      "post": {
+        "operationId": "PolicyController_uploadPolicyProductsCsv",
+        "summary": "Bulk Add Products",
+        "description": "Create products in bulk from a CSV input and associate them with a policy.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "CSV file payload",
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadProductCsvRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Upload / update / delete products for a policy from a CSV file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadProductCsvResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/products/{productId}": {
+      "delete": {
+        "operationId": "PolicyController_deletePolicyProduct",
+        "summary": "Delete Product",
+        "description": "Delete a product by UUID and dis-associate it from a policy.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "productId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted Product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeletePolicyProductResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/relationship/{personId}": {
+      "delete": {
+        "operationId": "PolicyController_endPolicyRelationship",
+        "summary": "End Policy Relationship",
+        "description": "End the relationship between a person (beneficiary) and a policy. The person and their gear will be removed from the policy and their subscription will be ended.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "personId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The policy relationship has been successfully ended."
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/policies/{policyId}/wording": {
+      "get": {
+        "operationId": "PolicyController_getPolicyWording",
+        "summary": "Get Policy Wording",
+        "description": "Get the wording for a policy.",
+        "parameters": [
+          {
+            "name": "policyId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Policy wording returned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPolicyWordingResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "policies"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/quotes/quick-quote-for-address": {
+      "get": {
+        "operationId": "QuoteController_getQuickQuoteForAddress",
+        "summary": "Get Quick Quote for Address",
+        "description": "Get a quick quote for a given postal code based on the user's existing property policy.",
+        "parameters": [
+          {
+            "name": "postalCode",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Quick quote generated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickQuoteForAddressResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "quotes"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/reporting/claims": {
+      "get": {
+        "operationId": "ReportingController_getPermittedClaims",
+        "summary": "Get Claims",
+        "description": "Get all claims.",
+        "parameters": [
+          {
+            "name": "updatedFrom",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updatedTo",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "current",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "policyDetailId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of claims",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUnderwriterClaimsResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "reporting"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/reporting/invoicing": {
+      "get": {
+        "operationId": "ReportingController_getPermittedPoliciesWithInvoices",
+        "summary": "Get Invoices",
+        "description": "Get all invoices.",
+        "parameters": [
+          {
+            "name": "updatedFrom",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updatedTo",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "current",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "useNewUpdatedPaging",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of policies with invoices",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUnderwriterPoliciesResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "reporting"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/reporting/policies": {
+      "get": {
+        "operationId": "ReportingController_getPermittedPolicies",
+        "summary": "Get Policies",
+        "description": "Get all policies.",
+        "parameters": [
+          {
+            "name": "updatedFrom",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "updatedTo",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "current",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "useNewUpdatedPaging",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of policies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUnderwriterPoliciesResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "reporting"
+        ],
+        "security": [
+          {
+            "x-api-key": []
+          }
+        ]
+      }
+    },
+    "/v3/tasks/{personId}": {
+      "get": {
+        "operationId": "TasksController_getTasksByPerson",
+        "summary": "Get tasks for a person",
+        "description": "Returns all tasks for the given person ID, ordered by most recent first.",
+        "parameters": [
+          {
+            "name": "personId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-region",
+            "in": "header",
+            "style": "simple",
+            "description": "The API region of your interaction. In most cases, this will match the customer region",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-language",
+            "in": "header",
+            "description": "Where applicable, the language for any textual content we may send to the customer.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of tasks for the person"
+          }
+        },
+        "tags": [
+          "tasks"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "x-api-key": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
+      }
+    },
+    "schemas": {
+      "Accessory": {
+        "type": "object",
+        "properties": {
+          "initialValue": {
+            "type": "number",
+            "description": "Value in lowest denomination (pence, cents, etc.). If a product is worth \u00a3300.00 or \u20ac300,00, please input 30000. For group policies, this value can not be over 1500000.",
+            "example": 30000,
+            "minimum": 0,
+            "maximum": 1500000
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.",
+            "example": "GBP"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccessoryType"
+            }
+          }
+        },
+        "required": [
+          "initialValue",
+          "currencyCode",
+          "types"
+        ]
+      },
+      "AccessoryType": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "enum": [
+              "Gloves",
+              "Bike Alarm",
+              "Action Camera",
+              "Bike Computer",
+              "Bike Rack",
+              "Fitness Watch",
+              "Goggles/Glasses",
+              "GPS",
+              "Lock",
+              "Water Bottle",
+              "Bags",
+              "Basket",
+              "Bell",
+              "Bike Box",
+              "Bike Covers",
+              "Body Armour",
+              "Charger",
+              "Child Seat",
+              "Cycle Mirrors",
+              "Drawbar",
+              "Facemask",
+              "Frame Protectors",
+              "Heart Rate Monitor",
+              "Helmet",
+              "Hydration Pack",
+              "Light",
+              "Mount",
+              "Mudguards",
+              "Neck Brace",
+              "Pannier",
+              "Pannier Rack",
+              "Pump",
+              "Repair kit",
+              "Shoes",
+              "Stand",
+              "Stickers",
+              "Tools",
+              "Trailer",
+              "Water Bottle Cage",
+              "Wetsuit",
+              "Workstand",
+              "Battery Lock"
+            ],
+            "type": "string",
+            "description": "Type of accessory"
+          },
+          "brand": {
+            "type": "string",
+            "description": "Brand of the accessory"
+          },
+          "address": {
+            "$ref": "#/components/schemas/ProductAddress"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "houseNo": {
+            "type": "string",
+            "description": "The house number of the address",
+            "example": "123"
+          },
+          "streetAddress": {
+            "type": "string",
+            "description": "The street address - may include the house number in some locales",
+            "example": "123 Main St"
+          },
+          "postalTown": {
+            "type": "string",
+            "description": "The postal town or city",
+            "example": "London"
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code",
+            "example": "SW1A 2AB"
+          },
+          "locality": {
+            "type": "string",
+            "description": "The locality or district",
+            "example": "Westminster"
+          },
+          "region": {
+            "type": "string",
+            "description": "The region or state",
+            "example": "Greater London"
+          },
+          "country": {
+            "type": "string",
+            "description": "The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').",
+            "example": "United Kingdom"
+          },
+          "id": {
+            "type": "string"
+          }
+        }
+      },
+      "BaseAddressFields": {
+        "type": "object",
+        "properties": {
+          "houseNo": {
+            "type": "string",
+            "description": "The house number of the address",
+            "example": "123"
+          },
+          "streetAddress": {
+            "type": "string",
+            "description": "The street address - may include the house number in some locales",
+            "example": "123 Main St"
+          },
+          "postalTown": {
+            "type": "string",
+            "description": "The postal town or city",
+            "example": "London"
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code",
+            "example": "SW1A 2AB"
+          },
+          "locality": {
+            "type": "string",
+            "description": "The locality or district",
+            "example": "Westminster"
+          },
+          "region": {
+            "type": "string",
+            "description": "The region or state",
+            "example": "Greater London"
+          },
+          "country": {
+            "type": "string",
+            "description": "The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').",
+            "example": "United Kingdom"
+          }
+        }
+      },
+      "CancelPolicyBody": {
+        "type": "object",
+        "properties": {
+          "cancelledReason": {
+            "type": "string"
+          },
+          "cancelledOn": {
+            "type": "string"
+          }
+        }
+      },
+      "CancelPolicyResult": {
+        "type": "object",
+        "properties": {
+          "policyId": {
+            "type": "string"
+          },
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "policyId",
+          "success"
+        ]
+      },
+      "Claim": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid"
+          },
+          "personId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "7dd76d65-54a1-4166-9c3f-2adf7c8a1e06",
+            "default": null,
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Creation timestamp in ISO 8601 format",
+            "example": "2023-01-01T12:00:00Z",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Last update timestamp in ISO 8601 format",
+            "example": "2023-01-01T12:00:00Z",
+            "format": "date-time"
+          },
+          "address": {
+            "description": "The incident address \u2014 where the incident occurred. Not the policyholder's home address. address.country is required when creating or submitting a claim. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          },
+          "incidentDate": {
+            "type": "string",
+            "description": "An ISO-formatted date value",
+            "example": "2024-11-11T12:00:00Z"
+          },
+          "policyId": {
+            "type": "string",
+            "description": "Policy identifier (UUID format)",
+            "format": "uuid"
+          },
+          "claimType": {
+            "type": "string",
+            "enum": [
+              "theft",
+              "damage",
+              "health",
+              "liability"
+            ]
+          },
+          "claimStatus": {
+            "type": "string",
+            "enum": [
+              "Created",
+              "Incomplete",
+              "Submitted",
+              "In Progress",
+              "On Hold",
+              "Underwriter Review",
+              "Settled",
+              "Rejected",
+              "Closed"
+            ]
+          },
+          "incidentDetails": {
+            "description": "Details about the incident",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claimReference": {
+            "type": "string",
+            "description": "Human readable claim reference",
+            "example": "C-12345"
+          },
+          "claimsDeeplink": {
+            "type": "string"
+          },
+          "person": {
+            "$ref": "#/components/schemas/Person"
+          },
+          "private": {
+            "type": "boolean"
+          },
+          "crimeReferenceNumber": {
+            "type": "string"
+          },
+          "productIds": {
+            "description": "A list of productIds on the claim",
+            "example": [
+              "21093dc7-ceb2-41d0-84ac-69aa01dbeae4"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "personId",
+          "createdAt",
+          "updatedAt",
+          "claimReference",
+          "productIds"
+        ]
+      },
+      "ClaimRisk": {
+        "type": "object",
+        "properties": {
+          "riskIdentifier": {
+            "type": "string",
+            "description": "productId of the Claim.product"
+          },
+          "riskProductMake": {
+            "type": "string"
+          },
+          "riskProductModel": {
+            "type": "string"
+          },
+          "riskProductType": {
+            "type": "string"
+          },
+          "coverages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimRiskCoverage"
+            }
+          }
+        },
+        "required": [
+          "riskIdentifier",
+          "coverages"
+        ]
+      },
+      "ClaimRiskCoverage": {
+        "type": "object",
+        "properties": {
+          "indemnityCode": {
+            "type": "string",
+            "enum": [
+              "MD",
+              "BI"
+            ]
+          },
+          "reserveType": {
+            "type": "string",
+            "enum": [
+              "MD",
+              "BI"
+            ]
+          },
+          "coverageIdentifier": {
+            "type": "string"
+          },
+          "deductibleAmount": {
+            "type": "string",
+            "description": "The valueAtClaim of the product, divided by the number of coverages",
+            "example": "0.00"
+          },
+          "reserves": {
+            "description": "A list of all Reserves on a Claim, with financial values split equally among Risks on the Claim",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimRiskReserve"
+            }
+          },
+          "expenses": {
+            "description": "A list of all non-reserve Expenses on a Claim, with their financial values split equally across Risks on the Claim",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimRiskExpense"
+            }
+          }
+        },
+        "required": [
+          "indemnityCode",
+          "reserveType",
+          "coverageIdentifier",
+          "deductibleAmount",
+          "reserves",
+          "expenses"
+        ]
+      },
+      "ClaimRiskExpense": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "reserve",
+              "waitingForCustomer",
+              "refundPresumed",
+              "readyToPay",
+              "paymentFailed",
+              "paid",
+              "reconciled",
+              "recoup"
+            ]
+          },
+          "type": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string",
+            "example": "EUR"
+          },
+          "currentValueIncTax": {
+            "type": "string",
+            "description": "The current financial value of the Expense (including tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places",
+            "example": "12.34"
+          },
+          "currentValueExcTax": {
+            "type": "string",
+            "description": "The current financial value of the Expense (excluding tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places",
+            "example": "12.34"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "An ISO-formatted date value",
+            "example": "2024-11-11T12:00:00Z"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "reference",
+          "category",
+          "status",
+          "type",
+          "currency",
+          "currentValueIncTax",
+          "currentValueExcTax",
+          "createdAt"
+        ]
+      },
+      "ClaimRiskReserve": {
+        "type": "object",
+        "properties": {
+          "reserveIdentifier": {
+            "type": "string",
+            "description": "Expense.id"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "currentValueIncTax": {
+            "type": "string",
+            "description": "This is the current value of this reserve, including tax, divided by the total number of Risks on the Claim.",
+            "example": "1000.00"
+          },
+          "currentValueExcTax": {
+            "type": "string",
+            "description": "This is the current value of this reserve, excluding tax, divided by the total number of Risks on the Claim.",
+            "example": "1000.00"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "An ISO-formatted date value",
+            "example": "2024-11-11T12:00:00Z"
+          }
+        },
+        "required": [
+          "reserveIdentifier",
+          "name",
+          "reference",
+          "category",
+          "currency",
+          "currentValueIncTax",
+          "currentValueExcTax",
+          "createdAt"
+        ]
+      },
+      "ClaimsResponse": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "description": "List of items in the response",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Claim"
+            }
+          },
+          "count": {
+            "type": "number",
+            "description": "Total count of items",
+            "example": 42
+          }
+        },
+        "required": [
+          "rows",
+          "count"
+        ]
+      },
+      "Clothing": {
+        "type": "object",
+        "properties": {
+          "initialValue": {
+            "type": "number",
+            "description": "Value in lowest denomination (pence, cents, etc.). If a product is worth \u00a3300.00 or \u20ac300,00, please input 30000. For group policies, this value can not be over 1500000.",
+            "example": 30000,
+            "minimum": 0,
+            "maximum": 1500000
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.",
+            "example": "GBP"
+          },
+          "address": {
+            "$ref": "#/components/schemas/ProductAddress"
+          }
+        },
+        "required": [
+          "initialValue",
+          "currencyCode"
+        ]
+      },
+      "CombinedPersonRequest": {
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.",
+            "example": "CRM_123456"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "Date of birth in ISO 8601 format",
+            "example": "1990-01-01",
+            "format": "date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of person",
+            "enum": [
+              "Person",
+              "Organisation",
+              "Rider"
+            ],
+            "example": "Person"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "The date when the relationship starts in ISO 8601 format.",
+            "example": "2023-01-01",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "The date when the relationship should end in ISO 8601 format.",
+            "example": "2023-02-01",
+            "format": "date"
+          },
+          "relationshipId": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/BaseAddressFields"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first name of the person.",
+            "example": "John",
+            "maxLength": 100
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last name(s) of the person.",
+            "example": "Doe"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "The company name for business entities."
+          },
+          "cityOfBirth": {
+            "type": "string"
+          },
+          "countryOfBirth": {
+            "type": "string"
+          },
+          "telephoneNumber": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "defaultCurrency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "relationshipId",
+          "address",
+          "email"
+        ]
+      },
+      "CombinedPersonResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.",
+            "example": "CRM_123456"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "Date of birth in ISO 8601 format",
+            "example": "1990-01-01",
+            "format": "date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of person",
+            "enum": [
+              "Person",
+              "Organisation",
+              "Rider"
+            ],
+            "example": "Person"
+          },
+          "startDate": {
+            "type": "string",
+            "description": "The date when the relationship starts in ISO 8601 format.",
+            "example": "2023-01-01",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "description": "The date when the relationship should end in ISO 8601 format.",
+            "example": "2023-02-01",
+            "format": "date"
+          },
+          "relationshipId": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first name of the person.",
+            "example": "John",
+            "maxLength": 100
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last name(s) of the person.",
+            "example": "Doe"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "The company name for business entities."
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "cityOfBirth": {
+            "type": "string"
+          },
+          "countryOfBirth": {
+            "type": "string"
+          },
+          "telephoneNumber": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "defaultCurrency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "relationshipId",
+          "email"
+        ]
+      },
+      "CombinedProduct": {
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.",
+            "example": "CRM_123456"
+          },
+          "initialValue": {
+            "type": "number",
+            "minimum": 30000,
+            "maximum": 1500000,
+            "description": "Value in lowest denomination (pence, cents, etc.). If a product is worth \u00a3300.00 or \u20ac300,00, please input 30000. For group policies, this value can not be over 1500000.",
+            "example": 30000
+          },
+          "serialNumber": {
+            "type": "string",
+            "description": "Serial number of the product"
+          },
+          "typeName": {
+            "enum": [
+              "GravelBike",
+              "Recumbent",
+              "Mountain",
+              "Folding",
+              "FixedGear",
+              "CityBike",
+              "Cargo",
+              "Cyclocross",
+              "Hybrid",
+              "TT",
+              "Road",
+              "Touring",
+              "BMXBike",
+              "FatBike"
+            ],
+            "type": "string",
+            "description": "Type of the bike",
+            "example": "GravelBike"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Stock keeping unit identifier"
+          },
+          "modelName": {
+            "type": "string",
+            "description": "Model name of the product"
+          },
+          "brand": {
+            "type": "string",
+            "description": "Brand name of the product"
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.",
+            "example": "GBP"
+          },
+          "eBikeType": {
+            "type": "string",
+            "description": "Specifies the eBike classification. If not provided, the bike is considered non-electric.",
+            "example": "assisted"
+          },
+          "address": {
+            "$ref": "#/components/schemas/ProductAddress"
+          },
+          "licencePlateNumber": {
+            "type": "string",
+            "description": "Required for Third Party Liability policies"
+          },
+          "year": {
+            "type": "number",
+            "description": "Purchase year of the product"
+          }
+        },
+        "required": [
+          "initialValue",
+          "serialNumber",
+          "typeName",
+          "modelName",
+          "brand",
+          "currencyCode"
+        ]
+      },
+      "CreateAccountRelationshipRequest": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string"
+          },
+          "relationshipType": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "personId",
+          "relationshipType"
+        ]
+      },
+      "CreateClaim": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string",
+            "default": null,
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "7dd76d65-54a1-4166-9c3f-2adf7c8a1e06",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "address": {
+            "description": "The incident address \u2014 where the incident occurred, not the policyholder's home address. `address.country` is required. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          },
+          "incidentDate": {
+            "type": "string",
+            "description": "An ISO-formatted date value",
+            "example": "2024-11-11T12:00:00Z"
+          },
+          "policyId": {
+            "type": "string",
+            "description": "Policy identifier (UUID format)",
+            "format": "uuid"
+          },
+          "claimType": {
+            "type": "string",
+            "enum": [
+              "theft",
+              "damage",
+              "health",
+              "liability"
+            ]
+          },
+          "incidentDetails": {
+            "description": "Details about the incident",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "crimeReferenceNumber": {
+            "type": "string",
+            "description": "Crime reference number",
+            "example": "CRIME-1000"
+          },
+          "createClaimDeeplink": {
+            "type": "boolean"
+          },
+          "person": {
+            "$ref": "#/components/schemas/Person"
+          },
+          "private": {
+            "type": "boolean"
+          },
+          "productIds": {
+            "description": "A list of productIds on the claim",
+            "example": [
+              "21093dc7-ceb2-41d0-84ac-69aa01dbeae4"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "personId",
+          "productIds"
+        ]
+      },
+      "CreateClaimAttachmentRequest": {
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string"
+          },
+          "mimeType": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "fileName",
+          "mimeType",
+          "url"
+        ]
+      },
+      "CreateClaimAttachmentUploadLinkResponse": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "The upload key for the attachment.  This is an internal identifier but you may use it to reference the attachment in your application.",
+            "example": "claims-service/attachments/12345.zip"
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL to upload the attachment to.  You can PUT the file data directly to this URL. Please call the confirm endpoint afterwards to confirm the upload.",
+            "example": "https://example.com/upload/attachment"
+          },
+          "attachmentId": {
+            "type": "string",
+            "description": "The identifier for the attachment, used to confirm the upload",
+            "example": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "required": [
+          "key",
+          "url",
+          "attachmentId"
+        ]
+      },
+      "CreateClaimNoteRequest": {
+        "type": "object",
+        "properties": {
+          "note": {
+            "type": "string",
+            "maxLength": 3000,
+            "description": "The claim note"
+          }
+        },
+        "required": [
+          "note"
+        ]
+      },
+      "CreateClaimNoteResponse": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "claimId": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "claimId",
+          "note",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "CreateCombinedRelationshipRequest": {
+        "type": "object",
+        "properties": {
+          "createClaimsDeeplink": {
+            "type": "boolean"
+          },
+          "person": {
+            "$ref": "#/components/schemas/CombinedPersonRequest"
+          },
+          "products": {
+            "$ref": "#/components/schemas/ProductsWithMinimumInitialValue"
+          }
+        },
+        "required": [
+          "createClaimsDeeplink",
+          "person",
+          "products"
+        ]
+      },
+      "CreateCombinedRelationshipResponse": {
+        "type": "object",
+        "properties": {
+          "person": {
+            "$ref": "#/components/schemas/CombinedPersonResponse"
+          },
+          "products": {
+            "$ref": "#/components/schemas/UpsertPolicyProductsResponse"
+          },
+          "refutationId": {
+            "type": "string"
+          },
+          "claimsDeeplink": {
+            "type": "string"
+          },
+          "isNewRecord": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "person",
+          "products",
+          "refutationId",
+          "isNewRecord"
+        ]
+      },
+      "CreateDeeplink": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "7dd76d65-54a1-4166-9c3f-2adf7c8a1e06",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "resource": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string"
+          },
+          "multipleUse": {
+            "type": "boolean"
+          },
+          "nonExpiring": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "resource",
+          "multipleUse",
+          "nonExpiring"
+        ]
+      },
+      "CreateFleetClaimResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "claim": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message",
+          "claim",
+          "reference"
+        ]
+      },
+      "CreatePerson": {
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.",
+            "example": "CRM_123456"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "Date of birth in ISO 8601 format",
+            "example": "1990-01-01",
+            "format": "date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of person",
+            "enum": [
+              "Person",
+              "Organisation",
+              "Rider"
+            ],
+            "example": "Person"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first name of the person.",
+            "example": "John",
+            "maxLength": 100
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last name(s) of the person.",
+            "example": "Doe"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "The company name for business entities."
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "cityOfBirth": {
+            "type": "string"
+          },
+          "countryOfBirth": {
+            "type": "string"
+          },
+          "telephoneNumber": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "defaultCurrency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "email"
+        ]
+      },
+      "Deeplink": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "expiresAt",
+          "url"
+        ]
+      },
+      "DeeplinksResponse": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "description": "List of items in the response",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Deeplink"
+            }
+          },
+          "count": {
+            "type": "number",
+            "description": "Total count of items",
+            "example": 42
+          }
+        },
+        "required": [
+          "rows",
+          "count"
+        ]
+      },
+      "DeletePolicyProductResponse": {
+        "type": "object",
+        "properties": {}
+      },
+      "EmptyMessage": {
+        "type": "object",
+        "properties": {}
+      },
+      "GetAllDocumentsResponseItem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "url"
+        ]
+      },
+      "GetPolicyDocumentResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "GetPolicyIpidResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "GetPolicyWordingResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "GetUnderwriterClaimsResponse": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "description": "List of items in the response",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnderwriterClaim"
+            }
+          },
+          "count": {
+            "type": "number",
+            "description": "Total count of items",
+            "example": 42
+          }
+        },
+        "required": [
+          "rows",
+          "count"
+        ]
+      },
+      "GetUnderwriterPoliciesResponse": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnderwriterPermittedPolicy"
+            }
+          },
+          "count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "rows",
+          "count"
+        ]
+      },
+      "PackageResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "validFrom": {
+            "type": "string"
+          },
+          "validTo": {
+            "type": "string"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "durationUnit": {
+            "type": "string"
+          },
+          "durationValue": {
+            "type": "number"
+          },
+          "durationPrice": {
+            "type": "number"
+          },
+          "perks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerkResponse"
+            }
+          },
+          "includedPerks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerkResponse"
+            }
+          },
+          "excludedPerks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerkResponse"
+            }
+          },
+          "optionalPerks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerkResponse"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "key",
+          "description",
+          "validFrom",
+          "validTo",
+          "active",
+          "durationUnit",
+          "durationValue",
+          "durationPrice",
+          "perks",
+          "includedPerks",
+          "excludedPerks",
+          "optionalPerks"
+        ]
+      },
+      "PerkLinkResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "title"
+        ]
+      },
+      "PerkResponse": {
+        "type": "object",
+        "properties": {
+          "policyType": {
+            "type": "string",
+            "enum": [
+              "Property",
+              "Liability",
+              "Health"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "policyDefinition": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "global": {
+            "type": "boolean"
+          },
+          "fulfilmentKey": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          },
+          "bitmaskValue": {
+            "type": "number"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PerkLinkResponse"
+            }
+          }
+        },
+        "required": [
+          "policyType",
+          "id",
+          "name",
+          "description",
+          "policyDefinition",
+          "imageUrl",
+          "global",
+          "fulfilmentKey",
+          "value",
+          "bitmaskValue",
+          "links"
+        ]
+      },
+      "Person": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.",
+            "example": "CRM_123456"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "Date of birth in ISO 8601 format",
+            "example": "1990-01-01",
+            "format": "date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of person",
+            "enum": [
+              "Person",
+              "Organisation",
+              "Rider"
+            ],
+            "example": "Person"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first name of the person.",
+            "example": "John",
+            "maxLength": 100
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last name(s) of the person.",
+            "example": "Doe"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "The company name for business entities."
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "cityOfBirth": {
+            "type": "string"
+          },
+          "countryOfBirth": {
+            "type": "string"
+          },
+          "telephoneNumber": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "defaultCurrency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "email"
+        ]
+      },
+      "PoliciesWithCountResponse": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "description": "List of items in the response",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyForPerson"
+            }
+          },
+          "count": {
+            "type": "number",
+            "description": "Total count of items",
+            "example": 42
+          }
+        },
+        "required": [
+          "rows",
+          "count"
+        ]
+      },
+      "PolicyForPerson": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid"
+          },
+          "status": {
+            "enum": [
+              "Active",
+              "Cancelled",
+              "Paused",
+              "Pending Reactivation",
+              "Pending Activation"
+            ],
+            "type": "string"
+          },
+          "policyReference": {
+            "type": "string"
+          },
+          "coverInception": {
+            "type": "string"
+          },
+          "coverStart": {
+            "type": "string"
+          },
+          "coverEnd": {
+            "type": "string"
+          },
+          "cancelled": {
+            "type": "boolean"
+          },
+          "paused": {
+            "type": "boolean"
+          },
+          "inALockIn": {
+            "type": "boolean"
+          },
+          "autoRenew": {
+            "type": "boolean"
+          },
+          "insuredValue": {
+            "type": "number"
+          },
+          "capIncTax": {
+            "type": "number"
+          },
+          "packageName": {
+            "type": "string"
+          },
+          "lastPausedOrCancelledAt": {
+            "type": "string",
+            "nullable": true
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductResponse"
+            }
+          },
+          "productCount": {
+            "type": "number"
+          },
+          "parsedCoverModules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "status",
+          "policyReference",
+          "coverInception",
+          "coverStart",
+          "coverEnd",
+          "cancelled",
+          "paused",
+          "inALockIn",
+          "autoRenew",
+          "insuredValue",
+          "capIncTax",
+          "packageName",
+          "lastPausedOrCancelledAt",
+          "products",
+          "productCount",
+          "parsedCoverModules"
+        ]
+      },
+      "PreviewItem": {
+        "type": "object",
+        "properties": {
+          "rowNumber": {
+            "type": "number"
+          },
+          "action": {
+            "type": "string"
+          },
+          "frame": {
+            "type": "string"
+          },
+          "make": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "rowNumber",
+          "action",
+          "frame",
+          "make",
+          "model",
+          "value",
+          "currency"
+        ]
+      },
+      "PriceDetails": {
+        "type": "object",
+        "properties": {
+          "packageId": {
+            "type": "string"
+          },
+          "capPrice": {
+            "type": "number"
+          },
+          "displayPrice": {
+            "type": "number"
+          },
+          "average": {
+            "type": "number"
+          },
+          "additionalCostsTotal": {
+            "type": "number"
+          },
+          "capIncreasePrc": {
+            "type": "string"
+          },
+          "capDecreasePrc": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "packageId",
+          "capPrice",
+          "displayPrice",
+          "average",
+          "additionalCostsTotal",
+          "capIncreasePrc",
+          "capDecreasePrc"
+        ]
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.",
+            "example": "CRM_123456"
+          },
+          "initialValue": {
+            "type": "number",
+            "description": "Value in lowest denomination (pence, cents, etc.). If a product is worth \u00a3300.00 or \u20ac300,00, please input 30000. For group policies, this value can not be over 1500000.",
+            "example": 30000,
+            "minimum": 0,
+            "maximum": 1500000
+          },
+          "serialNumber": {
+            "type": "string",
+            "description": "Serial number of the product"
+          },
+          "typeName": {
+            "enum": [
+              "GravelBike",
+              "Recumbent",
+              "Mountain",
+              "Folding",
+              "FixedGear",
+              "CityBike",
+              "Cargo",
+              "Cyclocross",
+              "Hybrid",
+              "TT",
+              "Road",
+              "Touring",
+              "BMXBike",
+              "FatBike"
+            ],
+            "type": "string",
+            "description": "Type of the bike",
+            "example": "GravelBike"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Stock keeping unit identifier"
+          },
+          "modelName": {
+            "type": "string",
+            "description": "Model name of the product"
+          },
+          "brand": {
+            "type": "string",
+            "description": "Brand name of the product"
+          },
+          "currencyCode": {
+            "type": "string",
+            "description": "Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.",
+            "example": "GBP"
+          },
+          "eBikeType": {
+            "type": "string",
+            "description": "Specifies the eBike classification. If not provided, the bike is considered non-electric.",
+            "example": "assisted"
+          },
+          "address": {
+            "$ref": "#/components/schemas/ProductAddress"
+          },
+          "licencePlateNumber": {
+            "type": "string",
+            "description": "Required for Third Party Liability policies"
+          },
+          "year": {
+            "type": "number",
+            "description": "Purchase year of the product"
+          }
+        },
+        "required": [
+          "initialValue",
+          "serialNumber",
+          "typeName",
+          "modelName",
+          "brand",
+          "currencyCode"
+        ]
+      },
+      "ProductAddress": {
+        "type": "object",
+        "properties": {
+          "streetAddress": {
+            "type": "string",
+            "description": "Street address for the insured product location",
+            "example": "10 Downing Street"
+          },
+          "postalTown": {
+            "type": "string",
+            "description": "Postal town for the insured product location",
+            "example": "London"
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "Postal code for the insured product location",
+            "example": "SW1A 2AB"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO country code for the insured product location",
+            "example": "GB"
+          }
+        },
+        "required": [
+          "streetAddress",
+          "postalTown",
+          "postalCode",
+          "country"
+        ]
+      },
+      "ProductResponse": {
+        "type": "object",
+        "properties": {
+          "serialNumber": {
+            "type": "string"
+          },
+          "modelName": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "initialValue": {
+            "type": "number"
+          },
+          "typeName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "serialNumber",
+          "modelName",
+          "brand",
+          "initialValue",
+          "typeName"
+        ]
+      },
+      "ProductsWithMinimumInitialValue": {
+        "type": "object",
+        "properties": {
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CombinedProduct"
+            }
+          },
+          "clothing": {
+            "$ref": "#/components/schemas/Clothing"
+          },
+          "accessories": {
+            "$ref": "#/components/schemas/Accessory"
+          }
+        },
+        "required": [
+          "products"
+        ]
+      },
+      "QuickQuoteForAddressResponse": {
+        "type": "object",
+        "properties": {
+          "priceDetails": {
+            "$ref": "#/components/schemas/PriceDetails"
+          }
+        },
+        "required": [
+          "priceDetails"
+        ]
+      },
+      "Relationship": {
+        "type": "object",
+        "properties": {
+          "relationshipId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "relationshipId"
+        ]
+      },
+      "ReportingClaimExpense": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "currentValueIncTax": {
+            "type": "string"
+          },
+          "currentValueExcTax": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 date string"
+          },
+          "previousValues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportingClaimPreviousExpenseValue"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "reference",
+          "category",
+          "type",
+          "status",
+          "currency",
+          "currentValueIncTax",
+          "currentValueExcTax",
+          "createdAt",
+          "previousValues"
+        ]
+      },
+      "ReportingClaimPreviousExpenseValue": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "reference": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "valueIncTax": {
+            "type": "string"
+          },
+          "valueExcTax": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO 8601 date string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "reference",
+          "category",
+          "type",
+          "status",
+          "valueIncTax",
+          "valueExcTax",
+          "createdAt"
+        ]
+      },
+      "RequestCoverRequest": {
+        "type": "object",
+        "properties": {
+          "quoteId": {
+            "type": "string"
+          },
+          "coverStart": {
+            "type": "string"
+          },
+          "totalPremiumPaid": {
+            "type": "number"
+          },
+          "isManagedPolicy": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "quoteId",
+          "coverStart"
+        ]
+      },
+      "RequestCoverResponse": {
+        "type": "object",
+        "properties": {
+          "policies": {
+            "items": {
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "redirectUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "policies",
+          "redirectUrl"
+        ]
+      },
+      "RowError": {
+        "type": "object",
+        "properties": {
+          "rowNumber": {
+            "type": "number"
+          },
+          "action": {
+            "type": "string"
+          },
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "rowNumber",
+          "action",
+          "error"
+        ]
+      },
+      "RowSuccess": {
+        "type": "object",
+        "properties": {
+          "rowNumber": {
+            "type": "number"
+          },
+          "action": {
+            "type": "string"
+          },
+          "productId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "rowNumber",
+          "action",
+          "productId"
+        ]
+      },
+      "SubmitClaimResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "claimStatus": {
+            "type": "string"
+          },
+          "claimReference": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "claimStatus",
+          "claimReference"
+        ]
+      },
+      "UnderwriterClaim": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string",
+            "description": "Identifier to the Claim's beneficiary",
+            "example": "7dd76d65-54a1-4166-9c3f-2adf7c8a1e06",
+            "default": null,
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "claimIdentifier": {
+            "type": "string",
+            "description": "claimId of the Claim"
+          },
+          "policyIdentifier": {
+            "type": "string",
+            "description": "policyId of the Claim"
+          },
+          "claimStatus": {
+            "type": "string",
+            "description": "claimStatus from the ClaimDetail",
+            "enum": [
+              "Created",
+              "Incomplete",
+              "Submitted",
+              "In Progress",
+              "On Hold",
+              "Underwriter Review",
+              "Settled",
+              "Rejected",
+              "Closed"
+            ]
+          },
+          "incidentDate": {
+            "type": "string",
+            "description": "incidentDate on ClaimDetail"
+          },
+          "primaryCoverModule": {
+            "type": "string",
+            "description": "CoverModule representing default cost centre of Expense"
+          },
+          "creationDate": {
+            "type": "string",
+            "description": "createdAt on Claim"
+          },
+          "declarationDate": {
+            "type": "string",
+            "description": "submittedAt on Claim"
+          },
+          "updateDate": {
+            "type": "string",
+            "description": "updatedAt on most recent ClaimDetail"
+          },
+          "mainCircumstances": {
+            "type": "string",
+            "description": "claimType"
+          },
+          "claimCountry": {
+            "type": "string",
+            "description": "country from ClaimDetail"
+          },
+          "consequencesClaimant": {
+            "type": "string",
+            "enum": [
+              "MD",
+              "BI"
+            ],
+            "description": "MD if property, BI if H&R"
+          },
+          "risks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClaimRisk"
+            }
+          },
+          "totalCurrentExpenseValueIncTax": {
+            "type": "string",
+            "description": "Sum of all expenses associated to the claim"
+          },
+          "totalCurrentExpenseValueExcTax": {
+            "type": "string",
+            "description": "Sum of all expenses associated to the claim"
+          },
+          "totalCurrentTravelExpenseValueIncTax": {
+            "type": "string",
+            "description": "Sum of all expenses under travel"
+          },
+          "totalCurrentTravelExpenseValueExcTax": {
+            "type": "string",
+            "description": "Sum of all expenses under travel"
+          },
+          "totalCurrentNonTravelExpenseValueIncTax": {
+            "type": "string",
+            "description": "Sum of all expenses under main cover module"
+          },
+          "totalCurrentNonTravelExpenseValueExcTax": {
+            "type": "string",
+            "description": "Sum of all expenses under main cover module"
+          },
+          "expenses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportingClaimExpense"
+            }
+          },
+          "uniqueReference": {
+            "type": "string",
+            "description": "Unique reference for the person/policyId"
+          },
+          "partnerCountry": {
+            "type": "string",
+            "description": "The country of the policy holder"
+          },
+          "policyVersionIdentifier": {
+            "type": "string",
+            "description": "policyDetailId of the Claim"
+          },
+          "commercialClaim": {
+            "type": "boolean",
+            "description": "Whether the claim is from a commercial policy or not"
+          },
+          "policyCustomerType": {
+            "type": "string",
+            "description": "Type of policy the claim is against."
+          },
+          "claimReference": {
+            "type": "string",
+            "description": "Unique claim reference"
+          }
+        },
+        "required": [
+          "personId",
+          "claimIdentifier",
+          "policyIdentifier",
+          "claimStatus",
+          "incidentDate",
+          "creationDate",
+          "declarationDate",
+          "updateDate",
+          "mainCircumstances",
+          "claimCountry",
+          "consequencesClaimant",
+          "risks",
+          "totalCurrentExpenseValueIncTax",
+          "totalCurrentExpenseValueExcTax",
+          "totalCurrentTravelExpenseValueIncTax",
+          "totalCurrentTravelExpenseValueExcTax",
+          "totalCurrentNonTravelExpenseValueIncTax",
+          "totalCurrentNonTravelExpenseValueExcTax",
+          "expenses",
+          "uniqueReference",
+          "partnerCountry",
+          "policyVersionIdentifier",
+          "commercialClaim",
+          "policyCustomerType",
+          "claimReference"
+        ]
+      },
+      "UnderwriterPermittedPolicy": {
+        "type": "object",
+        "properties": {
+          "currencyCode": {
+            "type": "string",
+            "description": "ISO currency code for the policy",
+            "example": "GBP",
+            "enum": [
+              "GBP",
+              "EUR"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "policyReference": {
+            "type": "string"
+          },
+          "personId": {
+            "type": "string"
+          },
+          "policyId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "cancelled": {
+            "type": "boolean"
+          },
+          "paused": {
+            "type": "boolean"
+          },
+          "coverInception": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string",
+            "description": "The invoice region"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "coverStart": {
+            "type": "string"
+          },
+          "preTaxCap": {
+            "type": "string"
+          },
+          "taxes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnderwriterPermittedPolicyTaxItem"
+            }
+          },
+          "risks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnderwriterPermittedPolicyRiskItem"
+            }
+          },
+          "capIncTax": {
+            "type": "string"
+          },
+          "cap": {
+            "type": "string"
+          },
+          "tax": {
+            "type": "string"
+          },
+          "taxPct": {
+            "type": "string"
+          },
+          "lakaServiceFee": {
+            "type": "string"
+          },
+          "daysOnCover": {
+            "type": "number"
+          },
+          "claimsCost": {
+            "type": "string"
+          },
+          "totalShare": {
+            "type": "string"
+          },
+          "totalClaimsCost": {
+            "type": "string"
+          },
+          "claimsLiability": {
+            "type": "number"
+          },
+          "uniqueReference": {
+            "type": "string"
+          },
+          "invoiceTotal": {
+            "type": "string"
+          },
+          "commercial": {
+            "type": "boolean",
+            "description": "Indicates if the policy is commercial"
+          },
+          "commission": {
+            "type": "string",
+            "description": "applied commission value for this policy"
+          },
+          "netPremium": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "currencyCode",
+          "id",
+          "policyReference",
+          "personId",
+          "policyId",
+          "type",
+          "cancelled",
+          "paused",
+          "coverInception",
+          "region",
+          "active",
+          "coverStart",
+          "preTaxCap",
+          "taxes",
+          "risks",
+          "capIncTax",
+          "cap",
+          "tax",
+          "taxPct",
+          "uniqueReference",
+          "commercial",
+          "commission",
+          "netPremium"
+        ]
+      },
+      "UnderwriterPermittedPolicyCoverageItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "premium": {
+            "type": "string",
+            "description": "Premium including tax and service fee"
+          },
+          "netPremium": {
+            "type": "string",
+            "description": "Premium excluding tax but including service fee"
+          },
+          "purePremium": {
+            "type": "string",
+            "description": "Premium excluding tax and service fee"
+          },
+          "taxes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnderwriterPermittedPolicyTaxItem"
+            }
+          },
+          "lakaServiceFee": {
+            "type": "string"
+          },
+          "serviceFeePct": {
+            "type": "string"
+          },
+          "commission": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "premium",
+          "netPremium",
+          "purePremium",
+          "taxes",
+          "lakaServiceFee",
+          "serviceFeePct",
+          "commission"
+        ]
+      },
+      "UnderwriterPermittedPolicyRiskItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "make": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "coverages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UnderwriterPermittedPolicyCoverageItem"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "make",
+          "model",
+          "value",
+          "coverages"
+        ]
+      },
+      "UnderwriterPermittedPolicyTaxItem": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "IPT",
+            "enum": [
+              "IPT",
+              "VAT"
+            ]
+          },
+          "amount": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "amount"
+        ]
+      },
+      "UpdateClaimResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid"
+          },
+          "personId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "7dd76d65-54a1-4166-9c3f-2adf7c8a1e06",
+            "default": null,
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "Creation timestamp in ISO 8601 format",
+            "example": "2023-01-01T12:00:00Z",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "Last update timestamp in ISO 8601 format",
+            "example": "2023-01-01T12:00:00Z",
+            "format": "date-time"
+          },
+          "address": {
+            "description": "The incident address \u2014 where the incident occurred. Not the policyholder's home address. address.country is required when creating or submitting a claim. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Address"
+              }
+            ]
+          },
+          "incidentDate": {
+            "type": "string",
+            "description": "An ISO-formatted date value",
+            "example": "2024-11-11T12:00:00Z"
+          },
+          "policyId": {
+            "type": "string",
+            "description": "Policy identifier (UUID format)",
+            "format": "uuid"
+          },
+          "claimType": {
+            "type": "string",
+            "enum": [
+              "theft",
+              "damage",
+              "health",
+              "liability"
+            ]
+          },
+          "claimStatus": {
+            "type": "string",
+            "enum": [
+              "Created",
+              "Incomplete",
+              "Submitted",
+              "In Progress",
+              "On Hold",
+              "Underwriter Review",
+              "Settled",
+              "Rejected",
+              "Closed"
+            ]
+          },
+          "incidentDetails": {
+            "description": "Details about the incident",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claimReference": {
+            "type": "string",
+            "description": "Human readable claim reference",
+            "example": "C-12345"
+          },
+          "claimsDeeplink": {
+            "type": "string"
+          },
+          "person": {
+            "$ref": "#/components/schemas/Person"
+          },
+          "private": {
+            "type": "boolean"
+          },
+          "crimeReferenceNumber": {
+            "type": "string"
+          },
+          "productIds": {
+            "description": "A list of productIds on the claim",
+            "example": [
+              "21093dc7-ceb2-41d0-84ac-69aa01dbeae4"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "completeClaim": {
+            "type": "string",
+            "description": "URL to complete the claim\nProvide this to your customer to enable them to self-service the claim from within the Laka application"
+          }
+        },
+        "required": [
+          "id",
+          "personId",
+          "createdAt",
+          "updatedAt",
+          "claimReference",
+          "productIds"
+        ]
+      },
+      "UploadProductCsvRequest": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "description": "CSV file"
+          }
+        },
+        "required": [
+          "file"
+        ]
+      },
+      "UploadProductCsvResponse": {
+        "type": "object",
+        "properties": {
+          "successes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RowSuccess"
+            }
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RowError"
+            }
+          },
+          "previews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PreviewItem"
+            }
+          }
+        },
+        "required": [
+          "successes",
+          "errors",
+          "previews"
+        ]
+      },
+      "UpsertPersonDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.",
+            "example": "CRM_123456"
+          },
+          "userId": {
+            "type": "string",
+            "description": "Unique identifier (UUID v4 format)",
+            "example": "123e4567-e89b-12d3-a456-426614174000",
+            "format": "uuid",
+            "externalDocs": {
+              "url": "https://docs.laka.co/docs/glossary"
+            }
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "description": "Date of birth in ISO 8601 format",
+            "example": "1990-01-01",
+            "format": "date"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of person",
+            "enum": [
+              "Person",
+              "Organisation",
+              "Rider"
+            ],
+            "example": "Person"
+          },
+          "address": {
+            "type": "object"
+          },
+          "email": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first name of the person.",
+            "example": "John",
+            "maxLength": 100
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last name(s) of the person.",
+            "example": "Doe"
+          },
+          "companyName": {
+            "type": "string",
+            "description": "The company name for business entities."
+          },
+          "cityOfBirth": {
+            "type": "string"
+          },
+          "countryOfBirth": {
+            "type": "string"
+          },
+          "telephoneNumber": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "defaultCurrency": {
+            "type": "string"
+          }
+        }
+      },
+      "UpsertPolicyProducts": {
+        "type": "object",
+        "properties": {
+          "personId": {
+            "type": "string"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
+          },
+          "clothing": {
+            "$ref": "#/components/schemas/Clothing"
+          },
+          "accessories": {
+            "$ref": "#/components/schemas/Accessory"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "personId",
+          "products"
+        ]
+      },
+      "UpsertPolicyProductsResponse": {
+        "type": "object",
+        "properties": {
+          "products": {
+            "$ref": "#/components/schemas/UpsertedProductItems"
+          },
+          "clothing": {
+            "$ref": "#/components/schemas/UpsertedProductItems"
+          },
+          "accessories": {
+            "$ref": "#/components/schemas/UpsertedProductItems"
+          },
+          "refutationId": {
+            "type": "string"
+          }
+        }
+      },
+      "UpsertedProductItems": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UpsertedProductRow"
+            }
+          },
+          "count": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "rows",
+          "count"
+        ]
+      },
+      "UpsertedProductRow": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string"
+          },
+          "typeName": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "currencyCode": {
+            "type": "string"
+          },
+          "initialValue": {
+            "type": "number"
+          },
+          "eBikeType": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "licencePlateNumber": {
+            "type": "string"
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/ProductAddress"
+          }
+        },
+        "required": [
+          "productId",
+          "typeName"
+        ]
+      }
+    }
+  }
+}

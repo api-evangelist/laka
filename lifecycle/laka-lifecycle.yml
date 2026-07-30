@@ -1,0 +1,92 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laka.co/docs/regions
+docs:
+- https://docs.laka.co/docs/introduction
+- https://docs.laka.co/docs/regions
+
+versioning:
+  scheme: date-based documentation versions plus a path version segment
+  documentation_versions:
+  - version: '2024-09-01'
+    status: current
+    note: The version the Laka documentation serves by default.
+  - version: '2023-03-01'
+    status: available
+    note: An earlier documentation version still selectable in the Laka docs version picker.
+  path_versions:
+  - api: Laka Platform API
+    prefix: /v3
+    note: Platform operations are served under a /v3 path prefix.
+  - api: Laka Quote API
+    prefix: /v2/quotes
+    note: The Quote service is mounted at /v2/quotes on the regional host.
+  spec_versions:
+  - api: Laka Platform API
+    info_version: '2024-09-01'
+  - api: Laka Quote API
+    info_version: '1.0'
+  note: 'Laka versions its documentation by date (2023-03-01, 2024-09-01) while the HTTP surface
+    carries its own path version. The Platform OpenAPI info.version tracks the date-based
+    documentation version.'
+
+environments:
+- name: Production
+  region: UK
+  api_url: https://api-gb.app.laka.co
+  application_url: https://app.laka.co/gb
+- name: Production
+  region: EU
+  api_url: https://api-nl.app.laka.co
+  application_url: https://app.laka.co/nl
+- name: Staging
+  region: UK
+  api_url: https://api-gb.staging.laka.co
+  application_url: https://app.staging.laka.co/gb
+- name: Staging
+  region: EU
+  api_url: https://api-nl.staging.laka.co
+  application_url: https://app.staging.laka.co/nl
+- name: UAT
+  region: shared
+  api_url: https://api.uat.laka.co
+  note: Declared as a server in the published Platform API OpenAPI.
+environments_source: https://docs.laka.co/docs/regions
+
+status_page:
+  url: https://status.laka.co
+  provider: hosted status page
+  components:
+  - name: App
+    note: Single published component; reported at 100% uptime over the Apr 2026 - Jul 2026 window
+      observed during this pass.
+  subscribe: true
+  verified: '2026-07-19'
+  http_status: 200
+
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  deprecated_operations: []
+  note: 'Laka publishes no deprecation or sunset policy, and no RFC 8594 Sunset/Deprecation headers
+    are documented. No operation in the published OpenAPI carries deprecated: true. Older
+    documentation versions remain selectable in the docs version picker, which is the only
+    version-retirement signal Laka gives. No Deprecation pointer is emitted for this provider.'
+
+sla:
+  published: false
+  note: 'No public SLA or uptime commitment is published on the Laka developer surface; the status
+    page reports historical uptime but states no contractual target.'
+
+changelog:
+  published: false
+  note: 'Laka publishes no dated developer changelog or release-notes page. Change is communicated
+    through the date-versioned documentation (2023-03-01 to 2024-09-01) rather than a per-release
+    log, so no changelog/ artifact is emitted.'
+
+access:
+  model: request-based
+  note: 'API access is granted per partner. Laka asks prospective partners to request access by email
+    rather than offering self-service key issuance.'
+  url: https://docs.laka.co/docs/request-access

@@ -1,0 +1,1244 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/laka-platform-openapi.json, openapi/laka-quote-openapi.json
+identifier_convention:
+  format: UUID v4
+  notes: Laka identifiers are UUID v4 strings with no type prefix. externalId is a partner-supplied identifier
+    (CRM ID, internal user ID, product frame number) echoed back on most responses to let partners reconcile
+    their own records. Per the Laka glossary, personId is the Laka profile/account id and is the identifier
+    partners should normally prefer over userId.
+  source: https://docs.laka.co/docs/glossary
+core_entities:
+- Person
+- Policy
+- Product
+- Claim
+- Quote
+- Deeplink
+- Relationship
+- Accessory
+entity_count: 102
+entities:
+- name: Accessory
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - initialValue
+  - currencyCode
+  - types
+  relationships:
+  - type: has_many
+    target: AccessoryType
+    via: types
+- name: AccessoryType
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - type
+  relationships:
+  - type: has_one
+    target: ProductAddress
+    via: address
+- name: Address
+  source: openapi/laka-platform-openapi.json
+  field_count: 8
+- name: BaseAddressFields
+  source: openapi/laka-platform-openapi.json
+  field_count: 7
+- name: CancelPolicyBody
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+- name: CancelPolicyResult
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - policyId
+  - success
+  relationships:
+  - type: belongs_to
+    target: Policy
+    via: policyId
+- name: Claim
+  source: openapi/laka-platform-openapi.json
+  field_count: 17
+  required:
+  - id
+  - personId
+  - createdAt
+  - updatedAt
+  - claimReference
+  - productIds
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: has_one
+    target: Address
+    via: address
+  - type: belongs_to
+    target: Policy
+    via: policyId
+  - type: has_one
+    target: Person
+    via: person
+- name: ClaimRisk
+  source: openapi/laka-platform-openapi.json
+  field_count: 5
+  required:
+  - riskIdentifier
+  - coverages
+  relationships:
+  - type: has_many
+    target: ClaimRiskCoverage
+    via: coverages
+- name: ClaimRiskCoverage
+  source: openapi/laka-platform-openapi.json
+  field_count: 6
+  required:
+  - indemnityCode
+  - reserveType
+  - coverageIdentifier
+  - deductibleAmount
+  - reserves
+  - expenses
+  relationships:
+  - type: has_many
+    target: ClaimRiskReserve
+    via: reserves
+  - type: has_many
+    target: ClaimRiskExpense
+    via: expenses
+- name: ClaimRiskExpense
+  source: openapi/laka-platform-openapi.json
+  field_count: 10
+  required:
+  - id
+  - name
+  - reference
+  - category
+  - status
+  - type
+  - currency
+  - currentValueIncTax
+  - currentValueExcTax
+  - createdAt
+- name: ClaimRiskReserve
+  source: openapi/laka-platform-openapi.json
+  field_count: 8
+  required:
+  - reserveIdentifier
+  - name
+  - reference
+  - category
+  - currency
+  - currentValueIncTax
+  - currentValueExcTax
+  - createdAt
+- name: ClaimsResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - rows
+  - count
+  relationships:
+  - type: has_many
+    target: Claim
+    via: rows
+- name: Clothing
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - initialValue
+  - currencyCode
+  relationships:
+  - type: has_one
+    target: ProductAddress
+    via: address
+- name: CombinedPersonRequest
+  source: openapi/laka-platform-openapi.json
+  field_count: 17
+  required:
+  - type
+  - relationshipId
+  - address
+  - email
+  relationships:
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: belongs_to
+    target: Relationship
+    via: relationshipId
+  - type: has_one
+    target: BaseAddressFields
+    via: address
+- name: CombinedPersonResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 18
+  required:
+  - id
+  - type
+  - relationshipId
+  - email
+  relationships:
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: belongs_to
+    target: Relationship
+    via: relationshipId
+  - type: has_one
+    target: Address
+    via: address
+- name: CombinedProduct
+  source: openapi/laka-platform-openapi.json
+  field_count: 12
+  required:
+  - initialValue
+  - serialNumber
+  - typeName
+  - modelName
+  - brand
+  - currencyCode
+  relationships:
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: has_one
+    target: ProductAddress
+    via: address
+- name: CreateAccountRelationshipRequest
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - personId
+  - relationshipType
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+- name: CreateClaim
+  source: openapi/laka-platform-openapi.json
+  field_count: 12
+  required:
+  - personId
+  - productIds
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: has_one
+    target: Address
+    via: address
+  - type: belongs_to
+    target: Policy
+    via: policyId
+  - type: has_one
+    target: Person
+    via: person
+- name: CreateClaimAttachmentRequest
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - fileName
+  - mimeType
+  - url
+- name: CreateClaimAttachmentUploadLinkResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - key
+  - url
+  - attachmentId
+  relationships:
+  - type: belongs_to
+    target: Attachment
+    via: attachmentId
+- name: CreateClaimNoteRequest
+  source: openapi/laka-platform-openapi.json
+  field_count: 1
+  required:
+  - note
+- name: CreateClaimNoteResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 6
+  required:
+  - id
+  - claimId
+  - note
+  - createdAt
+  - updatedAt
+  relationships:
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: belongs_to
+    target: Claim
+    via: claimId
+- name: CreateCombinedRelationshipRequest
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - createClaimsDeeplink
+  - person
+  - products
+  relationships:
+  - type: has_one
+    target: CombinedPersonRequest
+    via: person
+  - type: has_one
+    target: ProductsWithMinimumInitialValue
+    via: products
+- name: CreateCombinedRelationshipResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 5
+  required:
+  - person
+  - products
+  - refutationId
+  - isNewRecord
+  relationships:
+  - type: has_one
+    target: CombinedPersonResponse
+    via: person
+  - type: has_one
+    target: UpsertPolicyProductsResponse
+    via: products
+  - type: belongs_to
+    target: Refutation
+    via: refutationId
+- name: CreateDeeplink
+  source: openapi/laka-platform-openapi.json
+  field_count: 5
+  required:
+  - resource
+  - multipleUse
+  - nonExpiring
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+- name: CreateFleetClaimResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - message
+  - claim
+  - reference
+- name: CreatePerson
+  source: openapi/laka-platform-openapi.json
+  field_count: 14
+  required:
+  - type
+  - email
+  relationships:
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: has_one
+    target: Address
+    via: address
+- name: Deeplink
+  source: openapi/laka-platform-openapi.json
+  field_count: 4
+  required:
+  - id
+  - slug
+  - expiresAt
+  - url
+- name: DeeplinksResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - rows
+  - count
+  relationships:
+  - type: has_many
+    target: Deeplink
+    via: rows
+- name: DeletePolicyProductResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 0
+- name: EmptyMessage
+  source: openapi/laka-platform-openapi.json
+  field_count: 0
+- name: GetAllDocumentsResponseItem
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - type
+  - url
+- name: GetPolicyDocumentResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 1
+  required:
+  - url
+- name: GetPolicyIpidResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 1
+  required:
+  - url
+- name: GetPolicyWordingResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 1
+  required:
+  - url
+- name: GetUnderwriterClaimsResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - rows
+  - count
+  relationships:
+  - type: has_many
+    target: UnderwriterClaim
+    via: rows
+- name: GetUnderwriterPoliciesResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - rows
+  - count
+  relationships:
+  - type: has_many
+    target: UnderwriterPermittedPolicy
+    via: rows
+- name: PackageResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 14
+  required:
+  - id
+  - name
+  - key
+  - description
+  - validFrom
+  - validTo
+  - active
+  - durationUnit
+  - durationValue
+  - durationPrice
+  - perks
+  - includedPerks
+  - excludedPerks
+  - optionalPerks
+  relationships:
+  - type: has_many
+    target: PerkResponse
+    via: perks
+  - type: has_many
+    target: PerkResponse
+    via: includedPerks
+  - type: has_many
+    target: PerkResponse
+    via: excludedPerks
+  - type: has_many
+    target: PerkResponse
+    via: optionalPerks
+- name: PerkLinkResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - id
+  - url
+  - title
+- name: PerkResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 11
+  required:
+  - policyType
+  - id
+  - name
+  - description
+  - policyDefinition
+  - imageUrl
+  - global
+  - fulfilmentKey
+  - value
+  - bitmaskValue
+  - links
+  relationships:
+  - type: has_many
+    target: PerkLinkResponse
+    via: links
+- name: Person
+  source: openapi/laka-platform-openapi.json
+  field_count: 15
+  required:
+  - id
+  - type
+  - email
+  relationships:
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: has_one
+    target: Address
+    via: address
+- name: PoliciesWithCountResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - rows
+  - count
+  relationships:
+  - type: has_many
+    target: PolicyForPerson
+    via: rows
+- name: PolicyForPerson
+  source: openapi/laka-platform-openapi.json
+  field_count: 17
+  required:
+  - id
+  - status
+  - policyReference
+  - coverInception
+  - coverStart
+  - coverEnd
+  - cancelled
+  - paused
+  - inALockIn
+  - autoRenew
+  - insuredValue
+  - capIncTax
+  - packageName
+  - lastPausedOrCancelledAt
+  - products
+  - productCount
+  - parsedCoverModules
+  relationships:
+  - type: has_many
+    target: ProductResponse
+    via: products
+- name: PreviewItem
+  source: openapi/laka-platform-openapi.json
+  field_count: 7
+  required:
+  - rowNumber
+  - action
+  - frame
+  - make
+  - model
+  - value
+  - currency
+- name: PriceDetails
+  source: openapi/laka-platform-openapi.json
+  field_count: 7
+  required:
+  - packageId
+  - capPrice
+  - displayPrice
+  - average
+  - additionalCostsTotal
+  - capIncreasePrc
+  - capDecreasePrc
+  relationships:
+  - type: belongs_to
+    target: Package
+    via: packageId
+- name: Product
+  source: openapi/laka-platform-openapi.json
+  field_count: 12
+  required:
+  - initialValue
+  - serialNumber
+  - typeName
+  - modelName
+  - brand
+  - currencyCode
+  relationships:
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: has_one
+    target: ProductAddress
+    via: address
+- name: ProductAddress
+  source: openapi/laka-platform-openapi.json
+  field_count: 4
+  required:
+  - streetAddress
+  - postalTown
+  - postalCode
+  - country
+- name: ProductResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 5
+  required:
+  - serialNumber
+  - modelName
+  - brand
+  - initialValue
+  - typeName
+- name: ProductsWithMinimumInitialValue
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - products
+  relationships:
+  - type: has_many
+    target: CombinedProduct
+    via: products
+  - type: has_one
+    target: Clothing
+    via: clothing
+  - type: has_one
+    target: Accessory
+    via: accessories
+- name: QuickQuoteForAddressResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 1
+  required:
+  - priceDetails
+  relationships:
+  - type: has_one
+    target: PriceDetails
+    via: priceDetails
+- name: Relationship
+  source: openapi/laka-platform-openapi.json
+  field_count: 1
+  required:
+  - relationshipId
+  relationships:
+  - type: belongs_to
+    target: Relationship
+    via: relationshipId
+- name: ReportingClaimExpense
+  source: openapi/laka-platform-openapi.json
+  field_count: 11
+  required:
+  - id
+  - name
+  - reference
+  - category
+  - type
+  - status
+  - currency
+  - currentValueIncTax
+  - currentValueExcTax
+  - createdAt
+  - previousValues
+  relationships:
+  - type: has_many
+    target: ReportingClaimPreviousExpenseValue
+    via: previousValues
+- name: ReportingClaimPreviousExpenseValue
+  source: openapi/laka-platform-openapi.json
+  field_count: 9
+  required:
+  - id
+  - name
+  - reference
+  - category
+  - type
+  - status
+  - valueIncTax
+  - valueExcTax
+  - createdAt
+- name: RequestCoverRequest
+  source: openapi/laka-platform-openapi.json
+  field_count: 4
+  required:
+  - quoteId
+  - coverStart
+  relationships:
+  - type: belongs_to
+    target: Quote
+    via: quoteId
+- name: RequestCoverResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - policies
+  - redirectUrl
+- name: RowError
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - rowNumber
+  - action
+  - error
+- name: RowSuccess
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - rowNumber
+  - action
+  - productId
+  relationships:
+  - type: belongs_to
+    target: Product
+    via: productId
+- name: SubmitClaimResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - id
+  - claimStatus
+  - claimReference
+- name: UnderwriterClaim
+  source: openapi/laka-platform-openapi.json
+  field_count: 26
+  required:
+  - personId
+  - claimIdentifier
+  - policyIdentifier
+  - claimStatus
+  - incidentDate
+  - creationDate
+  - declarationDate
+  - updateDate
+  - mainCircumstances
+  - claimCountry
+  - consequencesClaimant
+  - risks
+  - totalCurrentExpenseValueIncTax
+  - totalCurrentExpenseValueExcTax
+  - totalCurrentTravelExpenseValueIncTax
+  - totalCurrentTravelExpenseValueExcTax
+  - totalCurrentNonTravelExpenseValueIncTax
+  - totalCurrentNonTravelExpenseValueExcTax
+  - expenses
+  - uniqueReference
+  - partnerCountry
+  - policyVersionIdentifier
+  - commercialClaim
+  - policyCustomerType
+  - claimReference
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: has_many
+    target: ClaimRisk
+    via: risks
+  - type: has_many
+    target: ReportingClaimExpense
+    via: expenses
+- name: UnderwriterPermittedPolicy
+  source: openapi/laka-platform-openapi.json
+  field_count: 30
+  required:
+  - currencyCode
+  - id
+  - policyReference
+  - personId
+  - policyId
+  - type
+  - cancelled
+  - paused
+  - coverInception
+  - region
+  - active
+  - coverStart
+  - preTaxCap
+  - taxes
+  - risks
+  - capIncTax
+  - cap
+  - tax
+  - taxPct
+  - uniqueReference
+  - commercial
+  - commission
+  - netPremium
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: belongs_to
+    target: Policy
+    via: policyId
+  - type: has_many
+    target: UnderwriterPermittedPolicyTaxItem
+    via: taxes
+  - type: has_many
+    target: UnderwriterPermittedPolicyRiskItem
+    via: risks
+- name: UnderwriterPermittedPolicyCoverageItem
+  source: openapi/laka-platform-openapi.json
+  field_count: 9
+  required:
+  - id
+  - name
+  - premium
+  - netPremium
+  - purePremium
+  - taxes
+  - lakaServiceFee
+  - serviceFeePct
+  - commission
+  relationships:
+  - type: has_many
+    target: UnderwriterPermittedPolicyTaxItem
+    via: taxes
+- name: UnderwriterPermittedPolicyRiskItem
+  source: openapi/laka-platform-openapi.json
+  field_count: 6
+  required:
+  - id
+  - type
+  - make
+  - model
+  - value
+  - coverages
+  relationships:
+  - type: has_many
+    target: UnderwriterPermittedPolicyCoverageItem
+    via: coverages
+- name: UnderwriterPermittedPolicyTaxItem
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - type
+  - amount
+- name: UpdateClaimResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 18
+  required:
+  - id
+  - personId
+  - createdAt
+  - updatedAt
+  - claimReference
+  - productIds
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: belongs_to
+    target: User
+    via: userId
+  - type: has_one
+    target: Address
+    via: address
+  - type: belongs_to
+    target: Policy
+    via: policyId
+  - type: has_one
+    target: Person
+    via: person
+- name: UploadProductCsvRequest
+  source: openapi/laka-platform-openapi.json
+  field_count: 1
+  required:
+  - file
+- name: UploadProductCsvResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 3
+  required:
+  - successes
+  - errors
+  - previews
+  relationships:
+  - type: has_many
+    target: RowSuccess
+    via: successes
+  - type: has_many
+    target: RowError
+    via: errors
+  - type: has_many
+    target: PreviewItem
+    via: previews
+- name: UpsertPersonDTO
+  source: openapi/laka-platform-openapi.json
+  field_count: 15
+  relationships:
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: belongs_to
+    target: User
+    via: userId
+- name: UpsertPolicyProducts
+  source: openapi/laka-platform-openapi.json
+  field_count: 6
+  required:
+  - personId
+  - products
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: has_many
+    target: Product
+    via: products
+  - type: has_one
+    target: Clothing
+    via: clothing
+  - type: has_one
+    target: Accessory
+    via: accessories
+- name: UpsertPolicyProductsResponse
+  source: openapi/laka-platform-openapi.json
+  field_count: 4
+  relationships:
+  - type: has_one
+    target: UpsertedProductItems
+    via: products
+  - type: has_one
+    target: UpsertedProductItems
+    via: clothing
+  - type: has_one
+    target: UpsertedProductItems
+    via: accessories
+  - type: belongs_to
+    target: Refutation
+    via: refutationId
+- name: UpsertedProductItems
+  source: openapi/laka-platform-openapi.json
+  field_count: 2
+  required:
+  - rows
+  - count
+  relationships:
+  - type: has_many
+    target: UpsertedProductRow
+    via: rows
+- name: UpsertedProductRow
+  source: openapi/laka-platform-openapi.json
+  field_count: 12
+  required:
+  - productId
+  - typeName
+  relationships:
+  - type: belongs_to
+    target: Product
+    via: productId
+  - type: belongs_to
+    target: External
+    via: externalId
+  - type: has_one
+    target: ProductAddress
+    via: address
+- name: Accessory
+  source: openapi/laka-quote-openapi.json
+  field_count: 4
+  required:
+  - value
+  - typeName
+  relationships:
+  - type: has_many
+    target: AccessoryChild
+    via: children
+- name: AccessoryChild
+  source: openapi/laka-quote-openapi.json
+  field_count: 6
+  required:
+  - typeName
+  relationships:
+  - type: belongs_to
+    target: Parent
+    via: parentId
+- name: Address
+  source: openapi/laka-quote-openapi.json
+  field_count: 7
+- name: Clothing
+  source: openapi/laka-quote-openapi.json
+  field_count: 3
+  required:
+  - value
+  - typeName
+- name: DataRequirement
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+- name: DataRequirementValidationResult
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+  relationships:
+  - type: belongs_to
+    target: DataRequirement
+    via: dataRequirementId
+- name: Declaration
+  source: openapi/laka-quote-openapi.json
+  field_count: 3
+  required:
+  - type
+  - value
+- name: EditRequestBody
+  source: openapi/laka-quote-openapi.json
+  field_count: 29
+  relationships:
+  - type: has_many
+    target: Accessory
+    via: accessories
+  - type: has_one
+    target: Address
+    via: address
+  - type: has_many
+    target: Clothing
+    via: clothing
+  - type: has_many
+    target: Declaration
+    via: declarations
+  - type: has_many
+    target: QuotePerk
+    via: inputQuotePerks
+  - type: belongs_to
+    target: Package
+    via: packageId
+  - type: belongs_to
+    target: Partner
+    via: partnerId
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: has_many
+    target: Product
+    via: products
+  - type: has_many
+    target: QuoteAttribute
+    via: quoteAttributes
+- name: Error
+  source: openapi/laka-quote-openapi.json
+  field_count: 6
+  required:
+  - name
+  - id
+  - message
+  - temporary
+  - timeout
+  - fault
+- name: GetDataRequirementsResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+  relationships:
+  - type: has_many
+    target: DataRequirement
+    via: dataRequirements
+- name: GetPricingComponentsResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+  relationships:
+  - type: has_many
+    target: Pricingcomponent
+    via: components
+- name: GetPricingRequestBody
+  source: openapi/laka-quote-openapi.json
+  field_count: 8
+  relationships:
+  - type: has_many
+    target: Product
+    via: currentProducts
+  - type: belongs_to
+    target: Package
+    via: packageId
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: has_many
+    target: Product
+    via: products
+  - type: belongs_to
+    target: User
+    via: userId
+- name: GetPricingResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 7
+- name: GetStepsResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+  relationships:
+  - type: has_many
+    target: Step
+    via: steps
+- name: GetViewedDataRequirementsRequestBody
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+  required:
+  - quoteId
+  relationships:
+  - type: belongs_to
+    target: Quote
+    via: quoteId
+- name: GetViewedDataRequirementsResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+- name: HandoffQuoteResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+- name: HydrateQuoteResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 6
+  relationships:
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: has_many
+    target: Step
+    via: steps
+  - type: belongs_to
+    target: User
+    via: userId
+- name: Pricingcomponent
+  source: openapi/laka-quote-openapi.json
+  field_count: 7
+- name: Product
+  source: openapi/laka-quote-openapi.json
+  field_count: 7
+  required:
+  - value
+- name: QuickQuoteRequestBody
+  source: openapi/laka-quote-openapi.json
+  field_count: 28
+  required:
+  - packageId
+  relationships:
+  - type: has_many
+    target: Accessory
+    via: accessories
+  - type: has_one
+    target: Address
+    via: address
+  - type: has_many
+    target: Clothing
+    via: clothing
+  - type: has_many
+    target: Declaration
+    via: declarations
+  - type: has_many
+    target: QuotePerk
+    via: inputQuotePerks
+  - type: belongs_to
+    target: Package
+    via: packageId
+  - type: belongs_to
+    target: Partner
+    via: partnerId
+  - type: belongs_to
+    target: Person
+    via: personId
+  - type: has_many
+    target: Product
+    via: products
+  - type: belongs_to
+    target: Provider
+    via: providerId
+  - type: has_many
+    target: QuoteAttribute
+    via: quoteAttributes
+  - type: belongs_to
+    target: User
+    via: userId
+- name: Quote
+  source: openapi/laka-quote-openapi.json
+  field_count: 47
+  required:
+  - id
+  - capPrice
+  - discountedCap
+  - average
+  relationships:
+  - type: has_many
+    target: Accessory
+    via: accessories
+  - type: has_one
+    target: Address
+    via: address
+  - type: has_many
+    target: Clothing
+    via: clothing
+  - type: has_many
+    target: Declaration
+    via: declarations
+  - type: belongs_to
+    target: Package
+    via: packageId
+  - type: belongs_to
+    target: Partner
+    via: partnerId
+  - type: has_many
+    target: Product
+    via: products
+  - type: belongs_to
+    target: Provider
+    via: providerId
+  - type: belongs_to
+    target: ProviderPerson
+    via: providerPersonId
+  - type: has_many
+    target: QuoteAttribute
+    via: quoteAttributes
+  - type: has_many
+    target: QuotePerk
+    via: quotePerks
+  - type: belongs_to
+    target: User
+    via: userId
+- name: QuoteAttribute
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+  required:
+  - key
+- name: QuotePerk
+  source: openapi/laka-quote-openapi.json
+  field_count: 6
+  required:
+  - PerkID
+  - FulfilmentKey
+  - Name
+- name: SetViewedDataRequirementRequestBody
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+  required:
+  - quoteId
+  - dataRequirement
+  relationships:
+  - type: belongs_to
+    target: Quote
+    via: quoteId
+- name: SetViewedDataRequirementResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+- name: StartRequestBody
+  source: openapi/laka-quote-openapi.json
+  field_count: 1
+  required:
+  - userId
+  relationships:
+  - type: belongs_to
+    target: User
+    via: userId
+- name: Step
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+  relationships:
+  - type: belongs_to
+    target: PolicyDefinition
+    via: policyDefinitionId
+- name: ValidateDataRequirementRequestBody
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+  required:
+  - value
+  relationships:
+  - type: belongs_to
+    target: Quote
+    via: quoteId
+- name: ValidateDataRequirementResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+- name: ValidationQuoteResponse
+  source: openapi/laka-quote-openapi.json
+  field_count: 2
+  relationships:
+  - type: has_many
+    target: DataRequirementValidationResult
+    via: results

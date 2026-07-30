@@ -1,0 +1,72 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Laka Platform API
+  version: 1.0.0
+x-generated: '2026-07-19'
+x-method: generated
+x-source: openapi/laka-platform-openapi.json
+x-notes: 'Captures API Evangelist enrichment on top of the Laka Platform API OpenAPI without mutating
+  the original. Every value below is grounded in Laka published documentation
+  (https://docs.laka.co/docs/regions, /docs/introduction, /docs/glossary) or in the spec itself.
+  Nothing is invented.'
+extends: openapi/laka-platform-openapi.json
+actions:
+- target: $.info
+  update:
+    contact:
+      name: Laka API access
+      url: https://docs.laka.co/docs/request-access
+    x-documentation: https://docs.laka.co/docs/introduction
+    x-status-page: https://status.laka.co
+    x-audience: 'Group partners — organisations to whom Laka issues a Group insurance policy whose
+      benefits are extended to their members and customers.'
+    x-access-model: 'Request-based. Laka issues partner credentials on request rather than through
+      self-service signup.'
+- target: $.servers
+  update:
+  - url: https://api-gb.app.laka.co
+    description: Production (UK)
+  - url: https://api-nl.app.laka.co
+    description: Production (EU)
+  - url: https://api-gb.staging.laka.co
+    description: Staging (UK) — Laka directs partners to use Staging for testing
+  - url: https://api-nl.staging.laka.co
+    description: Staging (EU) — Laka directs partners to use Staging for testing
+  - url: https://api.uat.laka.co
+    description: UAT
+- target: $.tags
+  update:
+  - name: accounts
+    description: Person and account records, external-id lookups and account relationships.
+  - name: claims
+    description: Claims lifecycle — create, update, submit, attach evidence and add internal notes.
+  - name: policies
+    description: Policies, packages, perks, products, beneficiary relationships and policy documents.
+  - name: deeplinks
+    description: Deeplinks that hand a rider into a Laka-hosted journey.
+  - name: reporting
+    description: Permitted claims, policies and invoices, with page-number pagination and
+      updatedFrom/updatedTo incremental filters.
+  - name: quotes
+    description: Quick quote lookup by address on the Platform surface.
+  - name: fleets
+    description: Fleet product claims.
+  - name: tasks
+    description: Outstanding tasks for a given person.
+- target: $.components.securitySchemes['x-api-key']
+  update:
+    description: 'Partner API key sent in the x-api-key header. Issued by Laka per partner on request
+      (https://docs.laka.co/docs/request-access). Note that the Laka Quote API uses a different header
+      (Authorization) for its key.'
+    x-issuance: request-based
+    x-self-service: false
+- target: $.components.schemas.Person.properties.externalId
+  update:
+    x-reconciliation: 'Partner-supplied identifier that Laka stores and echoes back on most responses
+      so partners can reconcile Laka records against their own systems.'
+    x-source: https://docs.laka.co/docs/glossary
+- target: $.components.schemas.Person.properties.userId
+  update:
+    x-guidance: 'One half of Laka authentication pair. Laka documentation advises preferring personId
+      in most cases.'
+    x-source: https://docs.laka.co/docs/glossary

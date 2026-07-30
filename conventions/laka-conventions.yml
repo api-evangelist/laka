@@ -1,0 +1,193 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laka.co/docs/regions
+docs:
+- https://docs.laka.co/docs/introduction
+- https://docs.laka.co/docs/regions
+- https://docs.laka.co/docs/glossary
+derived_from:
+- openapi/laka-platform-openapi.json
+- openapi/laka-quote-openapi.json
+
+transport:
+  https_required: true
+  note: 'Laka states that all traffic and requests must be over HTTPS.'
+  source: https://docs.laka.co/docs/regions
+
+authentication:
+  style: api-key-header
+  platform_api:
+    header: x-api-key
+    scheme: 'x-api-key (OpenAPI apiKey, in: header)'
+  quote_api:
+    header: Authorization
+    scheme: 'api_key_header_Authorization (OpenAPI apiKey, in: header) — an API key passed in the
+      Authorization header, not an OAuth bearer token'
+  documented_request_headers:
+    Content-Type: application/json
+    x-api-region: be
+    x-api-language: nl
+    x-api-key: YOUR_KEY
+    Authorization: YOUR_TOKEN
+  oauth: false
+  scopes: false
+  note: 'Laka is API-key based end to end; there is no OAuth authorization server, no scope surface
+    and no published token endpoint. Access is granted per partner on request.'
+  cross_reference: authentication/laka-authentication.yml
+
+regionalization:
+  required: true
+  note: 'Region is a first-class part of every Laka request. Partners must both call the region-correct
+    host and send the x-api-region header so the insured party is attributed to the correct regulatory
+    region, plus x-api-language to store the customer language preference (which matters in
+    multi-language markets such as Belgium).'
+  host_pattern: https://api-{region}.app.laka.co
+  host_regions:
+  - gb
+  - nl
+  headers:
+  - name: x-api-region
+    required: true
+    description: The API region of your interaction. In most cases this will match the customer region.
+    documented_values: [gb, nl, be, de, fr, dk, at, ie]
+  - name: x-api-language
+    required: true
+    description: Where applicable, the language for any textual content Laka may send to the customer.
+    documented_values: [en, nl, fr, de, dk]
+  documented_permutations:
+  - region: EU
+    country: Belgium
+    x-api-region: be
+    x-api-language: nl
+  - region: EU
+    country: Belgium
+    x-api-region: be
+    x-api-language: fr
+  - region: EU
+    country: Germany
+    x-api-region: de
+    x-api-language: de
+  - region: EU
+    country: France
+    x-api-region: fr
+    x-api-language: fr
+  - region: EU
+    country: Netherlands
+    x-api-region: nl
+    x-api-language: nl
+  - region: EU
+    country: Denmark
+    x-api-region: dk
+    x-api-language: dk
+  - region: EU
+    country: Austria
+    x-api-region: at
+    x-api-language: de
+  - region: EU
+    country: Ireland
+    x-api-region: ie
+    x-api-language: en
+  - region: UK
+    country: United Kingdom
+    x-api-region: gb
+    x-api-language: en
+  source: https://docs.laka.co/docs/regions
+
+pagination:
+  style: page-number
+  applies_to: 'Platform API reporting endpoints (ReportingController_getPermittedClaims,
+    ReportingController_getPermittedPolicies, ReportingController_getPermittedPoliciesWithInvoices)'
+  parameters:
+  - name: page
+    in: query
+  - name: pageSize
+    in: query
+  - name: current
+    in: query
+  incremental_sync:
+  - name: updatedFrom
+    in: query
+    description: Filter to records updated at or after this timestamp.
+  - name: updatedTo
+    in: query
+    description: Filter to records updated at or before this timestamp.
+  - name: useNewUpdatedPaging
+    in: query
+    description: Opt-in flag toggling the newer updated-timestamp paging behaviour on reporting endpoints.
+  method: derived
+  note: 'Not all collection endpoints paginate — pagination parameters appear only on the reporting
+    surface in the published spec.'
+
+identifiers:
+  format: UUID v4
+  external_id:
+    field: externalId
+    description: 'A partner-supplied identifier (CRM ID, internal user ID, or product frame number).
+      Laka stores it and returns it with most API responses so partners can reconcile data against
+      their own systems.'
+    source: https://docs.laka.co/docs/glossary
+  person_id:
+    field: personId
+    description: The Laka profile/account id; roughly represents a customer in the API. Prefer this
+      over userId.
+  user_id:
+    field: userId
+    description: One half of Laka's authentication pair; in most cases prefer personId.
+
+date_time:
+  format: ISO 8601
+  examples:
+  - '2023-01-01T12:00:00Z'
+  - '1990-01-01'
+  audit_fields: [createdAt, updatedAt]
+
+errors:
+  platform_api:
+    documented: false
+    note: 'The published per-operation OpenAPI fragments for the Platform API declare success responses
+      only (200/201/204); the error surface is not documented.'
+  quote_api:
+    media_type: application/vnd.goa.error
+    envelope: Goa error object (fault, id, message, name, temporary, timeout)
+    statuses: [400, 401, 404, 409, 500]
+  rfc9457: false
+  cross_reference: errors/laka-problem-types.yml
+
+file_uploads:
+  pattern: presigned-url
+  flow: 'Claim attachments use a two-step presigned upload: call
+    ClaimsController_createClaimAttachmentUploadLink to obtain a pre-signed URL, PUT the binary file
+    data directly to that URL, then call ClaimsController_createClaimAttachment to confirm the upload.
+    Attachment state is then moved with ClaimsController_updateClaimAttachmentStatus.'
+  bulk: 'Products can be created in bulk from CSV via PolicyController_uploadPolicyProductsCsv, which
+    returns per-row success/error results (RowSuccess / RowError).'
+
+document_delivery:
+  pattern: presigned-url
+  note: 'Policy documents (policy document, insurance sticker, wording, and the Insurance Product
+    Information Document/IPID) are returned as pre-signed URLs rather than inline binaries.'
+  operations:
+  - PolicyController_getPolicyDocument
+  - PolicyController_getPolicyWording
+  - PolicyController_getPolicyIpid
+  - PolicyController_getAllDocuments
+
+versioning:
+  cross_reference: lifecycle/laka-lifecycle.yml
+
+idempotency:
+  supported: false
+  note: 'Laka documents no idempotency key header, no request-replay semantics and no retry guidance
+    in its public developer documentation or in the published OpenAPI. Recorded as absent — no
+    Idempotency pointer is emitted for this provider.'
+
+rate_limiting:
+  documented: false
+  note: 'No rate limits, quota headers or 429 responses are published in the Laka developer
+    documentation or OpenAPI as of this pass.'
+
+request_tracing:
+  documented: false
+  note: 'No correlation/request-id request header is documented. The Quote API error envelope does
+    carry an `id` field described as a unique identifier for that particular occurrence of the
+    problem, which is the only trace handle Laka publishes.'

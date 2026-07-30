@@ -1,0 +1,30 @@
+{
+  "provider": "laka",
+  "sources": [
+    "laka-accounts-api-openapi.yml",
+    "laka-claims-api-openapi.yml",
+    "laka-deeplinks-api-openapi.yml",
+    "laka-fleets-api-openapi.yml",
+    "laka-policies-api-openapi.yml",
+    "laka-quote-api-openapi.yml",
+    "laka-quotes-api-openapi.yml",
+    "laka-reporting-api-openapi.yml",
+    "laka-tasks-api-openapi.yml"
+  ],
+  "outputs": [
+    "laka-accounts-api-openapi.yml",
+    "laka-claims-api-openapi.yml",
+    "laka-deeplinks-api-openapi.yml",
+    "laka-fleets-api-openapi.yml",
+    "laka-policies-api-openapi.yml",
+    "laka-quote-api-openapi.yml",
+    "laka-quotes-api-openapi.yml",
+    "laka-reporting-api-openapi.yml",
+    "laka-tasks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

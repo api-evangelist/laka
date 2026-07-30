@@ -1,0 +1,25 @@
+{
+  "repo": "laka",
+  "feeds": [
+    {
+      "source": "https://laka.co/gb/blog/rss/",
+      "feed_url": "https://laka.co/gb/blog/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://docs.laka.co/docs/request-access",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://laka.co/gb/blog/",
+      "feed_url": "https://laka.co/gb/blog/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 15,
+  "fetched": "2026-07-25T15:00:33Z"
+}

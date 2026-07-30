@@ -1,0 +1,67 @@
+# Laka Documentation
+
+> Documentation for Laka
+
+## Guides
+- [Introduction](https://docs.laka.co/docs/introduction.md)
+- [Glossary](https://docs.laka.co/docs/glossary.md)
+
+## API Reference
+- [Get Claim by ID](https://docs.laka.co/reference/claimscontroller_findone.md): Get a single claim by UUID.
+- [Update Claim](https://docs.laka.co/reference/claimscontroller_update.md): Update the details of an existing claim.
+- [Get All Claims](https://docs.laka.co/reference/claimscontroller_findall.md): Get all the claims you are permitted to view.
+- [Create Claim](https://docs.laka.co/reference/claimscontroller_create.md): Create a new claim against a policy.
+- [Submit Claim](https://docs.laka.co/reference/claimscontroller_submitclaim.md): Submit a claim for processing. It should be called after all necessary information has been provided.
+- [Create Claim Attachment Upload Link](https://docs.laka.co/reference/claimscontroller_createclaimattachmentuploadlink.md): Create an upload link for a claim attachment. The response will contain a pre-signed URL where you are able to PUT the binary file data.
+- [Confirm Claim Attachment Upload](https://docs.laka.co/reference/claimscontroller_createclaimattachment.md): Confirm the upload of a claim attachment. It should be called after the file has been uploaded to the URL provided by the `createClaimAttachmentUploadLink` endpoint.
+- [Update Claim Attachment Status](https://docs.laka.co/reference/claimscontroller_updateclaimattachmentstatus.md): Update the status of a claim attachment.
+- [Add Internal Note to Claim](https://docs.laka.co/reference/claimscontroller_addnotetoclaim.md): Creates an internal note that appears on the claim.
+- [Get Account by ID](https://docs.laka.co/reference/personcontroller_findone.md): Get a single account by UUID.
+- [Get Account by Email](https://docs.laka.co/reference/personcontroller_findbyemail.md): Get a single account by email.
+- [Get Account by External ID](https://docs.laka.co/reference/personcontroller_findbyexternalid.md): Get a single account by external ID.
+- [Create Person](https://docs.laka.co/reference/personcontroller_create.md): Create a new person record.
+- [Update Person](https://docs.laka.co/reference/personcontroller_patchperson.md): Update an existing person record.
+- [Create Relationship](https://docs.laka.co/reference/personcontroller_createaccountrelationship.md): Create a relationship between an account and a person.
+- [Get tasks for a person](https://docs.laka.co/reference/taskscontroller_gettasksbyperson.md): Returns all tasks for the given person ID, ordered by most recent first.
+- [Create Deeplink](https://docs.laka.co/reference/deeplinkscontroller_create.md): Create a new deeplink. Choose a resource to change the purpose of the deeplink.
+- [Get All Deeplinks](https://docs.laka.co/reference/deeplinkscontroller_deeplinks.md): Get all of the deeplinks.
+- [Get Policy by ID](https://docs.laka.co/reference/policycontroller_getpolicybyid.md): Get a single policy by UUID.
+- [Cancel Policy](https://docs.laka.co/reference/policycontroller_cancelpolicy.md): Cancel an active policy.
+- [Create Combined Relationship](https://docs.laka.co/reference/policycontroller_createcombinedrelationship.md): This endpoint can be used in place of performing the create operations individually. It will create/update a person, relationship, and policy products in one request.
+- [Get Package Details](https://docs.laka.co/reference/policycontroller_getpackage.md): Get the details for a single package by UUID.
+- [Get All Global Perks](https://docs.laka.co/reference/policycontroller_getglobalperks.md): Get all the global perks.
+- [Add Products](https://docs.laka.co/reference/policycontroller_postpolicyproducts.md): Create products and associate them with a policy.
+- [Update Products](https://docs.laka.co/reference/policycontroller_patchpolicyproducts.md): Update the products on a policy.
+- [Get Policies](https://docs.laka.co/reference/policycontroller_getpolicies.md): Get all the policies you are permitted to view.
+- [Bulk Add Products](https://docs.laka.co/reference/policycontroller_uploadpolicyproductscsv.md): Create products in bulk from a CSV input and associate them with a policy.
+- [Delete Product](https://docs.laka.co/reference/policycontroller_deletepolicyproduct.md): Delete a product by UUID and dis-associate it from a policy.
+- [Get Policy Document](https://docs.laka.co/reference/policycontroller_getpolicydocument.md): Get a pre-signed URL for a policy document for a person.
+- [Get Policy Wording](https://docs.laka.co/reference/policycontroller_getpolicywording.md): Get the wording for a policy.
+- [Get Policy IPID](https://docs.laka.co/reference/policycontroller_getpolicyipid.md): Get the Insurance Product Information Document (IPID) for a policy.
+- [Get All Policy Documents](https://docs.laka.co/reference/policycontroller_getalldocuments.md): Get all documents for a policy: policy document, insurance sticker, wording, and IPID.
+- [Request Cover](https://docs.laka.co/reference/policycontroller_requestcover.md): Create and activate policies based on quote requirements.
+- [End Policy Relationship](https://docs.laka.co/reference/policycontroller_endpolicyrelationship.md): End the relationship between a person (beneficiary) and a policy. The person and their gear will be removed from the policy and their subscription will be ended.
+- [Get Quick Quote for Address](https://docs.laka.co/reference/quotecontroller_getquickquoteforaddress.md): Get a quick quote for a given postal code based on the user's existing property policy.
+- [Get Claims](https://docs.laka.co/reference/reportingcontroller_getpermittedclaims.md): Get all claims.
+- [Get Policies](https://docs.laka.co/reference/reportingcontroller_getpermittedpolicies.md): Get all policies.
+- [Get Invoices](https://docs.laka.co/reference/reportingcontroller_getpermittedpolicieswithinvoices.md): Get all invoices.
+- [Create Fleet Claim](https://docs.laka.co/reference/fleetcontroller_createfleetclaim.md): Create a claim for fleet product.
+- [getDataRequirements quote](https://docs.laka.co/reference/quotegetdatarequirements.md): Get data requirements for a given packageId
+- [Download ./go/src/laka.co.uk/services/quote-service/v2/openapi3.json](https://docs.laka.co/reference/quoteopenapi3json.md)
+- [getPricing quote](https://docs.laka.co/reference/quotegetpricing.md): Get pricing for a given set of products
+- [getPricingComponents quote](https://docs.laka.co/reference/quotegetpricingcomponents.md): Get pricing components for a given quoteId
+- [quickQuote quote](https://docs.laka.co/reference/quotequickquote.md)
+- [new quote](https://docs.laka.co/reference/quotenew.md): Create a new quote
+- [get quote](https://docs.laka.co/reference/quoteget.md): Get an existing quote
+- [patch quote](https://docs.laka.co/reference/quotepatch.md): Edit a quote with a given ID
+- [edit quote](https://docs.laka.co/reference/quoteedit.md): Edit a quote with a given ID
+- [handoff quote](https://docs.laka.co/reference/quotehandoff.md)
+- [hydrate quote](https://docs.laka.co/reference/quotehydrate.md)
+- [start quote](https://docs.laka.co/reference/quotestart.md)
+- [validationQuote quote](https://docs.laka.co/reference/quotevalidationquote.md): Validate a quote using the data requirements attached to it.
+- [setViewedDataRequirement quote](https://docs.laka.co/reference/quotesetvieweddatarequirement.md): Set a viewed data requirement for a given quoteId
+- [validateDataRequirement quote](https://docs.laka.co/reference/quotevalidatedatarequirement.md): Validate a given response for a data requirement
+- [getViewedDataRequirements quote](https://docs.laka.co/reference/quotegetvieweddatarequirements.md): Get viewed data requirements for a given quoteId
+- [getSteps quote](https://docs.laka.co/reference/quotegetsteps.md): Get steps required to create policies from a hydrated quote
+- [deleteAccessoryChildren quote](https://docs.laka.co/reference/quotedeleteaccessorychildren.md)
+- [deleteProducts quote](https://docs.laka.co/reference/quotedeleteproducts.md)

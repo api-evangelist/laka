@@ -1,0 +1,187 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: openapi/laka-platform-openapi.json, openapi/laka-quote-openapi.json
+notes: Laka publishes no official hosted or remote MCP server as of this pass. The tool list below is
+  a candidate surface derived one-to-one from the published OpenAPI operations. Any implementation must
+  send the x-api-region and x-api-language headers and the region-correct base URL alongside the API key.
+server:
+  name: laka
+  transport: http
+  url: null
+tool_count: 58
+tools:
+- name: personcontroller_create
+  description: Create Person
+  source_operation: openapi/laka-platform-openapi.json#PersonController_create
+- name: personcontroller_findbyemail
+  description: Get Account by Email
+  source_operation: openapi/laka-platform-openapi.json#PersonController_findByEmail
+- name: personcontroller_findbyexternalid
+  description: Get Account by External ID
+  source_operation: openapi/laka-platform-openapi.json#PersonController_findByExternalId
+- name: personcontroller_findone
+  description: Get Account by ID
+  source_operation: openapi/laka-platform-openapi.json#PersonController_findOne
+- name: personcontroller_createaccountrelationship
+  description: Create Relationship
+  source_operation: openapi/laka-platform-openapi.json#PersonController_createAccountRelationship
+- name: personcontroller_patchperson
+  description: Update Person
+  source_operation: openapi/laka-platform-openapi.json#PersonController_patchPerson
+- name: claimscontroller_create
+  description: Create Claim
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_create
+- name: claimscontroller_findall
+  description: Get All Claims
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_findAll
+- name: claimscontroller_createclaimattachmentuploadlink
+  description: Create Claim Attachment Upload Link
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_createClaimAttachmentUploadLink
+- name: claimscontroller_createclaimattachment
+  description: Confirm Claim Attachment Upload
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_createClaimAttachment
+- name: claimscontroller_updateclaimattachmentstatus
+  description: Update Claim Attachment Status
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_updateClaimAttachmentStatus
+- name: claimscontroller_addnotetoclaim
+  description: Add Internal Note to Claim
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_addNoteToClaim
+- name: claimscontroller_submitclaim
+  description: Submit Claim
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_submitClaim
+- name: claimscontroller_findone
+  description: Get Claim by ID
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_findOne
+- name: claimscontroller_update
+  description: Update Claim
+  source_operation: openapi/laka-platform-openapi.json#ClaimsController_update
+- name: deeplinkscontroller_create
+  description: Create Deeplink
+  source_operation: openapi/laka-platform-openapi.json#DeeplinksController_create
+- name: deeplinkscontroller_deeplinks
+  description: Get All Deeplinks
+  source_operation: openapi/laka-platform-openapi.json#DeeplinksController_deeplinks
+- name: fleetcontroller_createfleetclaim
+  description: Create Fleet Claim
+  source_operation: openapi/laka-platform-openapi.json#FleetController_createFleetClaim
+- name: policycontroller_getpolicies
+  description: Get Policies
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getPolicies
+- name: policycontroller_getpackage
+  description: Get Package Details
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getPackage
+- name: policycontroller_getglobalperks
+  description: Get All Global Perks
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getGlobalPerks
+- name: policycontroller_requestcover
+  description: Request Cover
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_requestCover
+- name: policycontroller_cancelpolicy
+  description: Cancel Policy
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_cancelPolicy
+- name: policycontroller_getpolicybyid
+  description: Get Policy by ID
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getPolicyById
+- name: policycontroller_createcombinedrelationship
+  description: Create Combined Relationship
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_createCombinedRelationship
+- name: policycontroller_getpolicyipid
+  description: Get Policy IPID
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getPolicyIpid
+- name: policycontroller_getalldocuments
+  description: Get All Policy Documents
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getAllDocuments
+- name: policycontroller_getpolicydocument
+  description: Get Policy Document
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getPolicyDocument
+- name: policycontroller_patchpolicyproducts
+  description: Update Products
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_patchPolicyProducts
+- name: policycontroller_postpolicyproducts
+  description: Add Products
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_postPolicyProducts
+- name: policycontroller_uploadpolicyproductscsv
+  description: Bulk Add Products
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_uploadPolicyProductsCsv
+- name: policycontroller_deletepolicyproduct
+  description: Delete Product
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_deletePolicyProduct
+- name: policycontroller_endpolicyrelationship
+  description: End Policy Relationship
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_endPolicyRelationship
+- name: policycontroller_getpolicywording
+  description: Get Policy Wording
+  source_operation: openapi/laka-platform-openapi.json#PolicyController_getPolicyWording
+- name: quotecontroller_getquickquoteforaddress
+  description: Get Quick Quote for Address
+  source_operation: openapi/laka-platform-openapi.json#QuoteController_getQuickQuoteForAddress
+- name: reportingcontroller_getpermittedclaims
+  description: Get Claims
+  source_operation: openapi/laka-platform-openapi.json#ReportingController_getPermittedClaims
+- name: reportingcontroller_getpermittedpolicieswithinvoices
+  description: Get Invoices
+  source_operation: openapi/laka-platform-openapi.json#ReportingController_getPermittedPoliciesWithInvoices
+- name: reportingcontroller_getpermittedpolicies
+  description: Get Policies
+  source_operation: openapi/laka-platform-openapi.json#ReportingController_getPermittedPolicies
+- name: taskscontroller_gettasksbyperson
+  description: Get tasks for a person
+  source_operation: openapi/laka-platform-openapi.json#TasksController_getTasksByPerson
+- name: quote_getdatarequirements
+  description: getDataRequirements quote
+  source_operation: openapi/laka-quote-openapi.json#quote#getDataRequirements
+- name: quote_openapi3_json
+  description: Download ./go/src/laka.co.uk/services/quote-service/v2/openapi3.json
+  source_operation: openapi/laka-quote-openapi.json#quote#/openapi3.json
+- name: quote_getpricing
+  description: getPricing quote
+  source_operation: openapi/laka-quote-openapi.json#quote#getPricing
+- name: quote_getpricingcomponents
+  description: getPricingComponents quote
+  source_operation: openapi/laka-quote-openapi.json#quote#getPricingComponents
+- name: quote_quickquote
+  description: quickQuote quote
+  source_operation: openapi/laka-quote-openapi.json#quote#quickQuote
+- name: quote_new
+  description: new quote
+  source_operation: openapi/laka-quote-openapi.json#quote#new
+- name: quote_edit
+  description: edit quote
+  source_operation: openapi/laka-quote-openapi.json#quote#edit
+- name: quote_get
+  description: get quote
+  source_operation: openapi/laka-quote-openapi.json#quote#get
+- name: quote_patch
+  description: patch quote
+  source_operation: openapi/laka-quote-openapi.json#quote#patch
+- name: quote_handoff
+  description: handoff quote
+  source_operation: openapi/laka-quote-openapi.json#quote#handoff
+- name: quote_hydrate
+  description: hydrate quote
+  source_operation: openapi/laka-quote-openapi.json#quote#hydrate
+- name: quote_start
+  description: start quote
+  source_operation: openapi/laka-quote-openapi.json#quote#start
+- name: quote_validationquote
+  description: validationQuote quote
+  source_operation: openapi/laka-quote-openapi.json#quote#validationQuote
+- name: quote_setvieweddatarequirement
+  description: setViewedDataRequirement quote
+  source_operation: openapi/laka-quote-openapi.json#quote#setViewedDataRequirement
+- name: quote_validatedatarequirement
+  description: validateDataRequirement quote
+  source_operation: openapi/laka-quote-openapi.json#quote#validateDataRequirement
+- name: quote_getvieweddatarequirements
+  description: getViewedDataRequirements quote
+  source_operation: openapi/laka-quote-openapi.json#quote#getViewedDataRequirements
+- name: quote_getsteps
+  description: getSteps quote
+  source_operation: openapi/laka-quote-openapi.json#quote#getSteps
+- name: quote_deleteaccessorychildren
+  description: deleteAccessoryChildren quote
+  source_operation: openapi/laka-quote-openapi.json#quote#deleteAccessoryChildren
+- name: quote_deleteproducts
+  description: deleteProducts quote
+  source_operation: openapi/laka-quote-openapi.json#quote#deleteProducts

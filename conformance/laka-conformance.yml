@@ -1,0 +1,83 @@
+generated: '2026-07-19'
+method: derived
+source: openapi/laka-platform-openapi.json, openapi/laka-quote-openapi.json,
+  https://docs.laka.co/docs/regions
+notes: 'Assertions below are grounded strictly in Laka''s published OpenAPI and developer
+  documentation. Laka publishes no trust center, no certification page and no compliance statement on
+  its developer surface, so no certification is asserted. As a European insurance intermediary Laka
+  operates under national financial-conduct regulation, but because Laka does not publish a
+  machine-readable or developer-facing compliance claim, nothing regulatory is asserted here and no
+  Compliance pointer is emitted.'
+
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 'Both APIs publish OpenAPI 3.0.0 documents. Laka renders a per-operation OpenAPI
+    definition on every API reference page and indexes them from https://docs.laka.co/llms.txt.'
+- id: https-tls
+  conforms: true
+  evidence: 'Laka states all traffic and requests must be over HTTPS. Probed hosts return HSTS
+    (strict-transport-security: max-age=31536000; includeSubDomains).'
+- id: rest
+  conforms: true
+  evidence: 'Resource-oriented paths (/v3/policies, /v3/claims, /v3/accounts) with GET/POST/PATCH/PUT/
+    DELETE and JSON payloads.'
+- id: iso-8601
+  conforms: true
+  evidence: 'Date and date-time fields are declared with format: date / date-time and ISO 8601
+    examples (2023-01-01T12:00:00Z).'
+- id: uuid-rfc4122
+  conforms: true
+  evidence: 'Entity identifiers are declared format: uuid and documented as UUID v4.'
+- id: iso-3166-1-alpha-2
+  conforms: true
+  evidence: 'Address.country accepts an ISO 3166-1 alpha-2 code (e.g. GB) or a full country name;
+    x-api-region uses alpha-2 style region codes (gb, nl, be, de, fr, dk, at, ie).'
+- id: api-key-auth
+  conforms: true
+  evidence: 'Both APIs declare apiKey securitySchemes in header — x-api-key on the Platform API,
+    Authorization on the Quote API.'
+- id: oauth2
+  conforms: false
+  evidence: 'No oauth2 securityScheme, authorization server, token endpoint or scope surface is
+    declared in either spec or documented anywhere on the developer site.'
+- id: oidc
+  conforms: false
+  evidence: '/.well-known/openid-configuration returns 404 on every Laka host probed.'
+- id: rfc9457
+  conforms: false
+  evidence: 'No application/problem+json is used. The Quote API returns a Goa error envelope under
+    application/vnd.goa.error; the Platform API documents no error responses at all.'
+- id: idempotency
+  conforms: false
+  evidence: 'No idempotency key header, replay semantics or retry guidance appears in the published
+    OpenAPI or documentation.'
+- id: pagination
+  conforms: partial
+  evidence: 'Page-number pagination (page, pageSize, current) plus updatedFrom/updatedTo incremental
+    filters exist on the Platform reporting endpoints only; other collection endpoints declare no
+    pagination parameters.'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: '/.well-known/security.txt returns 404 on laka.co, docs.laka.co, api-gb.app.laka.co and
+    api.uat.laka.co.'
+- id: rfc8594-sunset
+  conforms: false
+  evidence: 'No Sunset or Deprecation headers and no deprecation policy are documented; no operation
+    is flagged deprecated in the published OpenAPI.'
+- id: asyncapi
+  conforms: false
+  evidence: 'Laka publishes no event, streaming or webhook surface — no webhook documentation appears
+    across any harvested reference or guide page, and no AsyncAPI document is published.'
+- id: well-known-api-catalog
+  conforms: false
+  evidence: '/.well-known/api-catalog returns 404 on every Laka host probed.'
+- id: llms-txt
+  conforms: true
+  evidence: 'Laka publishes https://docs.laka.co/llms.txt indexing every guide and API reference page
+    as Markdown with embedded OpenAPI, and links it from an agent-directed banner on every docs page.'
+
+certifications:
+  published: []
+  note: 'No SOC 2, ISO 27001, PCI DSS or equivalent certification is published on the Laka developer
+    or marketing surface, and trust.laka.co does not resolve.'
