@@ -1,26 +1,259 @@
 aid: laka
 name: Laka
-description: Laka is a company surfaced as a portfolio company of 500-global, creandum and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: 'Laka is a European InsurTech with deep micro-mobility expertise, insuring
+  bikes, e-bikes, e-scooters and cycling gear against theft, accidental damage and
+  loss, and providing riders and businesses with liability and personal accident cover.
+  Laka exposes two partner-facing APIs. The Quote API is a lightweight integration
+  for Introducer partners — retailers, e-commerce stores, bike brands and online communities
+  — that returns pricing to riders, shares rider information to pre-fill onboarding,
+  hands customers directly into Laka onboarding, and checks whether a rider has taken
+  out cover. The Platform API supports Group partnerships where Laka issues the partner
+  a Group policy whose benefits are extended to the partner''s members: partners can
+  list policies, add and remove beneficiaries, manage products and documents, and
+  create, submit and track claims. Both APIs run as regional instances across the
+  UK (gb) and EU (nl), are secured with API keys, and require x-api-region and x-api-language
+  headers so the insured party is attributed to the correct regulatory region.'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://laka.co/favicon.ico
 url: https://raw.githubusercontent.com/api-evangelist/laka/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
 - creandum
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enrichment-pipeline
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Insurance
+- InsurTech
+- Cycling
+- Micro Mobility
+- Bicycle Insurance
+- Claims
+- Policies
+- Quotes
+- Embedded Insurance
+- Europe
+apis:
+- aid: laka:laka-accounts-api
+  name: Laka accounts API
+  description: The accounts API from Laka — 6 operation(s) for accounts.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-claims-api
+  name: Laka claims API
+  description: Claims API
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - claims
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-claims-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-deeplinks-api
+  name: Laka deeplinks API
+  description: The deeplinks API from Laka — 1 operation(s) for deeplinks.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - deeplinks
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-deeplinks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-fleets-api
+  name: Laka fleets API
+  description: The fleets API from Laka — 1 operation(s) for fleets.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - fleets
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-fleets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-policies-api
+  name: Laka policies API
+  description: The policies API from Laka — 14 operation(s) for policies.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - policies
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-policies-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-quote-api
+  name: Laka quote API
+  description: The quote service gets quotes.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - quote
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-quote-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-quotes-api
+  name: Laka quotes API
+  description: The quotes API from Laka — 1 operation(s) for quotes.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-reporting-api
+  name: Laka reporting API
+  description: The reporting API from Laka — 3 operation(s) for reporting.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-reporting-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
+- aid: laka:laka-tasks-api
+  name: Laka tasks API
+  description: The tasks API from Laka — 1 operation(s) for tasks.
+  humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
+  baseURL: https://api-gb.app.laka.co
+  tags:
+  - tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/laka-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.laka.co/docs/introduction
+  - type: APIReference
+    url: https://docs.laka.co/reference/policycontroller_getpolicies
+  - type: APIReference
+    url: https://docs.laka.co/reference/quotenew
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/laka-domain-security.yml
+- type: Authentication
+  url: authentication/laka-authentication.yml
 - type: Website
   url: https://laka.co
+- type: DeveloperPortal
+  url: https://docs.laka.co
+- type: Documentation
+  url: https://docs.laka.co/docs/introduction
+- type: APIReference
+  url: https://docs.laka.co/reference/policycontroller_getpolicies
+- type: GettingStarted
+  url: https://docs.laka.co/docs/introduction
+- type: SignUp
+  url: https://docs.laka.co/docs/request-access
+- type: Support
+  url: https://docs.laka.co/docs/request-access
+- type: Blog
+  url: https://laka.co/gb/blog/
+- type: BlogRSS
+  url: https://laka.co/gb/blog/feed
+- type: TermsOfService
+  url: https://laka.co/gb/terms-of-use
+- type: PrivacyPolicy
+  url: https://laka.co/gb/privacy-policy
+- type: StatusPage
+  url: https://status.laka.co
+- type: Glossary
+  url: https://docs.laka.co/docs/glossary
+- type: LLMsTxt
+  url: llms/laka-llms.txt
+- type: Lifecycle
+  url: lifecycle/laka-lifecycle.yml
+- type: Conventions
+  url: conventions/laka-conventions.yml
+- type: ErrorCatalog
+  url: errors/laka-problem-types.yml
+- type: DataModel
+  url: data-model/laka-data-model.yml
+- type: Conformance
+  url: conformance/laka-conformance.yml
+- type: Sandbox
+  url: sandbox/laka-sandbox.yml
+- type: MCPServer
+  url: mcp/laka-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Overlay
+  url: overlays/laka-platform-overlay.yaml
+- type: Overlay
+  url: overlays/laka-quote-overlay.yaml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
