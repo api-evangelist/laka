@@ -1,0 +1,2399 @@
+{
+  "item": [
+    {
+      "id": "0e66ada0-6f7a-4bf2-9f21-1128bd341570",
+      "name": "policies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cd94e9e2-f1ec-45a5-9cb4-f5506f35401e",
+          "name": "Get Policies",
+          "request": {
+            "name": "Get Policies",
+            "description": {
+              "content": "Get all the policies you are permitted to view.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "97a8be04-0f36-40b2-a3c5-196b9ffaab8c",
+              "name": "All permitted policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rows\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"status\": \"Pending Reactivation\",\n      \"policyReference\": \"string\",\n      \"coverInception\": \"string\",\n      \"coverStart\": \"string\",\n      \"coverEnd\": \"string\",\n      \"cancelled\": false,\n      \"paused\": true,\n      \"inALockIn\": true,\n      \"autoRenew\": false,\n      \"insuredValue\": 7348.628577330033,\n      \"capIncTax\": 7656.594159031811,\n      \"packageName\": \"string\",\n      \"lastPausedOrCancelledAt\": \"string\",\n      \"products\": [\n        {\n          \"serialNumber\": \"string\",\n          \"modelName\": \"string\",\n          \"brand\": \"string\",\n          \"initialValue\": 1763.7318188871243,\n          \"typeName\": \"string\"\n        },\n        {\n          \"serialNumber\": \"string\",\n          \"modelName\": \"string\",\n          \"brand\": \"string\",\n          \"initialValue\": 3101.6166497293284,\n          \"typeName\": \"string\"\n        }\n      ],\n      \"productCount\": 466.7037855399725,\n      \"parsedCoverModules\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"status\": \"Paused\",\n      \"policyReference\": \"string\",\n      \"coverInception\": \"string\",\n      \"coverStart\": \"string\",\n      \"coverEnd\": \"string\",\n      \"cancelled\": false,\n      \"paused\": true,\n      \"inALockIn\": false,\n      \"autoRenew\": true,\n      \"insuredValue\": 3796.1988220517305,\n      \"capIncTax\": 9368.934056352695,\n      \"packageName\": \"string\",\n      \"lastPausedOrCancelledAt\": \"string\",\n      \"products\": [\n        {\n          \"serialNumber\": \"string\",\n          \"modelName\": \"string\",\n          \"brand\": \"string\",\n          \"initialValue\": 483.2497485685605,\n          \"typeName\": \"string\"\n        },\n        {\n          \"serialNumber\": \"string\",\n          \"modelName\": \"string\",\n          \"brand\": \"string\",\n          \"initialValue\": 1308.9014801108467,\n          \"typeName\": \"string\"\n        }\n      ],\n      \"productCount\": 7007.990686862627,\n      \"parsedCoverModules\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"count\": 42\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f71e197-516e-4198-9f25-4ec6209d920a",
+          "name": "Get Package Details",
+          "request": {
+            "name": "Get Package Details",
+            "description": {
+              "content": "Get the details for a single package by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                "packages",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "308731a2-5c28-4d45-be43-9215651ced13",
+              "name": "Get the details of a Package by id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    "packages",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"key\": \"string\",\n  \"description\": \"string\",\n  \"validFrom\": \"string\",\n  \"validTo\": \"string\",\n  \"active\": false,\n  \"durationUnit\": \"string\",\n  \"durationValue\": 2733.396384210176,\n  \"durationPrice\": 9016.858898013204,\n  \"perks\": [\n    {\n      \"policyType\": \"Property\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": false,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 3837.335342580006,\n      \"bitmaskValue\": 5950.519971486556,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    },\n    {\n      \"policyType\": \"Property\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": true,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 5395.850851898886,\n      \"bitmaskValue\": 1767.0013240075089,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"includedPerks\": [\n    {\n      \"policyType\": \"Health\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": true,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 824.5607655640952,\n      \"bitmaskValue\": 4556.098260219209,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    },\n    {\n      \"policyType\": \"Property\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": true,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 8971.457966986814,\n      \"bitmaskValue\": 3177.6082497271286,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"excludedPerks\": [\n    {\n      \"policyType\": \"Property\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": false,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 8426.032583525026,\n      \"bitmaskValue\": 214.98779995664185,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    },\n    {\n      \"policyType\": \"Liability\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": true,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 4614.665747158802,\n      \"bitmaskValue\": 1826.266807893735,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"optionalPerks\": [\n    {\n      \"policyType\": \"Health\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": false,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 5867.790732203532,\n      \"bitmaskValue\": 9412.9282098045,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    },\n    {\n      \"policyType\": \"Property\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"policyDefinition\": \"string\",\n      \"imageUrl\": \"string\",\n      \"global\": true,\n      \"fulfilmentKey\": \"string\",\n      \"value\": 5989.160807305867,\n      \"bitmaskValue\": 7095.417051247359,\n      \"links\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68fb63c0-4d0e-453e-9771-a44aa44469a3",
+          "name": "Get All Global Perks",
+          "request": {
+            "name": "Get All Global Perks",
+            "description": {
+              "content": "Get all the global perks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                "perks",
+                "global"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d8faf01d-aa8c-4386-abf3-cf704f67cb60",
+              "name": "Get all Global Perk records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    "perks",
+                    "global"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"policyType\": \"Property\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"policyDefinition\": \"string\",\n    \"imageUrl\": \"string\",\n    \"global\": false,\n    \"fulfilmentKey\": \"string\",\n    \"value\": 2739.419181201692,\n    \"bitmaskValue\": 4500.4815493940205,\n    \"links\": [\n      {\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"title\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"title\": \"string\"\n      }\n    ]\n  },\n  {\n    \"policyType\": \"Property\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"policyDefinition\": \"string\",\n    \"imageUrl\": \"string\",\n    \"global\": true,\n    \"fulfilmentKey\": \"string\",\n    \"value\": 5205.193121301084,\n    \"bitmaskValue\": 1625.7102858394012,\n    \"links\": [\n      {\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"title\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"url\": \"string\",\n        \"title\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8eae2cc-6aee-4068-a13f-11772ff884da",
+          "name": "Request Cover",
+          "request": {
+            "name": "Request Cover",
+            "description": {
+              "content": "Create and activate policies based on quote requirements.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                "requestCover"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quoteId\": \"<string>\",\n  \"coverStart\": \"<string>\",\n  \"totalPremiumPaid\": \"<number>\",\n  \"isManagedPolicy\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af0cdf76-d4e6-4c77-bbec-13d53fe5086c",
+              "name": "Cover successfully requested",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    "requestCover"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quoteId\": \"<string>\",\n  \"coverStart\": \"<string>\",\n  \"totalPremiumPaid\": \"<number>\",\n  \"isManagedPolicy\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"policies\": [\n    [],\n    []\n  ],\n  \"redirectUrl\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35e05c8b-8a8a-47a3-8917-0108df781a31",
+          "name": "Cancel Policy",
+          "request": {
+            "name": "Cancel Policy",
+            "description": {
+              "content": "Cancel an active policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cancelledReason\": \"<string>\",\n  \"cancelledOn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9a2c40d4-5a80-481e-a484-bd77a80a094f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cancelledReason\": \"<string>\",\n  \"cancelledOn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"policyId\": \"string\",\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc13990a-1347-445d-9ed1-6fc07e917b38",
+          "name": "Get Policy by ID",
+          "request": {
+            "name": "Get Policy by ID",
+            "description": {
+              "content": "Get a single policy by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4b667094-9b71-4dde-9aba-70ef158530da",
+              "name": "Policy Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05e3a746-e057-4cae-8db7-444f24e4a8f0",
+          "name": "Create Combined Relationship",
+          "request": {
+            "name": "Create Combined Relationship",
+            "description": {
+              "content": "This endpoint can be used in place of performing the create operations individually. It will create/update a person, relationship, and policy products in one request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "combined"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"createClaimsDeeplink\": \"<boolean>\",\n  \"person\": {\n    \"type\": \"<string>\",\n    \"relationshipId\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"<string>\",\n      \"streetAddress\": \"<string>\",\n      \"postalTown\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"region\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    \"email\": \"<string>\",\n    \"externalId\": \"<string>\",\n    \"userId\": \"<uuid>\",\n    \"dateOfBirth\": \"<date>\",\n    \"startDate\": \"<date>\",\n    \"endDate\": \"<date>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"products\": {\n    \"products\": [\n      {\n        \"initialValue\": \"<number>\",\n        \"serialNumber\": \"<string>\",\n        \"typeName\": \"<string>\",\n        \"modelName\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"currencyCode\": \"<string>\",\n        \"externalId\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"eBikeType\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"<string>\",\n          \"postalTown\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"country\": \"<string>\"\n        },\n        \"licencePlateNumber\": \"<string>\",\n        \"year\": \"<number>\"\n      },\n      {\n        \"initialValue\": \"<number>\",\n        \"serialNumber\": \"<string>\",\n        \"typeName\": \"<string>\",\n        \"modelName\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"currencyCode\": \"<string>\",\n        \"externalId\": \"<string>\",\n        \"sku\": \"<string>\",\n        \"eBikeType\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"<string>\",\n          \"postalTown\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"country\": \"<string>\"\n        },\n        \"licencePlateNumber\": \"<string>\",\n        \"year\": \"<number>\"\n      }\n    ],\n    \"clothing\": {\n      \"initialValue\": \"<number>\",\n      \"currencyCode\": \"<string>\",\n      \"address\": {\n        \"streetAddress\": \"<string>\",\n        \"postalTown\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      }\n    },\n    \"accessories\": {\n      \"initialValue\": \"<number>\",\n      \"currencyCode\": \"<string>\",\n      \"types\": [\n        {\n          \"type\": \"<string>\",\n          \"brand\": \"<string>\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"brand\": \"<string>\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ea441fb-5b37-43a8-a009-33ce844f31c4",
+              "name": "Successfully created the combined relationship",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "combined"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"createClaimsDeeplink\": \"<boolean>\",\n  \"person\": {\n    \"type\": \"Person\",\n    \"relationshipId\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"123\",\n      \"streetAddress\": \"123 Main St\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"locality\": \"Westminster\",\n      \"region\": \"Greater London\",\n      \"country\": \"United Kingdom\"\n    },\n    \"email\": \"<string>\",\n    \"externalId\": \"CRM_123456\",\n    \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"startDate\": \"2023-01-01\",\n    \"endDate\": \"2023-02-01\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"companyName\": \"<string>\",\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"products\": {\n    \"products\": [\n      {\n        \"initialValue\": 30000,\n        \"serialNumber\": \"<string>\",\n        \"typeName\": \"GravelBike\",\n        \"modelName\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"currencyCode\": \"GBP\",\n        \"externalId\": \"CRM_123456\",\n        \"sku\": \"<string>\",\n        \"eBikeType\": \"assisted\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        },\n        \"licencePlateNumber\": \"<string>\",\n        \"year\": \"<number>\"\n      },\n      {\n        \"initialValue\": 30000,\n        \"serialNumber\": \"<string>\",\n        \"typeName\": \"GravelBike\",\n        \"modelName\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"currencyCode\": \"GBP\",\n        \"externalId\": \"CRM_123456\",\n        \"sku\": \"<string>\",\n        \"eBikeType\": \"assisted\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        },\n        \"licencePlateNumber\": \"<string>\",\n        \"year\": \"<number>\"\n      }\n    ],\n    \"clothing\": {\n      \"initialValue\": 30000,\n      \"currencyCode\": \"GBP\",\n      \"address\": {\n        \"streetAddress\": \"10 Downing Street\",\n        \"postalTown\": \"London\",\n        \"postalCode\": \"SW1A 2AB\",\n        \"country\": \"GB\"\n      }\n    },\n    \"accessories\": {\n      \"initialValue\": 30000,\n      \"currencyCode\": \"GBP\",\n      \"types\": [\n        {\n          \"type\": \"<string>\",\n          \"brand\": \"<string>\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"type\": \"<string>\",\n          \"brand\": \"<string>\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"person\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"type\": \"Person\",\n    \"relationshipId\": \"string\",\n    \"email\": \"string\",\n    \"externalId\": \"CRM_123456\",\n    \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"startDate\": \"2023-01-01\",\n    \"endDate\": \"2023-02-01\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"companyName\": \"string\",\n    \"address\": {\n      \"houseNo\": \"123\",\n      \"streetAddress\": \"123 Main St\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"locality\": \"Westminster\",\n      \"region\": \"Greater London\",\n      \"country\": \"United Kingdom\",\n      \"id\": \"string\"\n    },\n    \"cityOfBirth\": \"string\",\n    \"countryOfBirth\": \"string\",\n    \"telephoneNumber\": \"string\",\n    \"region\": \"string\",\n    \"defaultCurrency\": \"string\"\n  },\n  \"products\": {\n    \"products\": {\n      \"rows\": [\n        {\n          \"productId\": \"string\",\n          \"typeName\": \"string\",\n          \"brand\": \"string\",\n          \"model\": \"string\",\n          \"serialNumber\": \"string\",\n          \"currencyCode\": \"string\",\n          \"initialValue\": 7431.456613570598,\n          \"eBikeType\": \"string\",\n          \"sku\": \"string\",\n          \"licencePlateNumber\": \"string\",\n          \"externalId\": \"string\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"productId\": \"string\",\n          \"typeName\": \"string\",\n          \"brand\": \"string\",\n          \"model\": \"string\",\n          \"serialNumber\": \"string\",\n          \"currencyCode\": \"string\",\n          \"initialValue\": 1177.9540240880492,\n          \"eBikeType\": \"string\",\n          \"sku\": \"string\",\n          \"licencePlateNumber\": \"string\",\n          \"externalId\": \"string\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"count\": 1435.5239639711015\n    },\n    \"clothing\": {\n      \"rows\": [\n        {\n          \"productId\": \"string\",\n          \"typeName\": \"string\",\n          \"brand\": \"string\",\n          \"model\": \"string\",\n          \"serialNumber\": \"string\",\n          \"currencyCode\": \"string\",\n          \"initialValue\": 4882.924735551061,\n          \"eBikeType\": \"string\",\n          \"sku\": \"string\",\n          \"licencePlateNumber\": \"string\",\n          \"externalId\": \"string\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"productId\": \"string\",\n          \"typeName\": \"string\",\n          \"brand\": \"string\",\n          \"model\": \"string\",\n          \"serialNumber\": \"string\",\n          \"currencyCode\": \"string\",\n          \"initialValue\": 2818.5821566548243,\n          \"eBikeType\": \"string\",\n          \"sku\": \"string\",\n          \"licencePlateNumber\": \"string\",\n          \"externalId\": \"string\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"count\": 451.25905585219004\n    },\n    \"accessories\": {\n      \"rows\": [\n        {\n          \"productId\": \"string\",\n          \"typeName\": \"string\",\n          \"brand\": \"string\",\n          \"model\": \"string\",\n          \"serialNumber\": \"string\",\n          \"currencyCode\": \"string\",\n          \"initialValue\": 756.8870136953786,\n          \"eBikeType\": \"string\",\n          \"sku\": \"string\",\n          \"licencePlateNumber\": \"string\",\n          \"externalId\": \"string\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"productId\": \"string\",\n          \"typeName\": \"string\",\n          \"brand\": \"string\",\n          \"model\": \"string\",\n          \"serialNumber\": \"string\",\n          \"currencyCode\": \"string\",\n          \"initialValue\": 339.221959155398,\n          \"eBikeType\": \"string\",\n          \"sku\": \"string\",\n          \"licencePlateNumber\": \"string\",\n          \"externalId\": \"string\",\n          \"address\": {\n            \"streetAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalTown\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"postalCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"count\": 7843.646217347557\n    },\n    \"refutationId\": \"string\"\n  },\n  \"refutationId\": \"string\",\n  \"isNewRecord\": true,\n  \"claimsDeeplink\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b393bb3-3543-485a-b487-1131df504143",
+          "name": "Get Policy IPID",
+          "request": {
+            "name": "Get Policy IPID",
+            "description": {
+              "content": "Get the Insurance Product Information Document (IPID) for a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "ipid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b52bc020-dec7-4a84-8daa-b1346971563b",
+              "name": "IPID document returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "ipid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03f74ad6-d7c2-4a9d-80f3-f249aa56788b",
+          "name": "Get All Policy Documents",
+          "request": {
+            "name": "Get All Policy Documents",
+            "description": {
+              "content": "Get all documents for a policy: policy document, insurance sticker, wording, and IPID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "people",
+                ":personId",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "personId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3f121200-2847-4e89-bdad-2ce74a5e112b",
+              "name": "All policy documents returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "people",
+                    ":personId",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "personId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"string\",\n    \"url\": \"string\"\n  },\n  {\n    \"type\": \"string\",\n    \"url\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccac1251-19e0-4608-9f03-ce364a2a113a",
+          "name": "Get Policy Document",
+          "request": {
+            "name": "Get Policy Document",
+            "description": {
+              "content": "Get a pre-signed URL for a policy document for a person.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "people",
+                ":personId",
+                "policy_document"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "personId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "498d95c0-9f73-43a5-ad8d-7e269bab6ce9",
+              "name": "PreSigned document URL returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "people",
+                    ":personId",
+                    "policy_document"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "personId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73a27acc-9186-45a7-80f1-e907542825a4",
+          "name": "Update Products",
+          "request": {
+            "name": "Update Products",
+            "description": {
+              "content": "Update the products on a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"personId\": \"<string>\",\n  \"products\": [\n    {\n      \"initialValue\": \"<number>\",\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"<string>\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"externalId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"<string>\",\n      \"address\": {\n        \"streetAddress\": \"<string>\",\n        \"postalTown\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    },\n    {\n      \"initialValue\": \"<number>\",\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"<string>\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"externalId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"<string>\",\n      \"address\": {\n        \"streetAddress\": \"<string>\",\n        \"postalTown\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    }\n  ],\n  \"clothing\": {\n    \"initialValue\": \"<number>\",\n    \"currencyCode\": \"<string>\",\n    \"address\": {\n      \"streetAddress\": \"<string>\",\n      \"postalTown\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"accessories\": {\n    \"initialValue\": \"<number>\",\n    \"currencyCode\": \"<string>\",\n    \"types\": [\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"<string>\",\n          \"postalTown\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"country\": \"<string>\"\n        }\n      },\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"<string>\",\n          \"postalTown\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"country\": \"<string>\"\n        }\n      }\n    ]\n  },\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0929403-856a-456e-8b0e-31719e09df34",
+              "name": "PATCH policy products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"personId\": \"<string>\",\n  \"products\": [\n    {\n      \"initialValue\": 30000,\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"GravelBike\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"GBP\",\n      \"externalId\": \"CRM_123456\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"assisted\",\n      \"address\": {\n        \"streetAddress\": \"10 Downing Street\",\n        \"postalTown\": \"London\",\n        \"postalCode\": \"SW1A 2AB\",\n        \"country\": \"GB\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    },\n    {\n      \"initialValue\": 30000,\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"GravelBike\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"GBP\",\n      \"externalId\": \"CRM_123456\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"assisted\",\n      \"address\": {\n        \"streetAddress\": \"10 Downing Street\",\n        \"postalTown\": \"London\",\n        \"postalCode\": \"SW1A 2AB\",\n        \"country\": \"GB\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    }\n  ],\n  \"clothing\": {\n    \"initialValue\": 30000,\n    \"currencyCode\": \"GBP\",\n    \"address\": {\n      \"streetAddress\": \"10 Downing Street\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"country\": \"GB\"\n    }\n  },\n  \"accessories\": {\n    \"initialValue\": 30000,\n    \"currencyCode\": \"GBP\",\n    \"types\": [\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ]\n  },\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": {\n    \"rows\": [\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 302.18496716068574,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 8355.70375503966,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ],\n    \"count\": 4876.323591478202\n  },\n  \"clothing\": {\n    \"rows\": [\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 190.90647723095543,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 9631.593518102072,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ],\n    \"count\": 9999.843917031436\n  },\n  \"accessories\": {\n    \"rows\": [\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 4285.942813041332,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 4805.42808784438,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ],\n    \"count\": 3729.723009058946\n  },\n  \"refutationId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72eaaf00-2a3b-43c3-827e-98ba77a81569",
+          "name": "Add Products",
+          "request": {
+            "name": "Add Products",
+            "description": {
+              "content": "Create products and associate them with a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"personId\": \"<string>\",\n  \"products\": [\n    {\n      \"initialValue\": \"<number>\",\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"<string>\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"externalId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"<string>\",\n      \"address\": {\n        \"streetAddress\": \"<string>\",\n        \"postalTown\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    },\n    {\n      \"initialValue\": \"<number>\",\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"<string>\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"<string>\",\n      \"externalId\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"<string>\",\n      \"address\": {\n        \"streetAddress\": \"<string>\",\n        \"postalTown\": \"<string>\",\n        \"postalCode\": \"<string>\",\n        \"country\": \"<string>\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    }\n  ],\n  \"clothing\": {\n    \"initialValue\": \"<number>\",\n    \"currencyCode\": \"<string>\",\n    \"address\": {\n      \"streetAddress\": \"<string>\",\n      \"postalTown\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  },\n  \"accessories\": {\n    \"initialValue\": \"<number>\",\n    \"currencyCode\": \"<string>\",\n    \"types\": [\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"<string>\",\n          \"postalTown\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"country\": \"<string>\"\n        }\n      },\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"<string>\",\n          \"postalTown\": \"<string>\",\n          \"postalCode\": \"<string>\",\n          \"country\": \"<string>\"\n        }\n      }\n    ]\n  },\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e9519ecc-fc7b-4421-b161-c92d41eea6d6",
+              "name": "POST policy products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"personId\": \"<string>\",\n  \"products\": [\n    {\n      \"initialValue\": 30000,\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"GravelBike\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"GBP\",\n      \"externalId\": \"CRM_123456\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"assisted\",\n      \"address\": {\n        \"streetAddress\": \"10 Downing Street\",\n        \"postalTown\": \"London\",\n        \"postalCode\": \"SW1A 2AB\",\n        \"country\": \"GB\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    },\n    {\n      \"initialValue\": 30000,\n      \"serialNumber\": \"<string>\",\n      \"typeName\": \"GravelBike\",\n      \"modelName\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"currencyCode\": \"GBP\",\n      \"externalId\": \"CRM_123456\",\n      \"sku\": \"<string>\",\n      \"eBikeType\": \"assisted\",\n      \"address\": {\n        \"streetAddress\": \"10 Downing Street\",\n        \"postalTown\": \"London\",\n        \"postalCode\": \"SW1A 2AB\",\n        \"country\": \"GB\"\n      },\n      \"licencePlateNumber\": \"<string>\",\n      \"year\": \"<number>\"\n    }\n  ],\n  \"clothing\": {\n    \"initialValue\": 30000,\n    \"currencyCode\": \"GBP\",\n    \"address\": {\n      \"streetAddress\": \"10 Downing Street\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"country\": \"GB\"\n    }\n  },\n  \"accessories\": {\n    \"initialValue\": 30000,\n    \"currencyCode\": \"GBP\",\n    \"types\": [\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"type\": \"<string>\",\n        \"brand\": \"<string>\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ]\n  },\n  \"startDate\": \"<string>\",\n  \"endDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": {\n    \"rows\": [\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 302.18496716068574,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 8355.70375503966,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ],\n    \"count\": 4876.323591478202\n  },\n  \"clothing\": {\n    \"rows\": [\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 190.90647723095543,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 9631.593518102072,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ],\n    \"count\": 9999.843917031436\n  },\n  \"accessories\": {\n    \"rows\": [\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 4285.942813041332,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      },\n      {\n        \"productId\": \"string\",\n        \"typeName\": \"string\",\n        \"brand\": \"string\",\n        \"model\": \"string\",\n        \"serialNumber\": \"string\",\n        \"currencyCode\": \"string\",\n        \"initialValue\": 4805.42808784438,\n        \"eBikeType\": \"string\",\n        \"sku\": \"string\",\n        \"licencePlateNumber\": \"string\",\n        \"externalId\": \"string\",\n        \"address\": {\n          \"streetAddress\": \"10 Downing Street\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"country\": \"GB\"\n        }\n      }\n    ],\n    \"count\": 3729.723009058946\n  },\n  \"refutationId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "874b2bf2-ead2-46ea-9db5-4c4566d7e12c",
+          "name": "Bulk Add Products",
+          "request": {
+            "name": "Bulk Add Products",
+            "description": {
+              "content": "Create products in bulk from a CSV input and associate them with a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "products",
+                "csv"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) CSV file"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "27b3fabd-a8dd-4f3a-a628-7cab46e5042e",
+              "name": "Upload / update / delete products for a policy from a CSV file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "products",
+                    "csv"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) CSV file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"successes\": [\n    {\n      \"rowNumber\": 9387.172007576952,\n      \"action\": \"string\",\n      \"productId\": \"string\"\n    },\n    {\n      \"rowNumber\": 7210.932338852737,\n      \"action\": \"string\",\n      \"productId\": \"string\"\n    }\n  ],\n  \"errors\": [\n    {\n      \"rowNumber\": 552.3677724052178,\n      \"action\": \"string\",\n      \"error\": \"string\"\n    },\n    {\n      \"rowNumber\": 153.2512067302305,\n      \"action\": \"string\",\n      \"error\": \"string\"\n    }\n  ],\n  \"previews\": [\n    {\n      \"rowNumber\": 8279.088078941122,\n      \"action\": \"string\",\n      \"frame\": \"string\",\n      \"make\": \"string\",\n      \"model\": \"string\",\n      \"value\": \"string\",\n      \"currency\": \"string\"\n    },\n    {\n      \"rowNumber\": 1112.331068888046,\n      \"action\": \"string\",\n      \"frame\": \"string\",\n      \"make\": \"string\",\n      \"model\": \"string\",\n      \"value\": \"string\",\n      \"currency\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a7cff10-3e58-4cbc-8904-b24ed6b7b68b",
+          "name": "Delete Product",
+          "request": {
+            "name": "Delete Product",
+            "description": {
+              "content": "Delete a product by UUID and dis-associate it from a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "products",
+                ":productId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0fea252e-1b2f-4941-bdfc-29ec8993b6fb",
+              "name": "Deleted Product",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0117581-98d7-4fae-b49f-6725c7249a19",
+          "name": "End Policy Relationship",
+          "request": {
+            "name": "End Policy Relationship",
+            "description": {
+              "content": "End the relationship between a person (beneficiary) and a policy. The person and their gear will be removed from the policy and their subscription will be ended.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "relationship",
+                ":personId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "personId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "13aab894-1ff5-4f98-927a-c0228bcb44e2",
+              "name": "The policy relationship has been successfully ended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "relationship",
+                    ":personId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "personId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da4f43a3-44a8-4ac4-a1e2-e86d3deeb0a6",
+          "name": "Get Policy Wording",
+          "request": {
+            "name": "Get Policy Wording",
+            "description": {
+              "content": "Get the wording for a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "policies",
+                ":policyId",
+                "wording"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "policyId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a0d16417-db04-4ff9-976d-c0555572c22b",
+              "name": "Policy wording returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "policies",
+                    ":policyId",
+                    "wording"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "policyId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uat.laka.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a8acbcf9-5ff2-462a-8221-25d51f86f1bb",
+    "name": "Laka accounts policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Laka API (next)",
+      "type": "text/plain"
+    }
+  }
+}

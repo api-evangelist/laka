@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Laka accounts quotes API",
+    "version": "2024-09-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Quick Quote for Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/quotes/quick-quote-for-address",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "postalCode",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a quick quote for a given postal code based on the user's existing property policy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,154 @@
+{
+  "item": [
+    {
+      "id": "ee66abb4-3377-4c31-8646-2cd37dbbde0e",
+      "name": "fleets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a72dc1ba-e3a6-4f64-95c1-8b3e506d764d",
+          "name": "Create Fleet Claim",
+          "request": {
+            "name": "Create Fleet Claim",
+            "description": {
+              "content": "Create a claim for fleet product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "fleets",
+                "claim"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2346c45c-1507-4a62-9806-980d140f2b89",
+              "name": "Creates a fleet claim",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fleets",
+                    "claim"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"claim\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uat.laka.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "06d1aff4-0d2c-435d-b90c-09173bd68c68",
+    "name": "Laka accounts fleets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Laka API (next)",
+      "type": "text/plain"
+    }
+  }
+}

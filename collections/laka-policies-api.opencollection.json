@@ -1,0 +1,585 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Laka accounts policies API",
+    "version": "2024-09-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all the policies you are permitted to view."
+        },
+        {
+          "info": {
+            "name": "Get Package Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies/packages/:id",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the details for a single package by UUID."
+        },
+        {
+          "info": {
+            "name": "Get All Global Perks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies/perks/global",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all the global perks."
+        },
+        {
+          "info": {
+            "name": "Request Cover",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/policies/requestCover",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create and activate policies based on quote requirements."
+        },
+        {
+          "info": {
+            "name": "Get Policy by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a single policy by UUID."
+        },
+        {
+          "info": {
+            "name": "Cancel Policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Cancel an active policy."
+        },
+        {
+          "info": {
+            "name": "Create Combined Relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/combined",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "This endpoint can be used in place of performing the create operations individually. It will create/update a person, relationship, and policy products in one request."
+        },
+        {
+          "info": {
+            "name": "Get Policy IPID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/ipid",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the Insurance Product Information Document (IPID) for a policy."
+        },
+        {
+          "info": {
+            "name": "Get All Policy Documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/people/:personId/documents",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "personId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all documents for a policy: policy document, insurance sticker, wording, and IPID."
+        },
+        {
+          "info": {
+            "name": "Get Policy Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/people/:personId/policy_document",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "personId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a pre-signed URL for a policy document for a person."
+        },
+        {
+          "info": {
+            "name": "Add Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/products",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create products and associate them with a policy."
+        },
+        {
+          "info": {
+            "name": "Update Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/products",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the products on a policy."
+        },
+        {
+          "info": {
+            "name": "Bulk Add Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/products/csv",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create products in bulk from a CSV input and associate them with a policy."
+        },
+        {
+          "info": {
+            "name": "Delete Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/products/:productId",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a product by UUID and dis-associate it from a policy."
+        },
+        {
+          "info": {
+            "name": "End Policy Relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/relationship/:personId",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "personId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "End the relationship between a person (beneficiary) and a policy. The person and their gear will be removed from the policy and their subscription will be ended."
+        },
+        {
+          "info": {
+            "name": "Get Policy Wording",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/policies/:policyId/wording",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "policyId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the wording for a policy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1356 @@
+{
+  "item": [
+    {
+      "id": "5b2a8590-b6f0-48d7-b514-55528ba893a5",
+      "name": "claims",
+      "description": {
+        "content": "Claims API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c04f9c51-8e62-4cf8-9d4f-f956c5e7429c",
+          "name": "Create Claim",
+          "request": {
+            "name": "Create Claim",
+            "description": {
+              "content": "Create a new claim against a policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"personId\": null,\n  \"productIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userId\": \"<uuid>\",\n  \"address\": {\n    \"houseNo\": \"<string>\",\n    \"streetAddress\": \"<string>\",\n    \"postalTown\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"region\": \"<string>\",\n    \"country\": \"<string>\",\n    \"id\": \"<string>\"\n  },\n  \"incidentDate\": \"<string>\",\n  \"policyId\": \"<uuid>\",\n  \"claimType\": \"<string>\",\n  \"incidentDetails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"crimeReferenceNumber\": \"<string>\",\n  \"createClaimDeeplink\": \"<boolean>\",\n  \"person\": {\n    \"id\": \"<uuid>\",\n    \"type\": \"<string>\",\n    \"email\": \"<string>\",\n    \"externalId\": \"<string>\",\n    \"userId\": \"<uuid>\",\n    \"dateOfBirth\": \"<date>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"<string>\",\n      \"streetAddress\": \"<string>\",\n      \"postalTown\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"region\": \"<string>\",\n      \"country\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"private\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21ac423b-56a6-493e-8972-dddfacb66b73",
+              "name": "The created record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n  \"productIds\": [\n    \"21093dc7-ceb2-41d0-84ac-69aa01dbeae4\"\n  ],\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"incidentDate\": \"2024-11-11T12:00:00Z\",\n  \"policyId\": \"<uuid>\",\n  \"claimType\": \"<string>\",\n  \"incidentDetails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"crimeReferenceNumber\": \"CRIME-1000\",\n  \"createClaimDeeplink\": \"<boolean>\",\n  \"person\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"type\": \"Person\",\n    \"email\": \"<string>\",\n    \"externalId\": \"CRM_123456\",\n    \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"companyName\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"123\",\n      \"streetAddress\": \"123 Main St\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"locality\": \"Westminster\",\n      \"region\": \"Greater London\",\n      \"country\": \"United Kingdom\",\n      \"id\": \"<string>\"\n    },\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"private\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n  \"createdAt\": \"2023-01-01T12:00:00Z\",\n  \"updatedAt\": \"2023-01-01T12:00:00Z\",\n  \"claimReference\": \"C-12345\",\n  \"productIds\": [\n    \"21093dc7-ceb2-41d0-84ac-69aa01dbeae4\"\n  ],\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"incidentDate\": \"2024-11-11T12:00:00Z\",\n  \"policyId\": \"d6cdb6ca-2d40-3191-8b90-814b73933a39\",\n  \"claimType\": \"liability\",\n  \"claimStatus\": \"Underwriter Review\",\n  \"incidentDetails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimsDeeplink\": \"string\",\n  \"person\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"type\": \"Person\",\n    \"email\": \"<string>\",\n    \"externalId\": \"CRM_123456\",\n    \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"companyName\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"123\",\n      \"streetAddress\": \"123 Main St\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"locality\": \"Westminster\",\n      \"region\": \"Greater London\",\n      \"country\": \"United Kingdom\",\n      \"id\": \"<string>\"\n    },\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"private\": true,\n  \"crimeReferenceNumber\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c751d635-eb0f-485e-a446-bc6380af7b2d",
+          "name": "Get All Claims",
+          "request": {
+            "name": "Get All Claims",
+            "description": {
+              "content": "Get all the claims you are permitted to view.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "279ad31c-21c1-47e7-b376-483a31ea0c58",
+              "name": "All Valid Claims",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rows\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n      \"createdAt\": \"2023-01-01T12:00:00Z\",\n      \"updatedAt\": \"2023-01-01T12:00:00Z\",\n      \"claimReference\": \"C-12345\",\n      \"productIds\": [\n        \"21093dc7-ceb2-41d0-84ac-69aa01dbeae4\"\n      ],\n      \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"address\": {\n        \"houseNo\": \"123\",\n        \"streetAddress\": \"123 Main St\",\n        \"postalTown\": \"London\",\n        \"postalCode\": \"SW1A 2AB\",\n        \"locality\": \"Westminster\",\n        \"region\": \"Greater London\",\n        \"country\": \"United Kingdom\",\n        \"id\": \"<string>\"\n      },\n      \"incidentDate\": \"2024-11-11T12:00:00Z\",\n      \"policyId\": \"cc19ab30-dc41-94f1-f946-015ec23f74cf\",\n      \"claimType\": \"theft\",\n      \"claimStatus\": \"Underwriter Review\",\n      \"incidentDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"claimsDeeplink\": \"string\",\n      \"person\": {\n        \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"type\": \"Person\",\n        \"email\": \"<string>\",\n        \"externalId\": \"CRM_123456\",\n        \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"dateOfBirth\": \"1990-01-01\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"<string>\",\n        \"address\": {\n          \"houseNo\": \"123\",\n          \"streetAddress\": \"123 Main St\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"locality\": \"Westminster\",\n          \"region\": \"Greater London\",\n          \"country\": \"United Kingdom\",\n          \"id\": \"<string>\"\n        },\n        \"cityOfBirth\": \"<string>\",\n        \"countryOfBirth\": \"<string>\",\n        \"telephoneNumber\": \"<string>\",\n        \"region\": \"<string>\",\n        \"defaultCurrency\": \"<string>\"\n      },\n      \"private\": false,\n      \"crimeReferenceNumber\": \"string\"\n    },\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n      \"createdAt\": \"2023-01-01T12:00:00Z\",\n      \"updatedAt\": \"2023-01-01T12:00:00Z\",\n      \"claimReference\": \"C-12345\",\n      \"productIds\": [\n        \"21093dc7-ceb2-41d0-84ac-69aa01dbeae4\"\n      ],\n      \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"address\": {\n        \"houseNo\": \"123\",\n        \"streetAddress\": \"123 Main St\",\n        \"postalTown\": \"London\",\n        \"postalCode\": \"SW1A 2AB\",\n        \"locality\": \"Westminster\",\n        \"region\": \"Greater London\",\n        \"country\": \"United Kingdom\",\n        \"id\": \"<string>\"\n      },\n      \"incidentDate\": \"2024-11-11T12:00:00Z\",\n      \"policyId\": \"b88cddea-5c8d-7278-53ab-4b401e1b9bcc\",\n      \"claimType\": \"liability\",\n      \"claimStatus\": \"On Hold\",\n      \"incidentDetails\": [\n        \"string\",\n        \"string\"\n      ],\n      \"claimsDeeplink\": \"string\",\n      \"person\": {\n        \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"type\": \"Person\",\n        \"email\": \"<string>\",\n        \"externalId\": \"CRM_123456\",\n        \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n        \"dateOfBirth\": \"1990-01-01\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"companyName\": \"<string>\",\n        \"address\": {\n          \"houseNo\": \"123\",\n          \"streetAddress\": \"123 Main St\",\n          \"postalTown\": \"London\",\n          \"postalCode\": \"SW1A 2AB\",\n          \"locality\": \"Westminster\",\n          \"region\": \"Greater London\",\n          \"country\": \"United Kingdom\",\n          \"id\": \"<string>\"\n        },\n        \"cityOfBirth\": \"<string>\",\n        \"countryOfBirth\": \"<string>\",\n        \"telephoneNumber\": \"<string>\",\n        \"region\": \"<string>\",\n        \"defaultCurrency\": \"<string>\"\n      },\n      \"private\": true,\n      \"crimeReferenceNumber\": \"string\"\n    }\n  ],\n  \"count\": 42\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e96b044c-f384-494c-9662-78733cc4e658",
+          "name": "Create Claim Attachment Upload Link",
+          "request": {
+            "name": "Create Claim Attachment Upload Link",
+            "description": {
+              "content": "Create an upload link for a claim attachment. The response will contain a pre-signed URL where you are able to PUT the binary file data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims",
+                ":claimId",
+                "attachments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "claimId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "06949157-df9e-48e8-8bed-faf0fc9800c8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims",
+                    ":claimId",
+                    "attachments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "claimId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key\": \"claims-service/attachments/12345.zip\",\n  \"url\": \"https://example.com/upload/attachment\",\n  \"attachmentId\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8420d3c-c4b9-4ff7-b03c-85588d91a272",
+          "name": "Confirm Claim Attachment Upload",
+          "request": {
+            "name": "Confirm Claim Attachment Upload",
+            "description": {
+              "content": "Confirm the upload of a claim attachment. It should be called after the file has been uploaded to the URL provided by the `createClaimAttachmentUploadLink` endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims",
+                ":claimId",
+                "attachments",
+                ":attachmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "claimId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "attachmentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileName\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3a40907-399e-44b0-96cc-0fb60e468bbb",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims",
+                    ":claimId",
+                    "attachments",
+                    ":attachmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "claimId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attachmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fileName\": \"<string>\",\n  \"mimeType\": \"<string>\",\n  \"url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5731119d-69d8-4272-b86d-94e10f07c91c",
+          "name": "Update Claim Attachment Status",
+          "request": {
+            "name": "Update Claim Attachment Status",
+            "description": {
+              "content": "Update the status of a claim attachment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims",
+                ":claimId",
+                "attachments",
+                ":attachmentId",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "claimId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "attachmentId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "341bb35c-a3e2-4938-a1fb-8ccb77934594",
+              "name": "Updated attachment status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims",
+                    ":claimId",
+                    "attachments",
+                    ":attachmentId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "claimId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "attachmentId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fefe0c6c-d555-4161-ad2d-0351f73ffbb9",
+          "name": "Add Internal Note to Claim",
+          "request": {
+            "name": "Add Internal Note to Claim",
+            "description": {
+              "content": "Creates an internal note that appears on the claim.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims",
+                ":claimId",
+                "notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "claimId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0250ee39-f7db-4905-9caf-b2966812e291",
+              "name": "The created note",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims",
+                    ":claimId",
+                    "notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "claimId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"claimId\": \"string\",\n  \"note\": \"string\",\n  \"createdAt\": \"string\",\n  \"updatedAt\": \"string\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63bfbc17-db84-4bc0-a452-ae8db3722ffc",
+          "name": "Submit Claim",
+          "request": {
+            "name": "Submit Claim",
+            "description": {
+              "content": "Submit a claim for processing. It should be called after all necessary information has been provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims",
+                ":claimId",
+                "submit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "claimId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3cccf53b-92a6-4841-8112-5981c5587287",
+              "name": "The submitted claim",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims",
+                    ":claimId",
+                    "submit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "claimId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"claimStatus\": \"string\",\n  \"claimReference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96b1d62c-e933-49d5-916f-9c969365ac7a",
+          "name": "Get Claim by ID",
+          "request": {
+            "name": "Get Claim by ID",
+            "description": {
+              "content": "Get a single claim by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ebcd21c7-9017-43ae-bffb-6ba312f7e841",
+              "name": "The found record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n  \"createdAt\": \"2023-01-01T12:00:00Z\",\n  \"updatedAt\": \"2023-01-01T12:00:00Z\",\n  \"claimReference\": \"C-12345\",\n  \"productIds\": [\n    \"21093dc7-ceb2-41d0-84ac-69aa01dbeae4\"\n  ],\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"incidentDate\": \"2024-11-11T12:00:00Z\",\n  \"policyId\": \"c15ab4eb-1082-981f-2c13-433774a986db\",\n  \"claimType\": \"liability\",\n  \"claimStatus\": \"Submitted\",\n  \"incidentDetails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimsDeeplink\": \"string\",\n  \"person\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"type\": \"Person\",\n    \"email\": \"<string>\",\n    \"externalId\": \"CRM_123456\",\n    \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"companyName\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"123\",\n      \"streetAddress\": \"123 Main St\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"locality\": \"Westminster\",\n      \"region\": \"Greater London\",\n      \"country\": \"United Kingdom\",\n      \"id\": \"<string>\"\n    },\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"private\": false,\n  \"crimeReferenceNumber\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b157ed65-98ec-40a2-8b0e-6d4a83bd4585",
+          "name": "Update Claim",
+          "request": {
+            "name": "Update Claim",
+            "description": {
+              "content": "Update the details of an existing claim.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "claims",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"personId\": null,\n  \"productIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"userId\": \"<uuid>\",\n  \"address\": {\n    \"houseNo\": \"<string>\",\n    \"streetAddress\": \"<string>\",\n    \"postalTown\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"region\": \"<string>\",\n    \"country\": \"<string>\",\n    \"id\": \"<string>\"\n  },\n  \"incidentDate\": \"<string>\",\n  \"policyId\": \"<uuid>\",\n  \"claimType\": \"<string>\",\n  \"incidentDetails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"crimeReferenceNumber\": \"<string>\",\n  \"createClaimDeeplink\": \"<boolean>\",\n  \"person\": {\n    \"id\": \"<uuid>\",\n    \"type\": \"<string>\",\n    \"email\": \"<string>\",\n    \"externalId\": \"<string>\",\n    \"userId\": \"<uuid>\",\n    \"dateOfBirth\": \"<date>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"<string>\",\n      \"streetAddress\": \"<string>\",\n      \"postalTown\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"locality\": \"<string>\",\n      \"region\": \"<string>\",\n      \"country\": \"<string>\",\n      \"id\": \"<string>\"\n    },\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"private\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62741329-95ed-427d-adca-5d6b6a500cac",
+              "name": "The updated record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "claims",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n  \"productIds\": [\n    \"21093dc7-ceb2-41d0-84ac-69aa01dbeae4\"\n  ],\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"incidentDate\": \"2024-11-11T12:00:00Z\",\n  \"policyId\": \"<uuid>\",\n  \"claimType\": \"<string>\",\n  \"incidentDetails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"crimeReferenceNumber\": \"CRIME-1000\",\n  \"createClaimDeeplink\": \"<boolean>\",\n  \"person\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"type\": \"Person\",\n    \"email\": \"<string>\",\n    \"externalId\": \"CRM_123456\",\n    \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"companyName\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"123\",\n      \"streetAddress\": \"123 Main St\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"locality\": \"Westminster\",\n      \"region\": \"Greater London\",\n      \"country\": \"United Kingdom\",\n      \"id\": \"<string>\"\n    },\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"private\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n  \"createdAt\": \"2023-01-01T12:00:00Z\",\n  \"updatedAt\": \"2023-01-01T12:00:00Z\",\n  \"claimReference\": \"C-12345\",\n  \"productIds\": [\n    \"21093dc7-ceb2-41d0-84ac-69aa01dbeae4\"\n  ],\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"incidentDate\": \"2024-11-11T12:00:00Z\",\n  \"policyId\": \"a11f93d7-d367-06b6-aafb-54a5f42294c0\",\n  \"claimType\": \"theft\",\n  \"claimStatus\": \"Settled\",\n  \"incidentDetails\": [\n    \"string\",\n    \"string\"\n  ],\n  \"claimsDeeplink\": \"string\",\n  \"person\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"type\": \"Person\",\n    \"email\": \"<string>\",\n    \"externalId\": \"CRM_123456\",\n    \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"dateOfBirth\": \"1990-01-01\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"companyName\": \"<string>\",\n    \"address\": {\n      \"houseNo\": \"123\",\n      \"streetAddress\": \"123 Main St\",\n      \"postalTown\": \"London\",\n      \"postalCode\": \"SW1A 2AB\",\n      \"locality\": \"Westminster\",\n      \"region\": \"Greater London\",\n      \"country\": \"United Kingdom\",\n      \"id\": \"<string>\"\n    },\n    \"cityOfBirth\": \"<string>\",\n    \"countryOfBirth\": \"<string>\",\n    \"telephoneNumber\": \"<string>\",\n    \"region\": \"<string>\",\n    \"defaultCurrency\": \"<string>\"\n  },\n  \"private\": false,\n  \"crimeReferenceNumber\": \"string\",\n  \"completeClaim\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uat.laka.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "72d1f814-e964-4442-a4eb-d2d6010fbb17",
+    "name": "Laka accounts claims API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Laka API (next)",
+      "type": "text/plain"
+    }
+  }
+}

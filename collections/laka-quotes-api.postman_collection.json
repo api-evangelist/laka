@@ -1,0 +1,166 @@
+{
+  "item": [
+    {
+      "id": "145b3ed5-6239-4ebe-8716-173facb9892a",
+      "name": "quotes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80549567-d7e6-4a39-a592-f64151e7a75e",
+          "name": "Get Quick Quote for Address",
+          "request": {
+            "name": "Get Quick Quote for Address",
+            "description": {
+              "content": "Get a quick quote for a given postal code based on the user's existing property policy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "quotes",
+                "quick-quote-for-address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "postalCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "13e6e10c-c57a-404e-8dbc-412cdd79f90f",
+              "name": "Quick quote generated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "quotes",
+                    "quick-quote-for-address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "postalCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"priceDetails\": {\n    \"packageId\": \"string\",\n    \"capPrice\": 7312.3159619008975,\n    \"displayPrice\": 4444.491652914083,\n    \"average\": 6496.523214806941,\n    \"additionalCostsTotal\": 5221.452028913368,\n    \"capIncreasePrc\": \"string\",\n    \"capDecreasePrc\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uat.laka.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "75893b84-455b-4ca1-9128-7aafa46b5e6e",
+    "name": "Laka accounts quotes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Laka API (next)",
+      "type": "text/plain"
+    }
+  }
+}

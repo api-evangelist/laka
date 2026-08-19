@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Laka accounts fleets API",
+    "version": "2024-09-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fleets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Fleet Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/fleets/claim",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a claim for fleet product."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Laka accounts tasks API",
+    "version": "2024-09-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tasks for a person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/tasks/:personId",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "personId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all tasks for the given person ID, ordered by most recent first."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

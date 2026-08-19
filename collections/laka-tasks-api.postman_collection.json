@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "ffb59492-7c3d-48b6-a0d8-28722053cae6",
+      "name": "tasks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "df52fac8-e992-4cc4-9f0e-2c7e796fb0fb",
+          "name": "Get tasks for a person",
+          "request": {
+            "name": "Get tasks for a person",
+            "description": {
+              "content": "Returns all tasks for the given person ID, ordered by most recent first.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "tasks",
+                ":personId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "personId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "f2e080fb-7951-4ae4-89af-24536eeb716b",
+              "name": "List of tasks for the person",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "tasks",
+                    ":personId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "personId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uat.laka.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a4c629fa-f634-48d3-8a5e-a3d360ad40e2",
+    "name": "Laka accounts tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Laka API (next)",
+      "type": "text/plain"
+    }
+  }
+}

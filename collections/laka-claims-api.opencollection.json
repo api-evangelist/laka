@@ -1,0 +1,336 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Laka accounts claims API",
+    "version": "2024-09-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "claims",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Claims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/claims",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all the claims you are permitted to view."
+        },
+        {
+          "info": {
+            "name": "Create Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/claims",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new claim against a policy."
+        },
+        {
+          "info": {
+            "name": "Create Claim Attachment Upload Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/claims/:claimId/attachments",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create an upload link for a claim attachment. The response will contain a pre-signed URL where you are able to PUT the binary file data."
+        },
+        {
+          "info": {
+            "name": "Confirm Claim Attachment Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/claims/:claimId/attachments/:attachmentId",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Confirm the upload of a claim attachment. It should be called after the file has been uploaded to the URL provided by the `createClaimAttachmentUploadLink` endpoint."
+        },
+        {
+          "info": {
+            "name": "Update Claim Attachment Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/claims/:claimId/attachments/:attachmentId/status",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the status of a claim attachment."
+        },
+        {
+          "info": {
+            "name": "Add Internal Note to Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/claims/:claimId/notes",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates an internal note that appears on the claim."
+        },
+        {
+          "info": {
+            "name": "Submit Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/v3/claims/:claimId/submit",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "claimId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Submit a claim for processing. It should be called after all necessary information has been provided."
+        },
+        {
+          "info": {
+            "name": "Get Claim by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/v3/claims/:id",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a single claim by UUID."
+        },
+        {
+          "info": {
+            "name": "Update Claim",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uat.laka.co/v3/claims/:id",
+            "headers": [
+              {
+                "name": "x-api-region",
+                "value": ""
+              },
+              {
+                "name": "x-api-language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "x-api-key",
+              "value": "{{x-api-key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update the details of an existing claim."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

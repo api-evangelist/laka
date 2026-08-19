@@ -185,3 +185,9 @@ tools:
 - name: quote_deleteproducts
   description: deleteProducts quote
   source_operation: openapi/laka-quote-openapi.json#quote#deleteProducts
+deployment:
+  mode: none
+  verified: derived
+  tools: 58
+  checked: '2026-08-12'
+  source: catalog MCP census

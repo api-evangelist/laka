@@ -1,0 +1,367 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Laka accounts quote API",
+    "version": "2024-09-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "quote",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getDataRequirements quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/data_requirements/:packageId",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Package ID"
+              }
+            ]
+          },
+          "docs": "Get data requirements for a given packageId"
+        },
+        {
+          "info": {
+            "name": "Download ./go/src/laka.co.uk/services/quote-service/v2/openapi3.json",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/openapi3.json"
+          },
+          "docs": "Download ./go/src/laka.co.uk/services/quote-service/v2/openapi3.json"
+        },
+        {
+          "info": {
+            "name": "getPricing quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/pricing",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get pricing for a given set of products"
+        },
+        {
+          "info": {
+            "name": "getPricingComponents quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/pricing_components/:quoteId",
+            "params": [
+              {
+                "name": "quoteId",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ]
+          },
+          "docs": "Get pricing components for a given quoteId"
+        },
+        {
+          "info": {
+            "name": "quickQuote quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/quickquote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "quickQuote quote"
+        },
+        {
+          "info": {
+            "name": "new quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/quote",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new quote"
+        },
+        {
+          "info": {
+            "name": "get quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/quote/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ]
+          },
+          "docs": "Get an existing quote"
+        },
+        {
+          "info": {
+            "name": "edit quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.uat.laka.co/quote/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a quote with a given ID"
+        },
+        {
+          "info": {
+            "name": "patch quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.uat.laka.co/quote/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit a quote with a given ID"
+        },
+        {
+          "info": {
+            "name": "handoff quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/quote/:id/handoff",
+            "params": [
+              {
+                "name": "id",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ]
+          },
+          "docs": "handoff quote"
+        },
+        {
+          "info": {
+            "name": "hydrate quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/quote/:id/hydrate",
+            "params": [
+              {
+                "name": "id",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ]
+          },
+          "docs": "hydrate quote"
+        },
+        {
+          "info": {
+            "name": "start quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/quote/:id/start",
+            "params": [
+              {
+                "name": "id",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "start quote"
+        },
+        {
+          "info": {
+            "name": "validationQuote quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/quote/:quoteId/validate",
+            "params": [
+              {
+                "name": "quoteId",
+                "value": "6dedd7ae-bb72-11ee-b81e-acde48001122",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ]
+          },
+          "docs": "Validate a quote using the data requirements attached to it."
+        },
+        {
+          "info": {
+            "name": "setViewedDataRequirement quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/set_viewed_data_requirement",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a viewed data requirement for a given quoteId"
+        },
+        {
+          "info": {
+            "name": "validateDataRequirement quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/validate/:dataRequirementId",
+            "params": [
+              {
+                "name": "dataRequirementId",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Data requirement ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a given response for a data requirement"
+        },
+        {
+          "info": {
+            "name": "getViewedDataRequirements quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.uat.laka.co/viewed_data_requirements",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get viewed data requirements for a given quoteId"
+        },
+        {
+          "info": {
+            "name": "getSteps quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.uat.laka.co/:packageId/steps",
+            "params": [
+              {
+                "name": "packageId",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Package ID"
+              }
+            ]
+          },
+          "docs": "Get steps required to create policies from a hydrated quote"
+        },
+        {
+          "info": {
+            "name": "deleteAccessoryChildren quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uat.laka.co/:quoteId/accessories",
+            "params": [
+              {
+                "name": "quoteId",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ]
+          },
+          "docs": "deleteAccessoryChildren quote"
+        },
+        {
+          "info": {
+            "name": "deleteProducts quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.uat.laka.co/:quoteId/products",
+            "params": [
+              {
+                "name": "quoteId",
+                "value": "61ed878c-fe18-404b-8c31-462d1be4052f",
+                "type": "path",
+                "description": "Quote ID"
+              }
+            ]
+          },
+          "docs": "deleteProducts quote"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

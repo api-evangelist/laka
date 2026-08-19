@@ -1,0 +1,910 @@
+{
+  "item": [
+    {
+      "id": "02f00259-b839-42c2-9659-036d47a564c9",
+      "name": "accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8cbf9a42-70e8-4012-afe8-3cdd7d2b296c",
+          "name": "Create Person",
+          "request": {
+            "name": "Create Person",
+            "description": {
+              "content": "Create a new person record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"email\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"dateOfBirth\": \"<date>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"address\": {\n    \"houseNo\": \"<string>\",\n    \"streetAddress\": \"<string>\",\n    \"postalTown\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"locality\": \"<string>\",\n    \"region\": \"<string>\",\n    \"country\": \"<string>\",\n    \"id\": \"<string>\"\n  },\n  \"cityOfBirth\": \"<string>\",\n  \"countryOfBirth\": \"<string>\",\n  \"telephoneNumber\": \"<string>\",\n  \"region\": \"<string>\",\n  \"defaultCurrency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "60a2c682-6d66-40c1-9fb0-079c3262aa68",
+              "name": "The created record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"Person\",\n  \"email\": \"<string>\",\n  \"externalId\": \"CRM_123456\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"companyName\": \"<string>\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"cityOfBirth\": \"<string>\",\n  \"countryOfBirth\": \"<string>\",\n  \"telephoneNumber\": \"<string>\",\n  \"region\": \"<string>\",\n  \"defaultCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"type\": \"Person\",\n  \"email\": \"string\",\n  \"externalId\": \"CRM_123456\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"companyName\": \"string\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"cityOfBirth\": \"string\",\n  \"countryOfBirth\": \"string\",\n  \"telephoneNumber\": \"string\",\n  \"region\": \"string\",\n  \"defaultCurrency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d758cf2-8282-4b79-b0db-4a74ff81864d",
+          "name": "Get Account by Email",
+          "request": {
+            "name": "Get Account by Email",
+            "description": {
+              "content": "Get a single account by email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "accounts",
+                "email",
+                ":email"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "email",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9ffc6292-2465-45db-822f-534954794997",
+              "name": "The found record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "accounts",
+                    "email",
+                    ":email"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "email",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"type\": \"Person\",\n  \"email\": \"string\",\n  \"externalId\": \"CRM_123456\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"companyName\": \"string\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"cityOfBirth\": \"string\",\n  \"countryOfBirth\": \"string\",\n  \"telephoneNumber\": \"string\",\n  \"region\": \"string\",\n  \"defaultCurrency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "173e0984-8f0f-4b31-8e3c-45a54cef4e03",
+          "name": "Get Account by External ID",
+          "request": {
+            "name": "Get Account by External ID",
+            "description": {
+              "content": "Get a single account by external ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "accounts",
+                "externalId",
+                ":externalId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "externalId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e7f62f85-c16a-4c99-bbc7-f515c53aa8eb",
+              "name": "The found record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "accounts",
+                    "externalId",
+                    ":externalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "externalId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"type\": \"Person\",\n  \"email\": \"string\",\n  \"externalId\": \"CRM_123456\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"companyName\": \"string\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"cityOfBirth\": \"string\",\n  \"countryOfBirth\": \"string\",\n  \"telephoneNumber\": \"string\",\n  \"region\": \"string\",\n  \"defaultCurrency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28e663b9-f3ad-47fd-a824-5cdebe6b9114",
+          "name": "Get Account by ID",
+          "request": {
+            "name": "Get Account by ID",
+            "description": {
+              "content": "Get a single account by UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83779eb3-bb12-4415-85d8-1b4c9841d11d",
+              "name": "The found record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"type\": \"Person\",\n  \"email\": \"string\",\n  \"externalId\": \"CRM_123456\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"companyName\": \"string\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"cityOfBirth\": \"string\",\n  \"countryOfBirth\": \"string\",\n  \"telephoneNumber\": \"string\",\n  \"region\": \"string\",\n  \"defaultCurrency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5744bb47-23d2-429b-8221-b11b981a873f",
+          "name": "Create Relationship",
+          "request": {
+            "name": "Create Relationship",
+            "description": {
+              "content": "Create a relationship between an account and a person.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "accounts",
+                ":accountId",
+                "relationship"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"personId\": \"<string>\",\n  \"relationshipType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73fd8fec-e989-44e1-9231-b6b2d5f733cf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "accounts",
+                    ":accountId",
+                    "relationship"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"personId\": \"<string>\",\n  \"relationshipType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"relationshipId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "667d282b-f9c9-4b61-a97f-d07404e0fa25",
+          "name": "Update Person",
+          "request": {
+            "name": "Update Person",
+            "description": {
+              "content": "Update an existing person record.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "accounts",
+                ":personId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "personId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uuid>\",\n  \"externalId\": \"<string>\",\n  \"userId\": \"<uuid>\",\n  \"dateOfBirth\": \"<date>\",\n  \"type\": \"<string>\",\n  \"address\": \"<object>\",\n  \"email\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"cityOfBirth\": \"<string>\",\n  \"countryOfBirth\": \"<string>\",\n  \"telephoneNumber\": \"<string>\",\n  \"region\": \"<string>\",\n  \"defaultCurrency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e882aca3-fbba-49bb-a4be-62b457cbc464",
+              "name": "The updated record",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "accounts",
+                    ":personId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "personId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"externalId\": \"CRM_123456\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"type\": \"Person\",\n  \"address\": \"<object>\",\n  \"email\": \"<string>\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"companyName\": \"<string>\",\n  \"cityOfBirth\": \"<string>\",\n  \"countryOfBirth\": \"<string>\",\n  \"telephoneNumber\": \"<string>\",\n  \"region\": \"<string>\",\n  \"defaultCurrency\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"type\": \"Person\",\n  \"email\": \"string\",\n  \"externalId\": \"CRM_123456\",\n  \"userId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"dateOfBirth\": \"1990-01-01\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"companyName\": \"string\",\n  \"address\": {\n    \"houseNo\": \"123\",\n    \"streetAddress\": \"123 Main St\",\n    \"postalTown\": \"London\",\n    \"postalCode\": \"SW1A 2AB\",\n    \"locality\": \"Westminster\",\n    \"region\": \"Greater London\",\n    \"country\": \"United Kingdom\",\n    \"id\": \"<string>\"\n  },\n  \"cityOfBirth\": \"string\",\n  \"countryOfBirth\": \"string\",\n  \"telephoneNumber\": \"string\",\n  \"region\": \"string\",\n  \"defaultCurrency\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uat.laka.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d46c4adf-7d4f-4aba-8799-1edae7778e95",
+    "name": "Laka accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Laka API (next)",
+      "type": "text/plain"
+    }
+  }
+}

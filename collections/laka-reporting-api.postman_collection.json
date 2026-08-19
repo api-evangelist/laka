@@ -1,0 +1,614 @@
+{
+  "item": [
+    {
+      "id": "b19e88c6-cd84-4677-a32b-fef9f6702930",
+      "name": "reporting",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d3bb0eb-5806-45b8-ac46-b0d0f3f1ad63",
+          "name": "Get Claims",
+          "request": {
+            "name": "Get Claims",
+            "description": {
+              "content": "Get all claims.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reporting",
+                "claims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updatedFrom",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedTo",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "current",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "policyDetailId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e0d74fc0-3a17-4dae-ae09-bae69dfca4d9",
+              "name": "Returns a list of claims",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reporting",
+                    "claims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updatedFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "current",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "policyDetailId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rows\": [\n    {\n      \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n      \"claimIdentifier\": \"string\",\n      \"policyIdentifier\": \"string\",\n      \"claimStatus\": \"Closed\",\n      \"incidentDate\": \"string\",\n      \"creationDate\": \"string\",\n      \"declarationDate\": \"string\",\n      \"updateDate\": \"string\",\n      \"mainCircumstances\": \"string\",\n      \"claimCountry\": \"string\",\n      \"consequencesClaimant\": \"BI\",\n      \"risks\": [\n        {\n          \"riskIdentifier\": \"string\",\n          \"coverages\": [\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"riskProductMake\": \"string\",\n          \"riskProductModel\": \"string\",\n          \"riskProductType\": \"string\"\n        },\n        {\n          \"riskIdentifier\": \"string\",\n          \"coverages\": [\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"riskProductMake\": \"string\",\n          \"riskProductModel\": \"string\",\n          \"riskProductType\": \"string\"\n        }\n      ],\n      \"totalCurrentExpenseValueIncTax\": \"string\",\n      \"totalCurrentExpenseValueExcTax\": \"string\",\n      \"totalCurrentTravelExpenseValueIncTax\": \"string\",\n      \"totalCurrentTravelExpenseValueExcTax\": \"string\",\n      \"totalCurrentNonTravelExpenseValueIncTax\": \"string\",\n      \"totalCurrentNonTravelExpenseValueExcTax\": \"string\",\n      \"expenses\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"reference\": \"string\",\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"currency\": \"string\",\n          \"currentValueIncTax\": \"string\",\n          \"currentValueExcTax\": \"string\",\n          \"createdAt\": \"string\",\n          \"previousValues\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"reference\": \"string\",\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"currency\": \"string\",\n          \"currentValueIncTax\": \"string\",\n          \"currentValueExcTax\": \"string\",\n          \"createdAt\": \"string\",\n          \"previousValues\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"uniqueReference\": \"string\",\n      \"partnerCountry\": \"string\",\n      \"policyVersionIdentifier\": \"string\",\n      \"commercialClaim\": false,\n      \"policyCustomerType\": \"string\",\n      \"claimReference\": \"string\",\n      \"primaryCoverModule\": \"string\"\n    },\n    {\n      \"personId\": \"7dd76d65-54a1-4166-9c3f-2adf7c8a1e06\",\n      \"claimIdentifier\": \"string\",\n      \"policyIdentifier\": \"string\",\n      \"claimStatus\": \"Settled\",\n      \"incidentDate\": \"string\",\n      \"creationDate\": \"string\",\n      \"declarationDate\": \"string\",\n      \"updateDate\": \"string\",\n      \"mainCircumstances\": \"string\",\n      \"claimCountry\": \"string\",\n      \"consequencesClaimant\": \"MD\",\n      \"risks\": [\n        {\n          \"riskIdentifier\": \"string\",\n          \"coverages\": [\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"riskProductMake\": \"string\",\n          \"riskProductModel\": \"string\",\n          \"riskProductType\": \"string\"\n        },\n        {\n          \"riskIdentifier\": \"string\",\n          \"coverages\": [\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"indemnityCode\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserveType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"coverageIdentifier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deductibleAmount\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reserves\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"expenses\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"riskProductMake\": \"string\",\n          \"riskProductModel\": \"string\",\n          \"riskProductType\": \"string\"\n        }\n      ],\n      \"totalCurrentExpenseValueIncTax\": \"string\",\n      \"totalCurrentExpenseValueExcTax\": \"string\",\n      \"totalCurrentTravelExpenseValueIncTax\": \"string\",\n      \"totalCurrentTravelExpenseValueExcTax\": \"string\",\n      \"totalCurrentNonTravelExpenseValueIncTax\": \"string\",\n      \"totalCurrentNonTravelExpenseValueExcTax\": \"string\",\n      \"expenses\": [\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"reference\": \"string\",\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"currency\": \"string\",\n          \"currentValueIncTax\": \"string\",\n          \"currentValueExcTax\": \"string\",\n          \"createdAt\": \"string\",\n          \"previousValues\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"reference\": \"string\",\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"status\": \"string\",\n          \"currency\": \"string\",\n          \"currentValueIncTax\": \"string\",\n          \"currentValueExcTax\": \"string\",\n          \"createdAt\": \"string\",\n          \"previousValues\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"reference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"category\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueIncTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valueExcTax\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"createdAt\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"uniqueReference\": \"string\",\n      \"partnerCountry\": \"string\",\n      \"policyVersionIdentifier\": \"string\",\n      \"commercialClaim\": true,\n      \"policyCustomerType\": \"string\",\n      \"claimReference\": \"string\",\n      \"primaryCoverModule\": \"string\"\n    }\n  ],\n  \"count\": 42\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2cadec7-84d3-4a17-a62a-95e3e2f150a2",
+          "name": "Get Invoices",
+          "request": {
+            "name": "Get Invoices",
+            "description": {
+              "content": "Get all invoices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reporting",
+                "invoicing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updatedFrom",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedTo",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "current",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "useNewUpdatedPaging",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ef557670-b877-40c0-be42-0d4017bcedc8",
+              "name": "Returns a list of policies with invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reporting",
+                    "invoicing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updatedFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "current",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "useNewUpdatedPaging",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rows\": [\n    {\n      \"currencyCode\": \"GBP\",\n      \"id\": \"string\",\n      \"policyReference\": \"string\",\n      \"personId\": \"string\",\n      \"policyId\": \"string\",\n      \"type\": \"string\",\n      \"cancelled\": true,\n      \"paused\": true,\n      \"coverInception\": \"string\",\n      \"region\": \"string\",\n      \"active\": false,\n      \"coverStart\": \"string\",\n      \"preTaxCap\": \"string\",\n      \"taxes\": [\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        },\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        }\n      ],\n      \"risks\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"capIncTax\": \"string\",\n      \"cap\": \"string\",\n      \"tax\": \"string\",\n      \"taxPct\": \"string\",\n      \"uniqueReference\": \"string\",\n      \"commercial\": false,\n      \"commission\": \"string\",\n      \"netPremium\": \"string\",\n      \"lakaServiceFee\": \"string\",\n      \"daysOnCover\": 4502.135296009802,\n      \"claimsCost\": \"string\",\n      \"totalShare\": \"string\",\n      \"totalClaimsCost\": \"string\",\n      \"claimsLiability\": 1308.152595329447,\n      \"invoiceTotal\": \"string\"\n    },\n    {\n      \"currencyCode\": \"GBP\",\n      \"id\": \"string\",\n      \"policyReference\": \"string\",\n      \"personId\": \"string\",\n      \"policyId\": \"string\",\n      \"type\": \"string\",\n      \"cancelled\": false,\n      \"paused\": false,\n      \"coverInception\": \"string\",\n      \"region\": \"string\",\n      \"active\": true,\n      \"coverStart\": \"string\",\n      \"preTaxCap\": \"string\",\n      \"taxes\": [\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        },\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        }\n      ],\n      \"risks\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"capIncTax\": \"string\",\n      \"cap\": \"string\",\n      \"tax\": \"string\",\n      \"taxPct\": \"string\",\n      \"uniqueReference\": \"string\",\n      \"commercial\": false,\n      \"commission\": \"string\",\n      \"netPremium\": \"string\",\n      \"lakaServiceFee\": \"string\",\n      \"daysOnCover\": 9883.610830234977,\n      \"claimsCost\": \"string\",\n      \"totalShare\": \"string\",\n      \"totalClaimsCost\": \"string\",\n      \"claimsLiability\": 572.6403285285376,\n      \"invoiceTotal\": \"string\"\n    }\n  ],\n  \"count\": 7660.746795623263\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "186e44e8-4dc9-4fff-97e2-cf120903f662",
+          "name": "Get Policies",
+          "request": {
+            "name": "Get Policies",
+            "description": {
+              "content": "Get all policies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "reporting",
+                "policies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updatedFrom",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "updatedTo",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "current",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "useNewUpdatedPaging",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The API region of your interaction. In most cases, this will match the customer region",
+                "key": "x-api-region",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "Where applicable, the language for any textual content we may send to the customer.",
+                "key": "x-api-language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "x-api-key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6519ca60-e683-4a66-a54c-c043c164f6ed",
+              "name": "Returns a list of policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "reporting",
+                    "policies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updatedFrom",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "updatedTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "current",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "useNewUpdatedPaging",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The API region of your interaction. In most cases, this will match the customer region",
+                    "key": "x-api-region",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Where applicable, the language for any textual content we may send to the customer.",
+                    "key": "x-api-language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rows\": [\n    {\n      \"currencyCode\": \"GBP\",\n      \"id\": \"string\",\n      \"policyReference\": \"string\",\n      \"personId\": \"string\",\n      \"policyId\": \"string\",\n      \"type\": \"string\",\n      \"cancelled\": true,\n      \"paused\": true,\n      \"coverInception\": \"string\",\n      \"region\": \"string\",\n      \"active\": false,\n      \"coverStart\": \"string\",\n      \"preTaxCap\": \"string\",\n      \"taxes\": [\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        },\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        }\n      ],\n      \"risks\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"capIncTax\": \"string\",\n      \"cap\": \"string\",\n      \"tax\": \"string\",\n      \"taxPct\": \"string\",\n      \"uniqueReference\": \"string\",\n      \"commercial\": false,\n      \"commission\": \"string\",\n      \"netPremium\": \"string\",\n      \"lakaServiceFee\": \"string\",\n      \"daysOnCover\": 9752.4766690979,\n      \"claimsCost\": \"string\",\n      \"totalShare\": \"string\",\n      \"totalClaimsCost\": \"string\",\n      \"claimsLiability\": 8560.076538931962,\n      \"invoiceTotal\": \"string\"\n    },\n    {\n      \"currencyCode\": \"GBP\",\n      \"id\": \"string\",\n      \"policyReference\": \"string\",\n      \"personId\": \"string\",\n      \"policyId\": \"string\",\n      \"type\": \"string\",\n      \"cancelled\": false,\n      \"paused\": true,\n      \"coverInception\": \"string\",\n      \"region\": \"string\",\n      \"active\": false,\n      \"coverStart\": \"string\",\n      \"preTaxCap\": \"string\",\n      \"taxes\": [\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        },\n        {\n          \"type\": \"IPT\",\n          \"amount\": \"string\"\n        }\n      ],\n      \"risks\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"string\",\n          \"make\": \"string\",\n          \"model\": \"string\",\n          \"value\": \"string\",\n          \"coverages\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"premium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"netPremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"purePremium\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"taxes\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"lakaServiceFee\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"serviceFeePct\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"commission\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"capIncTax\": \"string\",\n      \"cap\": \"string\",\n      \"tax\": \"string\",\n      \"taxPct\": \"string\",\n      \"uniqueReference\": \"string\",\n      \"commercial\": true,\n      \"commission\": \"string\",\n      \"netPremium\": \"string\",\n      \"lakaServiceFee\": \"string\",\n      \"daysOnCover\": 6117.633827622526,\n      \"claimsCost\": \"string\",\n      \"totalShare\": \"string\",\n      \"totalClaimsCost\": \"string\",\n      \"claimsLiability\": 2694.184639554281,\n      \"invoiceTotal\": \"string\"\n    }\n  ],\n  \"count\": 5100.034762013357\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.uat.laka.co",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9eb37903-fff3-4421-80d1-ef0b434094d9",
+    "name": "Laka accounts reporting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Laka API (next)",
+      "type": "text/plain"
+    }
+  }
+}
