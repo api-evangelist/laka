@@ -40,6 +40,18 @@ modified: '2026-07-19'
 tags:
 - Company
 - Insurance
+- Insurtech
+- Cycling
+- Micromobility
+- Bicycle Insurance
+- Claims
+- Policies
+- Quotes
+- Embedded Insurance
+- Europe
+tags_raw:
+- Company
+- Insurance
 - InsurTech
 - Cycling
 - Micro Mobility
@@ -56,6 +68,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Account
+  tags_raw:
   - accounts
   properties:
   - type: OpenAPI
@@ -72,6 +86,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Claims
+  tags_raw:
   - claims
   properties:
   - type: OpenAPI
@@ -88,6 +104,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Deep Links
+  tags_raw:
   - deeplinks
   properties:
   - type: OpenAPI
@@ -104,6 +122,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Fleets
+  tags_raw:
   - fleets
   properties:
   - type: OpenAPI
@@ -120,6 +140,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Policies
+  tags_raw:
   - policies
   properties:
   - type: OpenAPI
@@ -136,6 +158,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Quotes
+  tags_raw:
   - quote
   properties:
   - type: OpenAPI
@@ -152,6 +176,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Quotes
+  tags_raw:
   - quotes
   properties:
   - type: OpenAPI
@@ -168,6 +194,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Reporting
+  tags_raw:
   - reporting
   properties:
   - type: OpenAPI
@@ -184,6 +212,8 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
+  - Task
+  tags_raw:
   - tasks
   properties:
   - type: OpenAPI
