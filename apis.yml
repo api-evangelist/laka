@@ -13,6 +13,18 @@ description: 'Laka is a European InsurTech with deep micro-mobility expertise, i
   create, submit and track claims. Both APIs run as regional instances across the
   UK (gb) and EU (nl), are secured with API keys, and require x-api-region and x-api-language
   headers so the insured party is attributed to the correct regulatory region.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
