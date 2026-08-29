@@ -1,0 +1,67 @@
+slug: laka
+provider: Laka
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Insurance
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: policies
+  spec_file: laka-policies-api-openapi.yml
+  capability_id: BC-2140
+  capability_id_l1: BC-2140
+  capability_name: Policy Administration Management
+  confidence: 0.92
+  evidence: DELETE /v3/policies/{policyId}  PolicyController_cancelPolicy  Cancel Policy; GET /v3/policies/{policyId}/people/{personId}/policy_document  Get
+    Policy Document; POST /v3/policies/requestCover
+  reason: Operations administer in-force insurance contracts — request cover, retrieve policies, cancel
+    policy, add/update covered products, fetch policy documents and IPID. This is Policy Administration
+    Management; it spans issuance, cancellation and document management so no single L2 is named exclusively.
+- tag: quote
+  spec_file: laka-quote-api-openapi.yml
+  capability_id: BC-2110.60
+  capability_id_l1: BC-2110
+  capability_name: Quote & Submission Management
+  confidence: 0.85
+  evidence: POST /quickquote  quickQuote quote; POST /quote  new quote; GET /pricing  getPricing quote;
+    POST /quote/{id}/handoff
+  reason: Partner-facing quote creation, data requirement collection, pricing retrieval and handoff of
+    a quote toward bind — this is quote generation and submission flow into underwriting (Quote & Submission
+    Management).
+- tag: quotes
+  spec_file: laka-quotes-api-openapi.yml
+  capability_id: BC-2110.60
+  capability_id_l1: BC-2110
+  capability_name: Quote & Submission Management
+  confidence: 0.78
+  evidence: GET /v3/quotes/quick-quote-for-address  QuoteController_getQuickQuoteForAddress
+  reason: Single operation returns an indicative insurance quote with PriceDetails for a given address,
+    i.e. quote generation. Only one thin operation, hence moderated confidence.
+- tag: fleets
+  spec_file: laka-fleets-api-openapi.yml
+  capability_id: BC-2160.10
+  capability_id_l1: BC-2160
+  capability_name: First Notice of Loss Management
+  confidence: 0.75
+  evidence: POST /v3/fleets/claim  FleetController_createFleetClaim  Create Fleet Claim
+  reason: The single operation registers a new insurance claim for a fleet, i.e. notification/registration
+    of loss, which is First Notice of Loss intake within Insurance Claims Management. Confidence tempered
+    because only one operation is exposed and no triage/adjustment detail is present.
+- tag: claims
+  spec_file: laka-claims-api-openapi.yml
+  capability_id: BC-2160.10
+  capability_id_l1: BC-2160
+  capability_name: First Notice of Loss Management
+  confidence: 0.72
+  evidence: POST /v3/claims  ClaimsController_create  Create Claim; POST /v3/claims/{claimId}/submit  ClaimsController_submitClaim;
+    POST /v3/claims/{claimId}/attachments  Create Claim Attachment Upload Link
+  reason: 'Partner-facing insurance claim registration: create, update, attach evidence, add internal
+    notes and submit — claim intake/notification of loss for a micro-mobility insurer. L2 FNOL chosen
+    because operations centre on capture and submission rather than adjustment or settlement.'

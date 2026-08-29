@@ -242,6 +242,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/laka-capability-edges.yml
+  name: Laka Business Capability Map
 - type: DomainSecurity
   url: security/laka-domain-security.yml
 - type: Authentication
