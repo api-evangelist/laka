@@ -52,9 +52,9 @@ modified: '2026-07-19'
 tags:
 - Company
 - Insurance
-- Insurtech
+- InsurTech
 - Cycling
-- Micromobility
+- Micro Mobility
 - Bicycle Insurance
 - Claims
 - Policies
@@ -98,7 +98,7 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
-  - Claims
+  - claims
   tags_raw:
   - claims
   properties:
@@ -116,7 +116,7 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
-  - Deep Links
+  - deeplinks
   tags_raw:
   - deeplinks
   properties:
@@ -134,7 +134,7 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
-  - Fleets
+  - fleets
   tags_raw:
   - fleets
   properties:
