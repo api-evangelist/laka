@@ -136,7 +136,7 @@ apis:
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
   tags:
-  - Fleets
+  - Fleet
   tags_raw:
   - fleets
   properties:
