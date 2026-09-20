@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 5
+edge_count: 6
 edges:
 - tag: policies
   spec_file: laka-policies-api-openapi.yml
@@ -54,6 +54,18 @@ edges:
   reason: The single operation registers a new insurance claim for a fleet, i.e. notification/registration
     of loss, which is First Notice of Loss intake within Insurance Claims Management. Confidence tempered
     because only one operation is exposed and no triage/adjustment detail is present.
+- tag: accounts
+  spec_file: laka-accounts-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.72
+  evidence: POST /v3/accounts  PersonController_create  Create Person; GET /v3/accounts/externalId/{externalId}  Get
+    Account by External ID
+  reason: Operations create, look up (by email or external id) and update Person records and relationships
+    — customer master record maintenance and identity resolution, i.e. Customer Data Management. Not authentication
+    (no credentials/tokens in the surface).
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: claims
   spec_file: laka-claims-api-openapi.yml
   capability_id: BC-2160.10
