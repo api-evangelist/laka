@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Laka accounts deeplinks API
+  title: Laka Deeplinks API
   description: Laka API (next)
   version: '2024-09-01'
   contact: {}
@@ -84,21 +84,6 @@ paths:
       - x-api-key: []
 components:
   schemas:
-    DeeplinksResponse:
-      type: object
-      properties:
-        rows:
-          description: List of items in the response
-          type: array
-          items:
-            $ref: '#/components/schemas/Deeplink'
-        count:
-          type: number
-          description: Total count of items
-          example: 42
-      required:
-      - rows
-      - count
     Deeplink:
       type: object
       properties:
@@ -118,6 +103,21 @@ components:
       - slug
       - expiresAt
       - url
+    DeeplinksResponse:
+      type: object
+      properties:
+        rows:
+          description: List of items in the response
+          type: array
+          items:
+            $ref: '#/components/schemas/Deeplink'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
+      required:
+      - rows
+      - count
     CreateDeeplink:
       type: object
       properties:

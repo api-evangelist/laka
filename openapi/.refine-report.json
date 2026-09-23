@@ -1,15 +1,8 @@
 {
   "provider": "laka",
   "sources": [
-    "laka-accounts-api-openapi.yml",
-    "laka-claims-api-openapi.yml",
-    "laka-deeplinks-api-openapi.yml",
-    "laka-fleets-api-openapi.yml",
-    "laka-policies-api-openapi.yml",
-    "laka-quote-api-openapi.yml",
-    "laka-quotes-api-openapi.yml",
-    "laka-reporting-api-openapi.yml",
-    "laka-tasks-api-openapi.yml"
+    "_original/laka-platform-openapi.json",
+    "_original/laka-quote-openapi.json"
   ],
   "outputs": [
     "laka-accounts-api-openapi.yml",
@@ -17,14 +10,36 @@
     "laka-deeplinks-api-openapi.yml",
     "laka-fleets-api-openapi.yml",
     "laka-policies-api-openapi.yml",
-    "laka-quote-api-openapi.yml",
     "laka-quotes-api-openapi.yml",
     "laka-reporting-api-openapi.yml",
-    "laka-tasks-api-openapi.yml"
+    "laka-tasks-api-openapi.yml",
+    "laka-quote-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "laka-platform-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "laka-platform-openapi.json: declared missing tag: accounts",
+    "laka-platform-openapi.json: declared missing tag: deeplinks",
+    "laka-platform-openapi.json: declared missing tag: fleets",
+    "laka-platform-openapi.json: declared missing tag: policies",
+    "laka-platform-openapi.json: declared missing tag: quotes",
+    "laka-platform-openapi.json: declared missing tag: reporting",
+    "laka-platform-openapi.json: declared missing tag: tasks",
+    "laka-quote-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "laka-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-claims-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-deeplinks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-fleets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-policies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-quote-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-reporting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "laka-tasks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

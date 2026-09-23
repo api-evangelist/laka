@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Laka accounts API
+  title: Laka Accounts API
   description: Laka API (next)
   version: '2024-09-01'
   contact: {}
@@ -17,7 +17,7 @@ servers:
       - gb
       default: gb
 tags:
-- name: accounts
+- name: Accounts
 paths:
   /v3/accounts:
     post:
@@ -51,7 +51,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Person'
       tags:
-      - accounts
+      - Accounts
       security:
       - x-api-key: []
   /v3/accounts/email/{email}:
@@ -85,7 +85,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Person'
       tags:
-      - accounts
+      - Accounts
       security:
       - x-api-key: []
   /v3/accounts/externalId/{externalId}:
@@ -119,7 +119,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Person'
       tags:
-      - accounts
+      - Accounts
       security:
       - x-api-key: []
   /v3/accounts/{accountId}:
@@ -153,7 +153,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Person'
       tags:
-      - accounts
+      - Accounts
       security:
       - x-api-key: []
   /v3/accounts/{accountId}/relationship:
@@ -193,7 +193,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Relationship'
       tags:
-      - accounts
+      - Accounts
       security:
       - x-api-key: []
   /v3/accounts/{personId}:
@@ -233,18 +233,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/Person'
       tags:
-      - accounts
+      - Accounts
       security:
       - x-api-key: []
 components:
   schemas:
-    Relationship:
+    CreateAccountRelationshipRequest:
       type: object
       properties:
-        relationshipId:
+        personId:
+          type: string
+        relationshipType:
           type: string
       required:
-      - relationshipId
+      - personId
+      - relationshipType
     Address:
       type: object
       properties:
@@ -278,16 +281,62 @@ components:
           example: United Kingdom
         id:
           type: string
-    CreateAccountRelationshipRequest:
+    CreatePerson:
       type: object
       properties:
-        personId:
+        externalId:
           type: string
-        relationshipType:
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
+          type: string
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
+          type: string
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        address:
+          $ref: '#/components/schemas/Address'
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
+        region:
+          type: string
+        defaultCurrency:
           type: string
       required:
-      - personId
-      - relationshipType
+      - type
+      - email
     Person:
       type: object
       properties:
@@ -350,62 +399,6 @@ components:
       - id
       - type
       - email
-    CreatePerson:
-      type: object
-      properties:
-        externalId:
-          type: string
-          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
-          example: CRM_123456
-        userId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        dateOfBirth:
-          type: string
-          description: Date of birth in ISO 8601 format
-          example: '1990-01-01'
-          format: date
-        type:
-          type: string
-          description: Type of person
-          enum:
-          - Person
-          - Organisation
-          - Rider
-          example: Person
-        email:
-          type: string
-        firstName:
-          type: string
-          description: The first name of the person.
-          example: John
-          maxLength: 100
-        lastName:
-          type: string
-          description: The last name(s) of the person.
-          example: Doe
-        companyName:
-          type: string
-          description: The company name for business entities.
-        address:
-          $ref: '#/components/schemas/Address'
-        cityOfBirth:
-          type: string
-        countryOfBirth:
-          type: string
-        telephoneNumber:
-          type: string
-        region:
-          type: string
-        defaultCurrency:
-          type: string
-      required:
-      - type
-      - email
     UpsertPersonDTO:
       type: object
       properties:
@@ -464,6 +457,13 @@ components:
           type: string
         defaultCurrency:
           type: string
+    Relationship:
+      type: object
+      properties:
+        relationshipId:
+          type: string
+      required:
+      - relationshipId
   securitySchemes:
     x-api-key:
       type: apiKey
