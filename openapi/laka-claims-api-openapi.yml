@@ -346,6 +346,56 @@ paths:
       - x-api-key: []
 components:
   schemas:
+    ClaimsResponse:
+      type: object
+      properties:
+        rows:
+          description: List of items in the response
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
+      required:
+      - rows
+      - count
+    CreateClaimAttachmentUploadLinkResponse:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The upload key for the attachment.  This is an internal identifier but you may use it to reference the attachment in your application.
+          example: claims-service/attachments/12345.zip
+        url:
+          type: string
+          description: The URL to upload the attachment to.  You can PUT the file data directly to this URL. Please call the confirm endpoint afterwards to confirm the upload.
+          example: https://example.com/upload/attachment
+        attachmentId:
+          type: string
+          description: The identifier for the attachment, used to confirm the upload
+          example: 123e4567-e89b-12d3-a456-426614174000
+      required:
+      - key
+      - url
+      - attachmentId
+    EmptyMessage:
+      type: object
+      properties: {}
+    CreateClaimAttachmentRequest:
+      type: object
+      properties:
+        fileName:
+          type: string
+        mimeType:
+          type: string
+        url:
+          type: string
+      required:
+      - fileName
+      - mimeType
+      - url
     Claim:
       type: object
       properties:
@@ -441,6 +491,28 @@ components:
       - updatedAt
       - claimReference
       - productIds
+    SubmitClaimResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        claimStatus:
+          type: string
+        claimReference:
+          type: string
+      required:
+      - id
+      - claimStatus
+      - claimReference
+    CreateClaimNoteRequest:
+      type: object
+      properties:
+        note:
+          type: string
+          maxLength: 3000
+          description: The claim note
+      required:
+      - note
     UpdateClaimResponse:
       type: object
       properties:
@@ -541,6 +613,32 @@ components:
       - updatedAt
       - claimReference
       - productIds
+    CreateClaimNoteResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        id:
+          type: string
+        claimId:
+          type: string
+        note:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - id
+      - claimId
+      - note
+      - createdAt
+      - updatedAt
     Address:
       type: object
       properties:
@@ -574,95 +672,6 @@ components:
           example: United Kingdom
         id:
           type: string
-    CreateClaimAttachmentRequest:
-      type: object
-      properties:
-        fileName:
-          type: string
-        mimeType:
-          type: string
-        url:
-          type: string
-      required:
-      - fileName
-      - mimeType
-      - url
-    CreateClaimNoteResponse:
-      type: object
-      properties:
-        userId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        id:
-          type: string
-        claimId:
-          type: string
-        note:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-      required:
-      - id
-      - claimId
-      - note
-      - createdAt
-      - updatedAt
-    EmptyMessage:
-      type: object
-      properties: {}
-    SubmitClaimResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        claimStatus:
-          type: string
-        claimReference:
-          type: string
-      required:
-      - id
-      - claimStatus
-      - claimReference
-    ClaimsResponse:
-      type: object
-      properties:
-        rows:
-          description: List of items in the response
-          type: array
-          items:
-            $ref: '#/components/schemas/Claim'
-        count:
-          type: number
-          description: Total count of items
-          example: 42
-      required:
-      - rows
-      - count
-    CreateClaimAttachmentUploadLinkResponse:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The upload key for the attachment.  This is an internal identifier but you may use it to reference the attachment in your application.
-          example: claims-service/attachments/12345.zip
-        url:
-          type: string
-          description: The URL to upload the attachment to.  You can PUT the file data directly to this URL. Please call the confirm endpoint afterwards to confirm the upload.
-          example: https://example.com/upload/attachment
-        attachmentId:
-          type: string
-          description: The identifier for the attachment, used to confirm the upload
-          example: 123e4567-e89b-12d3-a456-426614174000
-      required:
-      - key
-      - url
-      - attachmentId
     Person:
       type: object
       properties:
@@ -787,15 +796,6 @@ components:
       required:
       - personId
       - productIds
-    CreateClaimNoteRequest:
-      type: object
-      properties:
-        note:
-          type: string
-          maxLength: 3000
-          description: The claim note
-      required:
-      - note
   securitySchemes:
     x-api-key:
       type: apiKey

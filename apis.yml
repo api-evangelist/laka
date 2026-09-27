@@ -77,7 +77,7 @@ tags_raw:
 - Europe
 apis:
 - aid: laka:laka-accounts-api
-  name: Laka accounts API
+  name: Laka Accounts API
   description: The accounts API from Laka — 6 operation(s) for accounts.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -95,7 +95,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-claims-api
-  name: Laka claims API
+  name: Laka Claims API
   description: Claims API
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -113,7 +113,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-deeplinks-api
-  name: Laka deeplinks API
+  name: Laka Deeplinks API
   description: The deeplinks API from Laka — 1 operation(s) for deeplinks.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -131,7 +131,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-fleets-api
-  name: Laka fleets API
+  name: Laka Fleets API
   description: The fleets API from Laka — 1 operation(s) for fleets.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -149,7 +149,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-policies-api
-  name: Laka policies API
+  name: Laka Policies API
   description: The policies API from Laka — 14 operation(s) for policies.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -167,7 +167,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-quote-api
-  name: Laka quote API
+  name: Laka Quote API
   description: The quote service gets quotes.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -185,7 +185,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-quotes-api
-  name: Laka quotes API
+  name: Laka Quotes API
   description: The quotes API from Laka — 1 operation(s) for quotes.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -203,7 +203,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-reporting-api
-  name: Laka reporting API
+  name: Laka Reporting API
   description: The reporting API from Laka — 3 operation(s) for reporting.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co
@@ -221,7 +221,7 @@ apis:
   - type: APIReference
     url: https://docs.laka.co/reference/quotenew
 - aid: laka:laka-tasks-api
-  name: Laka tasks API
+  name: Laka Tasks API
   description: The tasks API from Laka — 1 operation(s) for tasks.
   humanURL: https://docs.laka.co/reference/policycontroller_getpolicies
   baseURL: https://api-gb.app.laka.co

@@ -213,201 +213,6 @@ paths:
       - x-api-key: []
 components:
   schemas:
-    UnderwriterClaim:
-      type: object
-      properties:
-        personId:
-          type: string
-          description: Identifier to the Claim's beneficiary
-          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
-          default: null
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        claimIdentifier:
-          type: string
-          description: claimId of the Claim
-        policyIdentifier:
-          type: string
-          description: policyId of the Claim
-        claimStatus:
-          type: string
-          description: claimStatus from the ClaimDetail
-          enum:
-          - Created
-          - Incomplete
-          - Submitted
-          - In Progress
-          - On Hold
-          - Underwriter Review
-          - Settled
-          - Rejected
-          - Closed
-        incidentDate:
-          type: string
-          description: incidentDate on ClaimDetail
-        primaryCoverModule:
-          type: string
-          description: CoverModule representing default cost centre of Expense
-        creationDate:
-          type: string
-          description: createdAt on Claim
-        declarationDate:
-          type: string
-          description: submittedAt on Claim
-        updateDate:
-          type: string
-          description: updatedAt on most recent ClaimDetail
-        mainCircumstances:
-          type: string
-          description: claimType
-        claimCountry:
-          type: string
-          description: country from ClaimDetail
-        consequencesClaimant:
-          type: string
-          enum:
-          - MD
-          - BI
-          description: MD if property, BI if H&R
-        risks:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClaimRisk'
-        totalCurrentExpenseValueIncTax:
-          type: string
-          description: Sum of all expenses associated to the claim
-        totalCurrentExpenseValueExcTax:
-          type: string
-          description: Sum of all expenses associated to the claim
-        totalCurrentTravelExpenseValueIncTax:
-          type: string
-          description: Sum of all expenses under travel
-        totalCurrentTravelExpenseValueExcTax:
-          type: string
-          description: Sum of all expenses under travel
-        totalCurrentNonTravelExpenseValueIncTax:
-          type: string
-          description: Sum of all expenses under main cover module
-        totalCurrentNonTravelExpenseValueExcTax:
-          type: string
-          description: Sum of all expenses under main cover module
-        expenses:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReportingClaimExpense'
-        uniqueReference:
-          type: string
-          description: Unique reference for the person/policyId
-        partnerCountry:
-          type: string
-          description: The country of the policy holder
-        policyVersionIdentifier:
-          type: string
-          description: policyDetailId of the Claim
-        commercialClaim:
-          type: boolean
-          description: Whether the claim is from a commercial policy or not
-        policyCustomerType:
-          type: string
-          description: Type of policy the claim is against.
-        claimReference:
-          type: string
-          description: Unique claim reference
-      required:
-      - personId
-      - claimIdentifier
-      - policyIdentifier
-      - claimStatus
-      - incidentDate
-      - creationDate
-      - declarationDate
-      - updateDate
-      - mainCircumstances
-      - claimCountry
-      - consequencesClaimant
-      - risks
-      - totalCurrentExpenseValueIncTax
-      - totalCurrentExpenseValueExcTax
-      - totalCurrentTravelExpenseValueIncTax
-      - totalCurrentTravelExpenseValueExcTax
-      - totalCurrentNonTravelExpenseValueIncTax
-      - totalCurrentNonTravelExpenseValueExcTax
-      - expenses
-      - uniqueReference
-      - partnerCountry
-      - policyVersionIdentifier
-      - commercialClaim
-      - policyCustomerType
-      - claimReference
-    ClaimRiskCoverage:
-      type: object
-      properties:
-        indemnityCode:
-          type: string
-          enum:
-          - MD
-          - BI
-        reserveType:
-          type: string
-          enum:
-          - MD
-          - BI
-        coverageIdentifier:
-          type: string
-        deductibleAmount:
-          type: string
-          description: The valueAtClaim of the product, divided by the number of coverages
-          example: '0.00'
-        reserves:
-          description: A list of all Reserves on a Claim, with financial values split equally among Risks on the Claim
-          type: array
-          items:
-            $ref: '#/components/schemas/ClaimRiskReserve'
-        expenses:
-          description: A list of all non-reserve Expenses on a Claim, with their financial values split equally across Risks on the Claim
-          type: array
-          items:
-            $ref: '#/components/schemas/ClaimRiskExpense'
-      required:
-      - indemnityCode
-      - reserveType
-      - coverageIdentifier
-      - deductibleAmount
-      - reserves
-      - expenses
-    ReportingClaimPreviousExpenseValue:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        reference:
-          type: string
-        category:
-          type: string
-        type:
-          type: string
-        status:
-          type: string
-        valueIncTax:
-          type: string
-        valueExcTax:
-          type: string
-        createdAt:
-          type: string
-          description: ISO 8601 date string
-      required:
-      - id
-      - name
-      - reference
-      - category
-      - type
-      - status
-      - valueIncTax
-      - valueExcTax
-      - createdAt
     ReportingClaimExpense:
       type: object
       properties:
@@ -448,44 +253,6 @@ components:
       - currentValueExcTax
       - createdAt
       - previousValues
-    UnderwriterPermittedPolicyTaxItem:
-      type: object
-      properties:
-        type:
-          type: string
-          example: IPT
-          enum:
-          - IPT
-          - VAT
-        amount:
-          type: string
-      required:
-      - type
-      - amount
-    UnderwriterPermittedPolicyRiskItem:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        make:
-          type: string
-        model:
-          type: string
-        value:
-          type: string
-        coverages:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnderwriterPermittedPolicyCoverageItem'
-      required:
-      - id
-      - type
-      - make
-      - model
-      - value
-      - coverages
     GetUnderwriterPoliciesResponse:
       type: object
       properties:
@@ -549,6 +316,30 @@ components:
       - lakaServiceFee
       - serviceFeePct
       - commission
+    UnderwriterPermittedPolicyRiskItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        value:
+          type: string
+        coverages:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicyCoverageItem'
+      required:
+      - id
+      - type
+      - make
+      - model
+      - value
+      - coverages
     ClaimRiskReserve:
       type: object
       properties:
@@ -683,6 +474,93 @@ components:
       - commercial
       - commission
       - netPremium
+    ClaimRiskCoverage:
+      type: object
+      properties:
+        indemnityCode:
+          type: string
+          enum:
+          - MD
+          - BI
+        reserveType:
+          type: string
+          enum:
+          - MD
+          - BI
+        coverageIdentifier:
+          type: string
+        deductibleAmount:
+          type: string
+          description: The valueAtClaim of the product, divided by the number of coverages
+          example: '0.00'
+        reserves:
+          description: A list of all Reserves on a Claim, with financial values split equally among Risks on the Claim
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskReserve'
+        expenses:
+          description: A list of all non-reserve Expenses on a Claim, with their financial values split equally across Risks on the Claim
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskExpense'
+      required:
+      - indemnityCode
+      - reserveType
+      - coverageIdentifier
+      - deductibleAmount
+      - reserves
+      - expenses
+    ClaimRisk:
+      type: object
+      properties:
+        riskIdentifier:
+          type: string
+          description: productId of the Claim.product
+        riskProductMake:
+          type: string
+        riskProductModel:
+          type: string
+        riskProductType:
+          type: string
+        coverages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskCoverage'
+      required:
+      - riskIdentifier
+      - coverages
+    ReportingClaimPreviousExpenseValue:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        valueIncTax:
+          type: string
+        valueExcTax:
+          type: string
+        createdAt:
+          type: string
+          description: ISO 8601 date string
+      required:
+      - id
+      - name
+      - reference
+      - category
+      - type
+      - status
+      - valueIncTax
+      - valueExcTax
+      - createdAt
     ClaimRiskExpense:
       type: object
       properties:
@@ -733,25 +611,147 @@ components:
       - currentValueIncTax
       - currentValueExcTax
       - createdAt
-    ClaimRisk:
+    UnderwriterClaim:
       type: object
       properties:
-        riskIdentifier:
+        personId:
           type: string
-          description: productId of the Claim.product
-        riskProductMake:
+          description: Identifier to the Claim's beneficiary
+          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
+          default: null
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        claimIdentifier:
           type: string
-        riskProductModel:
+          description: claimId of the Claim
+        policyIdentifier:
           type: string
-        riskProductType:
+          description: policyId of the Claim
+        claimStatus:
           type: string
-        coverages:
+          description: claimStatus from the ClaimDetail
+          enum:
+          - Created
+          - Incomplete
+          - Submitted
+          - In Progress
+          - On Hold
+          - Underwriter Review
+          - Settled
+          - Rejected
+          - Closed
+        incidentDate:
+          type: string
+          description: incidentDate on ClaimDetail
+        primaryCoverModule:
+          type: string
+          description: CoverModule representing default cost centre of Expense
+        creationDate:
+          type: string
+          description: createdAt on Claim
+        declarationDate:
+          type: string
+          description: submittedAt on Claim
+        updateDate:
+          type: string
+          description: updatedAt on most recent ClaimDetail
+        mainCircumstances:
+          type: string
+          description: claimType
+        claimCountry:
+          type: string
+          description: country from ClaimDetail
+        consequencesClaimant:
+          type: string
+          enum:
+          - MD
+          - BI
+          description: MD if property, BI if H&R
+        risks:
           type: array
           items:
-            $ref: '#/components/schemas/ClaimRiskCoverage'
+            $ref: '#/components/schemas/ClaimRisk'
+        totalCurrentExpenseValueIncTax:
+          type: string
+          description: Sum of all expenses associated to the claim
+        totalCurrentExpenseValueExcTax:
+          type: string
+          description: Sum of all expenses associated to the claim
+        totalCurrentTravelExpenseValueIncTax:
+          type: string
+          description: Sum of all expenses under travel
+        totalCurrentTravelExpenseValueExcTax:
+          type: string
+          description: Sum of all expenses under travel
+        totalCurrentNonTravelExpenseValueIncTax:
+          type: string
+          description: Sum of all expenses under main cover module
+        totalCurrentNonTravelExpenseValueExcTax:
+          type: string
+          description: Sum of all expenses under main cover module
+        expenses:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReportingClaimExpense'
+        uniqueReference:
+          type: string
+          description: Unique reference for the person/policyId
+        partnerCountry:
+          type: string
+          description: The country of the policy holder
+        policyVersionIdentifier:
+          type: string
+          description: policyDetailId of the Claim
+        commercialClaim:
+          type: boolean
+          description: Whether the claim is from a commercial policy or not
+        policyCustomerType:
+          type: string
+          description: Type of policy the claim is against.
+        claimReference:
+          type: string
+          description: Unique claim reference
       required:
-      - riskIdentifier
-      - coverages
+      - personId
+      - claimIdentifier
+      - policyIdentifier
+      - claimStatus
+      - incidentDate
+      - creationDate
+      - declarationDate
+      - updateDate
+      - mainCircumstances
+      - claimCountry
+      - consequencesClaimant
+      - risks
+      - totalCurrentExpenseValueIncTax
+      - totalCurrentExpenseValueExcTax
+      - totalCurrentTravelExpenseValueIncTax
+      - totalCurrentTravelExpenseValueExcTax
+      - totalCurrentNonTravelExpenseValueIncTax
+      - totalCurrentNonTravelExpenseValueExcTax
+      - expenses
+      - uniqueReference
+      - partnerCountry
+      - policyVersionIdentifier
+      - commercialClaim
+      - policyCustomerType
+      - claimReference
+    UnderwriterPermittedPolicyTaxItem:
+      type: object
+      properties:
+        type:
+          type: string
+          example: IPT
+          enum:
+          - IPT
+          - VAT
+        amount:
+          type: string
+      required:
+      - type
+      - amount
   securitySchemes:
     x-api-key:
       type: apiKey
