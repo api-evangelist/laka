@@ -346,56 +346,6 @@ paths:
       - x-api-key: []
 components:
   schemas:
-    ClaimsResponse:
-      type: object
-      properties:
-        rows:
-          description: List of items in the response
-          type: array
-          items:
-            $ref: '#/components/schemas/Claim'
-        count:
-          type: number
-          description: Total count of items
-          example: 42
-      required:
-      - rows
-      - count
-    CreateClaimAttachmentUploadLinkResponse:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The upload key for the attachment.  This is an internal identifier but you may use it to reference the attachment in your application.
-          example: claims-service/attachments/12345.zip
-        url:
-          type: string
-          description: The URL to upload the attachment to.  You can PUT the file data directly to this URL. Please call the confirm endpoint afterwards to confirm the upload.
-          example: https://example.com/upload/attachment
-        attachmentId:
-          type: string
-          description: The identifier for the attachment, used to confirm the upload
-          example: 123e4567-e89b-12d3-a456-426614174000
-      required:
-      - key
-      - url
-      - attachmentId
-    EmptyMessage:
-      type: object
-      properties: {}
-    CreateClaimAttachmentRequest:
-      type: object
-      properties:
-        fileName:
-          type: string
-        mimeType:
-          type: string
-        url:
-          type: string
-      required:
-      - fileName
-      - mimeType
-      - url
     Claim:
       type: object
       properties:
@@ -491,6 +441,68 @@ components:
       - updatedAt
       - claimReference
       - productIds
+    Person:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
+          type: string
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
+          type: string
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        address:
+          $ref: '#/components/schemas/Address'
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
+        region:
+          type: string
+        defaultCurrency:
+          type: string
+      required:
+      - id
+      - type
+      - email
     SubmitClaimResponse:
       type: object
       properties:
@@ -504,6 +516,43 @@ components:
       - id
       - claimStatus
       - claimReference
+    ClaimsResponse:
+      type: object
+      properties:
+        rows:
+          description: List of items in the response
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
+      required:
+      - rows
+      - count
+    CreateClaimAttachmentUploadLinkResponse:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The upload key for the attachment.  This is an internal identifier but you may use it to reference the attachment in your application.
+          example: claims-service/attachments/12345.zip
+        url:
+          type: string
+          description: The URL to upload the attachment to.  You can PUT the file data directly to this URL. Please call the confirm endpoint afterwards to confirm the upload.
+          example: https://example.com/upload/attachment
+        attachmentId:
+          type: string
+          description: The identifier for the attachment, used to confirm the upload
+          example: 123e4567-e89b-12d3-a456-426614174000
+      required:
+      - key
+      - url
+      - attachmentId
+    EmptyMessage:
+      type: object
+      properties: {}
     CreateClaimNoteRequest:
       type: object
       properties:
@@ -613,127 +662,6 @@ components:
       - updatedAt
       - claimReference
       - productIds
-    CreateClaimNoteResponse:
-      type: object
-      properties:
-        userId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        id:
-          type: string
-        claimId:
-          type: string
-        note:
-          type: string
-        createdAt:
-          type: string
-        updatedAt:
-          type: string
-      required:
-      - id
-      - claimId
-      - note
-      - createdAt
-      - updatedAt
-    Address:
-      type: object
-      properties:
-        houseNo:
-          type: string
-          description: The house number of the address
-          example: '123'
-        streetAddress:
-          type: string
-          description: The street address - may include the house number in some locales
-          example: 123 Main St
-        postalTown:
-          type: string
-          description: The postal town or city
-          example: London
-        postalCode:
-          type: string
-          description: The postal code
-          example: SW1A 2AB
-        locality:
-          type: string
-          description: The locality or district
-          example: Westminster
-        region:
-          type: string
-          description: The region or state
-          example: Greater London
-        country:
-          type: string
-          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
-          example: United Kingdom
-        id:
-          type: string
-    Person:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-        externalId:
-          type: string
-          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
-          example: CRM_123456
-        userId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        dateOfBirth:
-          type: string
-          description: Date of birth in ISO 8601 format
-          example: '1990-01-01'
-          format: date
-        type:
-          type: string
-          description: Type of person
-          enum:
-          - Person
-          - Organisation
-          - Rider
-          example: Person
-        email:
-          type: string
-        firstName:
-          type: string
-          description: The first name of the person.
-          example: John
-          maxLength: 100
-        lastName:
-          type: string
-          description: The last name(s) of the person.
-          example: Doe
-        companyName:
-          type: string
-          description: The company name for business entities.
-        address:
-          $ref: '#/components/schemas/Address'
-        cityOfBirth:
-          type: string
-        countryOfBirth:
-          type: string
-        telephoneNumber:
-          type: string
-        region:
-          type: string
-        defaultCurrency:
-          type: string
-      required:
-      - id
-      - type
-      - email
     CreateClaim:
       type: object
       properties:
@@ -796,6 +724,78 @@ components:
       required:
       - personId
       - productIds
+    Address:
+      type: object
+      properties:
+        houseNo:
+          type: string
+          description: The house number of the address
+          example: '123'
+        streetAddress:
+          type: string
+          description: The street address - may include the house number in some locales
+          example: 123 Main St
+        postalTown:
+          type: string
+          description: The postal town or city
+          example: London
+        postalCode:
+          type: string
+          description: The postal code
+          example: SW1A 2AB
+        locality:
+          type: string
+          description: The locality or district
+          example: Westminster
+        region:
+          type: string
+          description: The region or state
+          example: Greater London
+        country:
+          type: string
+          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
+          example: United Kingdom
+        id:
+          type: string
+    CreateClaimAttachmentRequest:
+      type: object
+      properties:
+        fileName:
+          type: string
+        mimeType:
+          type: string
+        url:
+          type: string
+      required:
+      - fileName
+      - mimeType
+      - url
+    CreateClaimNoteResponse:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        id:
+          type: string
+        claimId:
+          type: string
+        note:
+          type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+      required:
+      - id
+      - claimId
+      - note
+      - createdAt
+      - updatedAt
   securitySchemes:
     x-api-key:
       type: apiKey

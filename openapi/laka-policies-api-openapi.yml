@@ -601,235 +601,6 @@ paths:
       - x-api-key: []
 components:
   schemas:
-    BaseAddressFields:
-      type: object
-      properties:
-        houseNo:
-          type: string
-          description: The house number of the address
-          example: '123'
-        streetAddress:
-          type: string
-          description: The street address - may include the house number in some locales
-          example: 123 Main St
-        postalTown:
-          type: string
-          description: The postal town or city
-          example: London
-        postalCode:
-          type: string
-          description: The postal code
-          example: SW1A 2AB
-        locality:
-          type: string
-          description: The locality or district
-          example: Westminster
-        region:
-          type: string
-          description: The region or state
-          example: Greater London
-        country:
-          type: string
-          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
-          example: United Kingdom
-    RequestCoverResponse:
-      type: object
-      properties:
-        policies:
-          items:
-            type: array
-          type: array
-        redirectUrl:
-          type: string
-      required:
-      - policies
-      - redirectUrl
-    AccessoryType:
-      type: object
-      properties:
-        type:
-          enum:
-          - Gloves
-          - Bike Alarm
-          - Action Camera
-          - Bike Computer
-          - Bike Rack
-          - Fitness Watch
-          - Goggles/Glasses
-          - GPS
-          - Lock
-          - Water Bottle
-          - Bags
-          - Basket
-          - Bell
-          - Bike Box
-          - Bike Covers
-          - Body Armour
-          - Charger
-          - Child Seat
-          - Cycle Mirrors
-          - Drawbar
-          - Facemask
-          - Frame Protectors
-          - Heart Rate Monitor
-          - Helmet
-          - Hydration Pack
-          - Light
-          - Mount
-          - Mudguards
-          - Neck Brace
-          - Pannier
-          - Pannier Rack
-          - Pump
-          - Repair kit
-          - Shoes
-          - Stand
-          - Stickers
-          - Tools
-          - Trailer
-          - Water Bottle Cage
-          - Wetsuit
-          - Workstand
-          - Battery Lock
-          type: string
-          description: Type of accessory
-        brand:
-          type: string
-          description: Brand of the accessory
-        address:
-          $ref: '#/components/schemas/ProductAddress'
-      required:
-      - type
-    CombinedProduct:
-      type: object
-      properties:
-        externalId:
-          type: string
-          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
-          example: CRM_123456
-        initialValue:
-          type: number
-          minimum: 30000
-          maximum: 1500000
-          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
-          example: 30000
-        serialNumber:
-          type: string
-          description: Serial number of the product
-        typeName:
-          enum:
-          - GravelBike
-          - Recumbent
-          - Mountain
-          - Folding
-          - FixedGear
-          - CityBike
-          - Cargo
-          - Cyclocross
-          - Hybrid
-          - TT
-          - Road
-          - Touring
-          - BMXBike
-          - FatBike
-          type: string
-          description: Type of the bike
-          example: GravelBike
-        sku:
-          type: string
-          description: Stock keeping unit identifier
-        modelName:
-          type: string
-          description: Model name of the product
-        brand:
-          type: string
-          description: Brand name of the product
-        currencyCode:
-          type: string
-          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
-          example: GBP
-        eBikeType:
-          type: string
-          description: Specifies the eBike classification. If not provided, the bike is considered non-electric.
-          example: assisted
-        address:
-          $ref: '#/components/schemas/ProductAddress'
-        licencePlateNumber:
-          type: string
-          description: Required for Third Party Liability policies
-        year:
-          type: number
-          description: Purchase year of the product
-      required:
-      - initialValue
-      - serialNumber
-      - typeName
-      - modelName
-      - brand
-      - currencyCode
-    PerkLinkResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        url:
-          type: string
-        title:
-          type: string
-      required:
-      - id
-      - url
-      - title
-    UpsertedProductItems:
-      type: object
-      properties:
-        rows:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpsertedProductRow'
-        count:
-          type: number
-      required:
-      - rows
-      - count
-    GetPolicyIpidResponse:
-      type: object
-      properties:
-        url:
-          type: string
-      required:
-      - url
-    RowError:
-      type: object
-      properties:
-        rowNumber:
-          type: number
-        action:
-          type: string
-        error:
-          type: string
-      required:
-      - rowNumber
-      - action
-      - error
-    CreateCombinedRelationshipResponse:
-      type: object
-      properties:
-        person:
-          $ref: '#/components/schemas/CombinedPersonResponse'
-        products:
-          $ref: '#/components/schemas/UpsertPolicyProductsResponse'
-        refutationId:
-          type: string
-        claimsDeeplink:
-          type: string
-        isNewRecord:
-          type: boolean
-      required:
-      - person
-      - products
-      - refutationId
-      - isNewRecord
     PreviewItem:
       type: object
       properties:
@@ -855,6 +626,181 @@ components:
       - model
       - value
       - currency
+    GetPolicyWordingResponse:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    UploadProductCsvResponse:
+      type: object
+      properties:
+        successes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RowSuccess'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RowError'
+        previews:
+          type: array
+          items:
+            $ref: '#/components/schemas/PreviewItem'
+      required:
+      - successes
+      - errors
+      - previews
+    RequestCoverResponse:
+      type: object
+      properties:
+        policies:
+          items:
+            type: array
+          type: array
+        redirectUrl:
+          type: string
+      required:
+      - policies
+      - redirectUrl
+    Accessory:
+      type: object
+      properties:
+        initialValue:
+          type: number
+          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
+          example: 30000
+          minimum: 0
+          maximum: 1500000
+        currencyCode:
+          type: string
+          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
+          example: GBP
+        types:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccessoryType'
+      required:
+      - initialValue
+      - currencyCode
+      - types
+    Clothing:
+      type: object
+      properties:
+        initialValue:
+          type: number
+          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
+          example: 30000
+          minimum: 0
+          maximum: 1500000
+        currencyCode:
+          type: string
+          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
+          example: GBP
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+      required:
+      - initialValue
+      - currencyCode
+    UploadProductCsvRequest:
+      type: object
+      properties:
+        file:
+          type: string
+          format: binary
+          description: CSV file
+      required:
+      - file
+    PerkResponse:
+      type: object
+      properties:
+        policyType:
+          type: string
+          enum:
+          - Property
+          - Liability
+          - Health
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        policyDefinition:
+          type:
+          - string
+          - 'null'
+        imageUrl:
+          type: string
+        global:
+          type: boolean
+        fulfilmentKey:
+          type: string
+        value:
+          type: number
+        bitmaskValue:
+          type: number
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkLinkResponse'
+      required:
+      - policyType
+      - id
+      - name
+      - description
+      - policyDefinition
+      - imageUrl
+      - global
+      - fulfilmentKey
+      - value
+      - bitmaskValue
+      - links
+    UpsertPolicyProducts:
+      type: object
+      properties:
+        personId:
+          type: string
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        clothing:
+          $ref: '#/components/schemas/Clothing'
+        accessories:
+          $ref: '#/components/schemas/Accessory'
+        startDate:
+          type: string
+        endDate:
+          type: string
+      required:
+      - personId
+      - products
+    RowSuccess:
+      type: object
+      properties:
+        rowNumber:
+          type: number
+        action:
+          type: string
+        productId:
+          type: string
+      required:
+      - rowNumber
+      - action
+      - productId
+    UpsertPolicyProductsResponse:
+      type: object
+      properties:
+        products:
+          $ref: '#/components/schemas/UpsertedProductItems'
+        clothing:
+          $ref: '#/components/schemas/UpsertedProductItems'
+        accessories:
+          $ref: '#/components/schemas/UpsertedProductItems'
+        refutationId:
+          type: string
     CombinedPersonRequest:
       type: object
       properties:
@@ -925,84 +871,32 @@ components:
       - relationshipId
       - address
       - email
-    PackageResponse:
+    RowError:
       type: object
       properties:
-        id:
+        rowNumber:
+          type: number
+        action:
           type: string
-        name:
+        error:
           type: string
-        key:
-          type: string
-        description:
-          type: string
-        validFrom:
-          type: string
-        validTo:
-          type: string
-        active:
+      required:
+      - rowNumber
+      - action
+      - error
+    CreateCombinedRelationshipRequest:
+      type: object
+      properties:
+        createClaimsDeeplink:
           type: boolean
-        durationUnit:
-          type: string
-        durationValue:
-          type: number
-        durationPrice:
-          type: number
-        perks:
-          type: array
-          items:
-            $ref: '#/components/schemas/PerkResponse'
-        includedPerks:
-          type: array
-          items:
-            $ref: '#/components/schemas/PerkResponse'
-        excludedPerks:
-          type: array
-          items:
-            $ref: '#/components/schemas/PerkResponse'
-        optionalPerks:
-          type: array
-          items:
-            $ref: '#/components/schemas/PerkResponse'
-      required:
-      - id
-      - name
-      - key
-      - description
-      - validFrom
-      - validTo
-      - active
-      - durationUnit
-      - durationValue
-      - durationPrice
-      - perks
-      - includedPerks
-      - excludedPerks
-      - optionalPerks
-    DeletePolicyProductResponse:
-      type: object
-      properties: {}
-    UpsertPolicyProductsResponse:
-      type: object
-      properties:
+        person:
+          $ref: '#/components/schemas/CombinedPersonRequest'
         products:
-          $ref: '#/components/schemas/UpsertedProductItems'
-        clothing:
-          $ref: '#/components/schemas/UpsertedProductItems'
-        accessories:
-          $ref: '#/components/schemas/UpsertedProductItems'
-        refutationId:
-          type: string
-    GetAllDocumentsResponseItem:
-      type: object
-      properties:
-        type:
-          type: string
-        url:
-          type: string
+          $ref: '#/components/schemas/ProductsWithMinimumInitialValue'
       required:
-      - type
-      - url
+      - createClaimsDeeplink
+      - person
+      - products
     PoliciesWithCountResponse:
       type: object
       properties:
@@ -1018,106 +912,62 @@ components:
       required:
       - rows
       - count
-    Product:
+    AccessoryType:
       type: object
       properties:
-        externalId:
-          type: string
-          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
-          example: CRM_123456
-        initialValue:
-          type: number
-          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
-          example: 30000
-          minimum: 0
-          maximum: 1500000
-        serialNumber:
-          type: string
-          description: Serial number of the product
-        typeName:
+        type:
           enum:
-          - GravelBike
-          - Recumbent
-          - Mountain
-          - Folding
-          - FixedGear
-          - CityBike
-          - Cargo
-          - Cyclocross
-          - Hybrid
-          - TT
-          - Road
-          - Touring
-          - BMXBike
-          - FatBike
+          - Gloves
+          - Bike Alarm
+          - Action Camera
+          - Bike Computer
+          - Bike Rack
+          - Fitness Watch
+          - Goggles/Glasses
+          - GPS
+          - Lock
+          - Water Bottle
+          - Bags
+          - Basket
+          - Bell
+          - Bike Box
+          - Bike Covers
+          - Body Armour
+          - Charger
+          - Child Seat
+          - Cycle Mirrors
+          - Drawbar
+          - Facemask
+          - Frame Protectors
+          - Heart Rate Monitor
+          - Helmet
+          - Hydration Pack
+          - Light
+          - Mount
+          - Mudguards
+          - Neck Brace
+          - Pannier
+          - Pannier Rack
+          - Pump
+          - Repair kit
+          - Shoes
+          - Stand
+          - Stickers
+          - Tools
+          - Trailer
+          - Water Bottle Cage
+          - Wetsuit
+          - Workstand
+          - Battery Lock
           type: string
-          description: Type of the bike
-          example: GravelBike
-        sku:
-          type: string
-          description: Stock keeping unit identifier
-        modelName:
-          type: string
-          description: Model name of the product
+          description: Type of accessory
         brand:
           type: string
-          description: Brand name of the product
-        currencyCode:
-          type: string
-          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
-          example: GBP
-        eBikeType:
-          type: string
-          description: Specifies the eBike classification. If not provided, the bike is considered non-electric.
-          example: assisted
+          description: Brand of the accessory
         address:
           $ref: '#/components/schemas/ProductAddress'
-        licencePlateNumber:
-          type: string
-          description: Required for Third Party Liability policies
-        year:
-          type: number
-          description: Purchase year of the product
       required:
-      - initialValue
-      - serialNumber
-      - typeName
-      - modelName
-      - brand
-      - currencyCode
-    RequestCoverRequest:
-      type: object
-      properties:
-        quoteId:
-          type: string
-        coverStart:
-          type: string
-        totalPremiumPaid:
-          type: number
-        isManagedPolicy:
-          type: boolean
-      required:
-      - quoteId
-      - coverStart
-    ProductResponse:
-      type: object
-      properties:
-        serialNumber:
-          type: string
-        modelName:
-          type: string
-        brand:
-          type: string
-        initialValue:
-          type: number
-        typeName:
-          type: string
-      required:
-      - serialNumber
-      - modelName
-      - brand
-      - initialValue
-      - typeName
+      - type
     CombinedPersonResponse:
       type: object
       properties:
@@ -1193,25 +1043,267 @@ components:
       - type
       - relationshipId
       - email
-    UpsertPolicyProducts:
+    Address:
       type: object
       properties:
-        personId:
+        houseNo:
           type: string
+          description: The house number of the address
+          example: '123'
+        streetAddress:
+          type: string
+          description: The street address - may include the house number in some locales
+          example: 123 Main St
+        postalTown:
+          type: string
+          description: The postal town or city
+          example: London
+        postalCode:
+          type: string
+          description: The postal code
+          example: SW1A 2AB
+        locality:
+          type: string
+          description: The locality or district
+          example: Westminster
+        region:
+          type: string
+          description: The region or state
+          example: Greater London
+        country:
+          type: string
+          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
+          example: United Kingdom
+        id:
+          type: string
+    Product:
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        initialValue:
+          type: number
+          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
+          example: 30000
+          minimum: 0
+          maximum: 1500000
+        serialNumber:
+          type: string
+          description: Serial number of the product
+        typeName:
+          enum:
+          - GravelBike
+          - Recumbent
+          - Mountain
+          - Folding
+          - FixedGear
+          - CityBike
+          - Cargo
+          - Cyclocross
+          - Hybrid
+          - TT
+          - Road
+          - Touring
+          - BMXBike
+          - FatBike
+          type: string
+          description: Type of the bike
+          example: GravelBike
+        sku:
+          type: string
+          description: Stock keeping unit identifier
+        modelName:
+          type: string
+          description: Model name of the product
+        brand:
+          type: string
+          description: Brand name of the product
+        currencyCode:
+          type: string
+          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
+          example: GBP
+        eBikeType:
+          type: string
+          description: Specifies the eBike classification. If not provided, the bike is considered non-electric.
+          example: assisted
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+        licencePlateNumber:
+          type: string
+          description: Required for Third Party Liability policies
+        year:
+          type: number
+          description: Purchase year of the product
+      required:
+      - initialValue
+      - serialNumber
+      - typeName
+      - modelName
+      - brand
+      - currencyCode
+    UpsertedProductRow:
+      type: object
+      properties:
+        productId:
+          type: string
+        typeName:
+          type: string
+        brand:
+          type: string
+        model:
+          type: string
+        serialNumber:
+          type: string
+        currencyCode:
+          type: string
+        initialValue:
+          type: number
+        eBikeType:
+          type: string
+        sku:
+          type: string
+        licencePlateNumber:
+          type: string
+        externalId:
+          type: string
+        address:
+          $ref: '#/components/schemas/ProductAddress'
+      required:
+      - productId
+      - typeName
+    DeletePolicyProductResponse:
+      type: object
+      properties: {}
+    RequestCoverRequest:
+      type: object
+      properties:
+        quoteId:
+          type: string
+        coverStart:
+          type: string
+        totalPremiumPaid:
+          type: number
+        isManagedPolicy:
+          type: boolean
+      required:
+      - quoteId
+      - coverStart
+    GetPolicyDocumentResponse:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    ProductAddress:
+      type: object
+      properties:
+        streetAddress:
+          type: string
+          description: Street address for the insured product location
+          example: 10 Downing Street
+        postalTown:
+          type: string
+          description: Postal town for the insured product location
+          example: London
+        postalCode:
+          type: string
+          description: Postal code for the insured product location
+          example: SW1A 2AB
+        country:
+          type: string
+          description: ISO country code for the insured product location
+          example: GB
+      required:
+      - streetAddress
+      - postalTown
+      - postalCode
+      - country
+    GetPolicyIpidResponse:
+      type: object
+      properties:
+        url:
+          type: string
+      required:
+      - url
+    PackageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        key:
+          type: string
+        description:
+          type: string
+        validFrom:
+          type: string
+        validTo:
+          type: string
+        active:
+          type: boolean
+        durationUnit:
+          type: string
+        durationValue:
+          type: number
+        durationPrice:
+          type: number
+        perks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+        includedPerks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+        excludedPerks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+        optionalPerks:
+          type: array
+          items:
+            $ref: '#/components/schemas/PerkResponse'
+      required:
+      - id
+      - name
+      - key
+      - description
+      - validFrom
+      - validTo
+      - active
+      - durationUnit
+      - durationValue
+      - durationPrice
+      - perks
+      - includedPerks
+      - excludedPerks
+      - optionalPerks
+    CancelPolicyResult:
+      type: object
+      properties:
+        policyId:
+          type: string
+        success:
+          type: boolean
+      required:
+      - policyId
+      - success
+    ProductsWithMinimumInitialValue:
+      type: object
+      properties:
         products:
           type: array
           items:
-            $ref: '#/components/schemas/Product'
+            $ref: '#/components/schemas/CombinedProduct'
         clothing:
           $ref: '#/components/schemas/Clothing'
         accessories:
           $ref: '#/components/schemas/Accessory'
-        startDate:
-          type: string
-        endDate:
-          type: string
       required:
-      - personId
       - products
     PolicyForPerson:
       type: object
@@ -1283,236 +1375,141 @@ components:
       - products
       - productCount
       - parsedCoverModules
-    CancelPolicyResult:
+    CancelPolicyBody:
       type: object
       properties:
-        policyId:
+        cancelledReason:
           type: string
-        success:
-          type: boolean
-      required:
-      - policyId
-      - success
-    PerkResponse:
+        cancelledOn:
+          type: string
+    GetAllDocumentsResponseItem:
       type: object
       properties:
-        policyType:
+        type:
           type: string
-          enum:
-          - Property
-          - Liability
-          - Health
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        policyDefinition:
-          type:
-          - string
-          - 'null'
-        imageUrl:
-          type: string
-        global:
-          type: boolean
-        fulfilmentKey:
-          type: string
-        value:
-          type: number
-        bitmaskValue:
-          type: number
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/PerkLinkResponse'
-      required:
-      - policyType
-      - id
-      - name
-      - description
-      - policyDefinition
-      - imageUrl
-      - global
-      - fulfilmentKey
-      - value
-      - bitmaskValue
-      - links
-    GetPolicyWordingResponse:
-      type: object
-      properties:
         url:
           type: string
       required:
+      - type
       - url
-    ProductAddress:
+    CombinedProduct:
       type: object
       properties:
-        streetAddress:
+        externalId:
           type: string
-          description: Street address for the insured product location
-          example: 10 Downing Street
-        postalTown:
-          type: string
-          description: Postal town for the insured product location
-          example: London
-        postalCode:
-          type: string
-          description: Postal code for the insured product location
-          example: SW1A 2AB
-        country:
-          type: string
-          description: ISO country code for the insured product location
-          example: GB
-      required:
-      - streetAddress
-      - postalTown
-      - postalCode
-      - country
-    Clothing:
-      type: object
-      properties:
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
         initialValue:
           type: number
+          minimum: 30000
+          maximum: 1500000
           description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
           example: 30000
-          minimum: 0
-          maximum: 1500000
+        serialNumber:
+          type: string
+          description: Serial number of the product
+        typeName:
+          enum:
+          - GravelBike
+          - Recumbent
+          - Mountain
+          - Folding
+          - FixedGear
+          - CityBike
+          - Cargo
+          - Cyclocross
+          - Hybrid
+          - TT
+          - Road
+          - Touring
+          - BMXBike
+          - FatBike
+          type: string
+          description: Type of the bike
+          example: GravelBike
+        sku:
+          type: string
+          description: Stock keeping unit identifier
+        modelName:
+          type: string
+          description: Model name of the product
+        brand:
+          type: string
+          description: Brand name of the product
         currencyCode:
           type: string
           description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
           example: GBP
+        eBikeType:
+          type: string
+          description: Specifies the eBike classification. If not provided, the bike is considered non-electric.
+          example: assisted
         address:
           $ref: '#/components/schemas/ProductAddress'
+        licencePlateNumber:
+          type: string
+          description: Required for Third Party Liability policies
+        year:
+          type: number
+          description: Purchase year of the product
       required:
       - initialValue
+      - serialNumber
+      - typeName
+      - modelName
+      - brand
       - currencyCode
-    CreateCombinedRelationshipRequest:
+    CreateCombinedRelationshipResponse:
       type: object
       properties:
-        createClaimsDeeplink:
-          type: boolean
         person:
-          $ref: '#/components/schemas/CombinedPersonRequest'
+          $ref: '#/components/schemas/CombinedPersonResponse'
         products:
-          $ref: '#/components/schemas/ProductsWithMinimumInitialValue'
+          $ref: '#/components/schemas/UpsertPolicyProductsResponse'
+        refutationId:
+          type: string
+        claimsDeeplink:
+          type: string
+        isNewRecord:
+          type: boolean
       required:
-      - createClaimsDeeplink
       - person
       - products
-    UploadProductCsvResponse:
+      - refutationId
+      - isNewRecord
+    ProductResponse:
       type: object
       properties:
-        successes:
-          type: array
-          items:
-            $ref: '#/components/schemas/RowSuccess'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/RowError'
-        previews:
-          type: array
-          items:
-            $ref: '#/components/schemas/PreviewItem'
-      required:
-      - successes
-      - errors
-      - previews
-    UploadProductCsvRequest:
-      type: object
-      properties:
-        file:
+        serialNumber:
           type: string
-          format: binary
-          description: CSV file
-      required:
-      - file
-    RowSuccess:
-      type: object
-      properties:
-        rowNumber:
-          type: number
-        action:
-          type: string
-        productId:
-          type: string
-      required:
-      - rowNumber
-      - action
-      - productId
-    GetPolicyDocumentResponse:
-      type: object
-      properties:
-        url:
-          type: string
-      required:
-      - url
-    UpsertedProductRow:
-      type: object
-      properties:
-        productId:
-          type: string
-        typeName:
+        modelName:
           type: string
         brand:
           type: string
-        model:
-          type: string
-        serialNumber:
-          type: string
-        currencyCode:
-          type: string
         initialValue:
           type: number
-        eBikeType:
+        typeName:
           type: string
-        sku:
-          type: string
-        licencePlateNumber:
-          type: string
-        externalId:
-          type: string
-        address:
-          $ref: '#/components/schemas/ProductAddress'
       required:
-      - productId
-      - typeName
-    Accessory:
-      type: object
-      properties:
-        initialValue:
-          type: number
-          description: Value in lowest denomination (pence, cents, etc.). If a product is worth £300.00 or €300,00, please input 30000. For group policies, this value can not be over 1500000.
-          example: 30000
-          minimum: 0
-          maximum: 1500000
-        currencyCode:
-          type: string
-          description: Currency code in ISO 4217 format (3-character currency code). When not provided, api-gb defaults to GBP, and api-nl defaults to EUR.
-          example: GBP
-        types:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccessoryType'
-      required:
+      - serialNumber
+      - modelName
+      - brand
       - initialValue
-      - currencyCode
-      - types
-    ProductsWithMinimumInitialValue:
+      - typeName
+    PerkLinkResponse:
       type: object
       properties:
-        products:
-          type: array
-          items:
-            $ref: '#/components/schemas/CombinedProduct'
-        clothing:
-          $ref: '#/components/schemas/Clothing'
-        accessories:
-          $ref: '#/components/schemas/Accessory'
+        id:
+          type: string
+        url:
+          type: string
+        title:
+          type: string
       required:
-      - products
-    Address:
+      - id
+      - url
+      - title
+    BaseAddressFields:
       type: object
       properties:
         houseNo:
@@ -1543,15 +1540,18 @@ components:
           type: string
           description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
           example: United Kingdom
-        id:
-          type: string
-    CancelPolicyBody:
+    UpsertedProductItems:
       type: object
       properties:
-        cancelledReason:
-          type: string
-        cancelledOn:
-          type: string
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpsertedProductRow'
+        count:
+          type: number
+      required:
+      - rows
+      - count
   securitySchemes:
     x-api-key:
       type: apiKey

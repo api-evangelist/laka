@@ -213,6 +213,143 @@ paths:
       - x-api-key: []
 components:
   schemas:
+    ReportingClaimPreviousExpenseValue:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        type:
+          type: string
+        status:
+          type: string
+        valueIncTax:
+          type: string
+        valueExcTax:
+          type: string
+        createdAt:
+          type: string
+          description: ISO 8601 date string
+      required:
+      - id
+      - name
+      - reference
+      - category
+      - type
+      - status
+      - valueIncTax
+      - valueExcTax
+      - createdAt
+    GetUnderwriterPoliciesResponse:
+      type: object
+      properties:
+        rows:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicy'
+        count:
+          type: number
+      required:
+      - rows
+      - count
+    UnderwriterPermittedPolicyRiskItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        make:
+          type: string
+        model:
+          type: string
+        value:
+          type: string
+        coverages:
+          type: array
+          items:
+            $ref: '#/components/schemas/UnderwriterPermittedPolicyCoverageItem'
+      required:
+      - id
+      - type
+      - make
+      - model
+      - value
+      - coverages
+    UnderwriterPermittedPolicyTaxItem:
+      type: object
+      properties:
+        type:
+          type: string
+          example: IPT
+          enum:
+          - IPT
+          - VAT
+        amount:
+          type: string
+      required:
+      - type
+      - amount
+    ClaimRiskCoverage:
+      type: object
+      properties:
+        indemnityCode:
+          type: string
+          enum:
+          - MD
+          - BI
+        reserveType:
+          type: string
+          enum:
+          - MD
+          - BI
+        coverageIdentifier:
+          type: string
+        deductibleAmount:
+          type: string
+          description: The valueAtClaim of the product, divided by the number of coverages
+          example: '0.00'
+        reserves:
+          description: A list of all Reserves on a Claim, with financial values split equally among Risks on the Claim
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskReserve'
+        expenses:
+          description: A list of all non-reserve Expenses on a Claim, with their financial values split equally across Risks on the Claim
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskExpense'
+      required:
+      - indemnityCode
+      - reserveType
+      - coverageIdentifier
+      - deductibleAmount
+      - reserves
+      - expenses
+    ClaimRisk:
+      type: object
+      properties:
+        riskIdentifier:
+          type: string
+          description: productId of the Claim.product
+        riskProductMake:
+          type: string
+        riskProductModel:
+          type: string
+        riskProductType:
+          type: string
+        coverages:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimRiskCoverage'
+      required:
+      - riskIdentifier
+      - coverages
     ReportingClaimExpense:
       type: object
       properties:
@@ -253,33 +390,6 @@ components:
       - currentValueExcTax
       - createdAt
       - previousValues
-    GetUnderwriterPoliciesResponse:
-      type: object
-      properties:
-        rows:
-          type: array
-          items:
-            $ref: '#/components/schemas/UnderwriterPermittedPolicy'
-        count:
-          type: number
-      required:
-      - rows
-      - count
-    GetUnderwriterClaimsResponse:
-      type: object
-      properties:
-        rows:
-          description: List of items in the response
-          type: array
-          items:
-            $ref: '#/components/schemas/UnderwriterClaim'
-        count:
-          type: number
-          description: Total count of items
-          example: 42
-      required:
-      - rows
-      - count
     UnderwriterPermittedPolicyCoverageItem:
       type: object
       properties:
@@ -316,65 +426,21 @@ components:
       - lakaServiceFee
       - serviceFeePct
       - commission
-    UnderwriterPermittedPolicyRiskItem:
+    GetUnderwriterClaimsResponse:
       type: object
       properties:
-        id:
-          type: string
-        type:
-          type: string
-        make:
-          type: string
-        model:
-          type: string
-        value:
-          type: string
-        coverages:
+        rows:
+          description: List of items in the response
           type: array
           items:
-            $ref: '#/components/schemas/UnderwriterPermittedPolicyCoverageItem'
+            $ref: '#/components/schemas/UnderwriterClaim'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
       required:
-      - id
-      - type
-      - make
-      - model
-      - value
-      - coverages
-    ClaimRiskReserve:
-      type: object
-      properties:
-        reserveIdentifier:
-          type: string
-          description: Expense.id
-        name:
-          type: string
-        reference:
-          type: string
-        category:
-          type: string
-        currency:
-          type: string
-        currentValueIncTax:
-          type: string
-          description: This is the current value of this reserve, including tax, divided by the total number of Risks on the Claim.
-          example: '1000.00'
-        currentValueExcTax:
-          type: string
-          description: This is the current value of this reserve, excluding tax, divided by the total number of Risks on the Claim.
-          example: '1000.00'
-        createdAt:
-          type: string
-          description: An ISO-formatted date value
-          example: '2024-11-11T12:00:00Z'
-      required:
-      - reserveIdentifier
-      - name
-      - reference
-      - category
-      - currency
-      - currentValueIncTax
-      - currentValueExcTax
-      - createdAt
+      - rows
+      - count
     UnderwriterPermittedPolicy:
       type: object
       properties:
@@ -474,143 +540,6 @@ components:
       - commercial
       - commission
       - netPremium
-    ClaimRiskCoverage:
-      type: object
-      properties:
-        indemnityCode:
-          type: string
-          enum:
-          - MD
-          - BI
-        reserveType:
-          type: string
-          enum:
-          - MD
-          - BI
-        coverageIdentifier:
-          type: string
-        deductibleAmount:
-          type: string
-          description: The valueAtClaim of the product, divided by the number of coverages
-          example: '0.00'
-        reserves:
-          description: A list of all Reserves on a Claim, with financial values split equally among Risks on the Claim
-          type: array
-          items:
-            $ref: '#/components/schemas/ClaimRiskReserve'
-        expenses:
-          description: A list of all non-reserve Expenses on a Claim, with their financial values split equally across Risks on the Claim
-          type: array
-          items:
-            $ref: '#/components/schemas/ClaimRiskExpense'
-      required:
-      - indemnityCode
-      - reserveType
-      - coverageIdentifier
-      - deductibleAmount
-      - reserves
-      - expenses
-    ClaimRisk:
-      type: object
-      properties:
-        riskIdentifier:
-          type: string
-          description: productId of the Claim.product
-        riskProductMake:
-          type: string
-        riskProductModel:
-          type: string
-        riskProductType:
-          type: string
-        coverages:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClaimRiskCoverage'
-      required:
-      - riskIdentifier
-      - coverages
-    ReportingClaimPreviousExpenseValue:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        reference:
-          type: string
-        category:
-          type: string
-        type:
-          type: string
-        status:
-          type: string
-        valueIncTax:
-          type: string
-        valueExcTax:
-          type: string
-        createdAt:
-          type: string
-          description: ISO 8601 date string
-      required:
-      - id
-      - name
-      - reference
-      - category
-      - type
-      - status
-      - valueIncTax
-      - valueExcTax
-      - createdAt
-    ClaimRiskExpense:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        reference:
-          type: string
-        category:
-          type: string
-        status:
-          type: string
-          enum:
-          - reserve
-          - waitingForCustomer
-          - refundPresumed
-          - readyToPay
-          - paymentFailed
-          - paid
-          - reconciled
-          - recoup
-        type:
-          type: string
-        currency:
-          type: string
-          example: EUR
-        currentValueIncTax:
-          type: string
-          description: The current financial value of the Expense (including tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places
-          example: '12.34'
-        currentValueExcTax:
-          type: string
-          description: The current financial value of the Expense (excluding tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places
-          example: '12.34'
-        createdAt:
-          type: string
-          description: An ISO-formatted date value
-          example: '2024-11-11T12:00:00Z'
-      required:
-      - id
-      - name
-      - reference
-      - category
-      - status
-      - type
-      - currency
-      - currentValueIncTax
-      - currentValueExcTax
-      - createdAt
     UnderwriterClaim:
       type: object
       properties:
@@ -738,20 +667,91 @@ components:
       - commercialClaim
       - policyCustomerType
       - claimReference
-    UnderwriterPermittedPolicyTaxItem:
+    ClaimRiskReserve:
       type: object
       properties:
+        reserveIdentifier:
+          type: string
+          description: Expense.id
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        currency:
+          type: string
+        currentValueIncTax:
+          type: string
+          description: This is the current value of this reserve, including tax, divided by the total number of Risks on the Claim.
+          example: '1000.00'
+        currentValueExcTax:
+          type: string
+          description: This is the current value of this reserve, excluding tax, divided by the total number of Risks on the Claim.
+          example: '1000.00'
+        createdAt:
+          type: string
+          description: An ISO-formatted date value
+          example: '2024-11-11T12:00:00Z'
+      required:
+      - reserveIdentifier
+      - name
+      - reference
+      - category
+      - currency
+      - currentValueIncTax
+      - currentValueExcTax
+      - createdAt
+    ClaimRiskExpense:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        reference:
+          type: string
+        category:
+          type: string
+        status:
+          type: string
+          enum:
+          - reserve
+          - waitingForCustomer
+          - refundPresumed
+          - readyToPay
+          - paymentFailed
+          - paid
+          - reconciled
+          - recoup
         type:
           type: string
-          example: IPT
-          enum:
-          - IPT
-          - VAT
-        amount:
+        currency:
           type: string
+          example: EUR
+        currentValueIncTax:
+          type: string
+          description: The current financial value of the Expense (including tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places
+          example: '12.34'
+        currentValueExcTax:
+          type: string
+          description: The current financial value of the Expense (excluding tax), split equally between all Risks on the Claim.  A stringified financial value, fixed to two decimal places
+          example: '12.34'
+        createdAt:
+          type: string
+          description: An ISO-formatted date value
+          example: '2024-11-11T12:00:00Z'
       required:
+      - id
+      - name
+      - reference
+      - category
+      - status
       - type
-      - amount
+      - currency
+      - currentValueIncTax
+      - currentValueExcTax
+      - createdAt
   securitySchemes:
     x-api-key:
       type: apiKey
