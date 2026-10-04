@@ -346,101 +346,6 @@ paths:
       - x-api-key: []
 components:
   schemas:
-    Claim:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-        personId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
-          default: null
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        userId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        createdAt:
-          type: string
-          description: Creation timestamp in ISO 8601 format
-          example: '2023-01-01T12:00:00Z'
-          format: date-time
-        updatedAt:
-          type: string
-          description: Last update timestamp in ISO 8601 format
-          example: '2023-01-01T12:00:00Z'
-          format: date-time
-        address:
-          description: The incident address — where the incident occurred. Not the policyholder's home address. address.country is required when creating or submitting a claim. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
-          allOf:
-          - $ref: '#/components/schemas/Address'
-        incidentDate:
-          type: string
-          description: An ISO-formatted date value
-          example: '2024-11-11T12:00:00Z'
-        policyId:
-          type: string
-          description: Policy identifier (UUID format)
-          format: uuid
-        claimType:
-          type: string
-          enum:
-          - theft
-          - damage
-          - health
-          - liability
-        claimStatus:
-          type: string
-          enum:
-          - Created
-          - Incomplete
-          - Submitted
-          - In Progress
-          - On Hold
-          - Underwriter Review
-          - Settled
-          - Rejected
-          - Closed
-        incidentDetails:
-          description: Details about the incident
-          type: array
-          items:
-            type: string
-        claimReference:
-          type: string
-          description: Human readable claim reference
-          example: C-12345
-        claimsDeeplink:
-          type: string
-        person:
-          $ref: '#/components/schemas/Person'
-        private:
-          type: boolean
-        crimeReferenceNumber:
-          type: string
-        productIds:
-          description: A list of productIds on the claim
-          example:
-          - 21093dc7-ceb2-41d0-84ac-69aa01dbeae4
-          type: array
-          items:
-            type: string
-      required:
-      - id
-      - personId
-      - createdAt
-      - updatedAt
-      - claimReference
-      - productIds
     Person:
       type: object
       properties:
@@ -503,65 +408,6 @@ components:
       - id
       - type
       - email
-    SubmitClaimResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        claimStatus:
-          type: string
-        claimReference:
-          type: string
-      required:
-      - id
-      - claimStatus
-      - claimReference
-    ClaimsResponse:
-      type: object
-      properties:
-        rows:
-          description: List of items in the response
-          type: array
-          items:
-            $ref: '#/components/schemas/Claim'
-        count:
-          type: number
-          description: Total count of items
-          example: 42
-      required:
-      - rows
-      - count
-    CreateClaimAttachmentUploadLinkResponse:
-      type: object
-      properties:
-        key:
-          type: string
-          description: The upload key for the attachment.  This is an internal identifier but you may use it to reference the attachment in your application.
-          example: claims-service/attachments/12345.zip
-        url:
-          type: string
-          description: The URL to upload the attachment to.  You can PUT the file data directly to this URL. Please call the confirm endpoint afterwards to confirm the upload.
-          example: https://example.com/upload/attachment
-        attachmentId:
-          type: string
-          description: The identifier for the attachment, used to confirm the upload
-          example: 123e4567-e89b-12d3-a456-426614174000
-      required:
-      - key
-      - url
-      - attachmentId
-    EmptyMessage:
-      type: object
-      properties: {}
-    CreateClaimNoteRequest:
-      type: object
-      properties:
-        note:
-          type: string
-          maxLength: 3000
-          description: The claim note
-      required:
-      - note
     UpdateClaimResponse:
       type: object
       properties:
@@ -662,6 +508,19 @@ components:
       - updatedAt
       - claimReference
       - productIds
+    SubmitClaimResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        claimStatus:
+          type: string
+        claimReference:
+          type: string
+      required:
+      - id
+      - claimStatus
+      - claimReference
     CreateClaim:
       type: object
       properties:
@@ -724,6 +583,101 @@ components:
       required:
       - personId
       - productIds
+    Claim:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        personId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
+          default: null
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        userId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        createdAt:
+          type: string
+          description: Creation timestamp in ISO 8601 format
+          example: '2023-01-01T12:00:00Z'
+          format: date-time
+        updatedAt:
+          type: string
+          description: Last update timestamp in ISO 8601 format
+          example: '2023-01-01T12:00:00Z'
+          format: date-time
+        address:
+          description: The incident address — where the incident occurred. Not the policyholder's home address. address.country is required when creating or submitting a claim. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
+          allOf:
+          - $ref: '#/components/schemas/Address'
+        incidentDate:
+          type: string
+          description: An ISO-formatted date value
+          example: '2024-11-11T12:00:00Z'
+        policyId:
+          type: string
+          description: Policy identifier (UUID format)
+          format: uuid
+        claimType:
+          type: string
+          enum:
+          - theft
+          - damage
+          - health
+          - liability
+        claimStatus:
+          type: string
+          enum:
+          - Created
+          - Incomplete
+          - Submitted
+          - In Progress
+          - On Hold
+          - Underwriter Review
+          - Settled
+          - Rejected
+          - Closed
+        incidentDetails:
+          description: Details about the incident
+          type: array
+          items:
+            type: string
+        claimReference:
+          type: string
+          description: Human readable claim reference
+          example: C-12345
+        claimsDeeplink:
+          type: string
+        person:
+          $ref: '#/components/schemas/Person'
+        private:
+          type: boolean
+        crimeReferenceNumber:
+          type: string
+        productIds:
+          description: A list of productIds on the claim
+          example:
+          - 21093dc7-ceb2-41d0-84ac-69aa01dbeae4
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - personId
+      - createdAt
+      - updatedAt
+      - claimReference
+      - productIds
     Address:
       type: object
       properties:
@@ -757,19 +711,52 @@ components:
           example: United Kingdom
         id:
           type: string
-    CreateClaimAttachmentRequest:
+    EmptyMessage:
+      type: object
+      properties: {}
+    CreateClaimNoteRequest:
       type: object
       properties:
-        fileName:
+        note:
           type: string
-        mimeType:
+          maxLength: 3000
+          description: The claim note
+      required:
+      - note
+    CreateClaimAttachmentUploadLinkResponse:
+      type: object
+      properties:
+        key:
           type: string
+          description: The upload key for the attachment.  This is an internal identifier but you may use it to reference the attachment in your application.
+          example: claims-service/attachments/12345.zip
         url:
           type: string
+          description: The URL to upload the attachment to.  You can PUT the file data directly to this URL. Please call the confirm endpoint afterwards to confirm the upload.
+          example: https://example.com/upload/attachment
+        attachmentId:
+          type: string
+          description: The identifier for the attachment, used to confirm the upload
+          example: 123e4567-e89b-12d3-a456-426614174000
       required:
-      - fileName
-      - mimeType
+      - key
       - url
+      - attachmentId
+    ClaimsResponse:
+      type: object
+      properties:
+        rows:
+          description: List of items in the response
+          type: array
+          items:
+            $ref: '#/components/schemas/Claim'
+        count:
+          type: number
+          description: Total count of items
+          example: 42
+      required:
+      - rows
+      - count
     CreateClaimNoteResponse:
       type: object
       properties:
@@ -796,6 +783,19 @@ components:
       - note
       - createdAt
       - updatedAt
+    CreateClaimAttachmentRequest:
+      type: object
+      properties:
+        fileName:
+          type: string
+        mimeType:
+          type: string
+        url:
+          type: string
+      required:
+      - fileName
+      - mimeType
+      - url
   securitySchemes:
     x-api-key:
       type: apiKey

@@ -55,13 +55,6 @@ paths:
       - x-api-key: []
 components:
   schemas:
-    QuickQuoteForAddressResponse:
-      type: object
-      properties:
-        priceDetails:
-          $ref: '#/components/schemas/PriceDetails'
-      required:
-      - priceDetails
     PriceDetails:
       type: object
       properties:
@@ -87,6 +80,13 @@ components:
       - additionalCostsTotal
       - capIncreasePrc
       - capDecreasePrc
+    QuickQuoteForAddressResponse:
+      type: object
+      properties:
+        priceDetails:
+          $ref: '#/components/schemas/PriceDetails'
+      required:
+      - priceDetails
   securitySchemes:
     x-api-key:
       type: apiKey

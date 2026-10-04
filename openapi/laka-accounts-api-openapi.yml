@@ -238,64 +238,6 @@ paths:
       - x-api-key: []
 components:
   schemas:
-    UpsertPersonDTO:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-        externalId:
-          type: string
-          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
-          example: CRM_123456
-        userId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        dateOfBirth:
-          type: string
-          description: Date of birth in ISO 8601 format
-          example: '1990-01-01'
-          format: date
-        type:
-          type: string
-          description: Type of person
-          enum:
-          - Person
-          - Organisation
-          - Rider
-          example: Person
-        address:
-          type: object
-        email:
-          type: string
-        firstName:
-          type: string
-          description: The first name of the person.
-          example: John
-          maxLength: 100
-        lastName:
-          type: string
-          description: The last name(s) of the person.
-          example: Doe
-        companyName:
-          type: string
-          description: The company name for business entities.
-        cityOfBirth:
-          type: string
-        countryOfBirth:
-          type: string
-        telephoneNumber:
-          type: string
-        region:
-          type: string
-        defaultCurrency:
-          type: string
     Person:
       type: object
       properties:
@@ -358,6 +300,49 @@ components:
       - id
       - type
       - email
+    CreateAccountRelationshipRequest:
+      type: object
+      properties:
+        personId:
+          type: string
+        relationshipType:
+          type: string
+      required:
+      - personId
+      - relationshipType
+    Address:
+      type: object
+      properties:
+        houseNo:
+          type: string
+          description: The house number of the address
+          example: '123'
+        streetAddress:
+          type: string
+          description: The street address - may include the house number in some locales
+          example: 123 Main St
+        postalTown:
+          type: string
+          description: The postal town or city
+          example: London
+        postalCode:
+          type: string
+          description: The postal code
+          example: SW1A 2AB
+        locality:
+          type: string
+          description: The locality or district
+          example: Westminster
+        region:
+          type: string
+          description: The region or state
+          example: Greater London
+        country:
+          type: string
+          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
+          example: United Kingdom
+        id:
+          type: string
     CreatePerson:
       type: object
       properties:
@@ -414,16 +399,6 @@ components:
       required:
       - type
       - email
-    CreateAccountRelationshipRequest:
-      type: object
-      properties:
-        personId:
-          type: string
-        relationshipType:
-          type: string
-      required:
-      - personId
-      - relationshipType
     Relationship:
       type: object
       properties:
@@ -431,38 +406,63 @@ components:
           type: string
       required:
       - relationshipId
-    Address:
+    UpsertPersonDTO:
       type: object
       properties:
-        houseNo:
+        id:
           type: string
-          description: The house number of the address
-          example: '123'
-        streetAddress:
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+        externalId:
           type: string
-          description: The street address - may include the house number in some locales
-          example: 123 Main St
-        postalTown:
+          description: External identifier for integration purposes. You may use any identifier for this entity (e.g., CRM ID, internal user ID). We will store this and return it in future responses.
+          example: CRM_123456
+        userId:
           type: string
-          description: The postal town or city
-          example: London
-        postalCode:
+          description: Unique identifier (UUID v4 format)
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        dateOfBirth:
           type: string
-          description: The postal code
-          example: SW1A 2AB
-        locality:
+          description: Date of birth in ISO 8601 format
+          example: '1990-01-01'
+          format: date
+        type:
           type: string
-          description: The locality or district
-          example: Westminster
+          description: Type of person
+          enum:
+          - Person
+          - Organisation
+          - Rider
+          example: Person
+        address:
+          type: object
+        email:
+          type: string
+        firstName:
+          type: string
+          description: The first name of the person.
+          example: John
+          maxLength: 100
+        lastName:
+          type: string
+          description: The last name(s) of the person.
+          example: Doe
+        companyName:
+          type: string
+          description: The company name for business entities.
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          type: string
+        telephoneNumber:
+          type: string
         region:
           type: string
-          description: The region or state
-          example: Greater London
-        country:
-          type: string
-          description: The country. Accepts an ISO 3166-1 alpha-2 code (e.g. 'UK') or full country name (e.g. 'United Kingdom').
-          example: United Kingdom
-        id:
+        defaultCurrency:
           type: string
   securitySchemes:
     x-api-key:

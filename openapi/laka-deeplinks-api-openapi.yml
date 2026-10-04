@@ -84,6 +84,28 @@ paths:
       - x-api-key: []
 components:
   schemas:
+    CreateDeeplink:
+      type: object
+      properties:
+        personId:
+          type: string
+          description: Unique identifier (UUID v4 format)
+          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
+          format: uuid
+          externalDocs:
+            url: https://docs.laka.co/docs/glossary
+        resource:
+          type: string
+        expiresAt:
+          type: string
+        multipleUse:
+          type: boolean
+        nonExpiring:
+          type: boolean
+      required:
+      - resource
+      - multipleUse
+      - nonExpiring
     Deeplink:
       type: object
       properties:
@@ -118,28 +140,6 @@ components:
       required:
       - rows
       - count
-    CreateDeeplink:
-      type: object
-      properties:
-        personId:
-          type: string
-          description: Unique identifier (UUID v4 format)
-          example: 7dd76d65-54a1-4166-9c3f-2adf7c8a1e06
-          format: uuid
-          externalDocs:
-            url: https://docs.laka.co/docs/glossary
-        resource:
-          type: string
-        expiresAt:
-          type: string
-        multipleUse:
-          type: boolean
-        nonExpiring:
-          type: boolean
-      required:
-      - resource
-      - multipleUse
-      - nonExpiring
   securitySchemes:
     x-api-key:
       type: apiKey
